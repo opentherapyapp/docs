@@ -1,0 +1,103 @@
+---
+title: "How it works"
+description: "The path from searching for a therapist to a first session, and what happens on the practitioner side of the same booking."
+keywords: ["how it works", "booking", "matching", "payment", "session"]
+---
+
+Open Therapy connects two sides of the same appointment. This page follows one booking from both.
+
+## For a client
+
+<Steps>
+  <Step title="Answer five questions" icon="clipboard-list">
+    The matching questionnaire asks who the therapy is for, what you're bringing, anything running
+    through your story, what would make it easier, and the practical constraints — how you'd like to
+    meet, where you are, and how you'll pay. Only the first two are required.
+  </Step>
+  <Step title="Review your shortlist" icon="layers">
+    Every therapist who scores against your answers is dealt to you as a card, ranked, each with a
+    one-line reason. Keep the ones worth a second look and pass on the rest. Nothing is booked and
+    nobody is told either way.
+  </Step>
+  <Step title="Read the profile" icon="user">
+    Bio, qualifications, registration, focus areas, services and prices, locations, funding accepted,
+    and reviews. You can also skip matching entirely and search the directory yourself.
+  </Step>
+  <Step title="Book and pay" icon="calendar-check">
+    Pick a service, a session mode, a date and a time. You'll need an account. Your card is charged at
+    booking and the money is held until the session happens.
+  </Step>
+  <Step title="Attend" icon="video">
+    Online sessions get an encrypted video link. In-person sessions get the address. Home visits get
+    confirmed arrival details.
+  </Step>
+</Steps>
+
+## For a therapist
+
+<Steps>
+  <Step title="Create an account and apply" icon="user-plus">
+    Sign up as a therapist and complete onboarding: your discipline, registration body and number,
+    where and how you practise, what you work with, your approaches, your fees and your availability.
+  </Step>
+  <Step title="Get verified" icon="badge-check">
+    Open Therapy checks your registration against the relevant national register. Nothing goes live
+    until it clears.
+  </Step>
+  <Step title="Go live" icon="globe">
+    Your profile appears in the directory and in client shortlists where your experience overlaps
+    with theirs. You also get a personal booking link at `opentherapy.link/your-name`.
+  </Step>
+  <Step title="Take the session" icon="calendar">
+    Bookings arrive against the availability you set. The client has already paid.
+  </Step>
+  <Step title="Record what happened" icon="check">
+    After the session you mark it as attended or a no-show. Nothing settles and nothing transfers
+    until you do — attendance is your word, not an inference from the clock.
+  </Step>
+  <Step title="Get paid" icon="banknote">
+    Your share transfers 24 hours after the session ends, then Stripe pays it to your bank on its
+    normal schedule.
+  </Step>
+</Steps>
+
+## Who does what
+
+| | Client | Therapist | Open Therapy |
+|---|---|---|---|
+| Sets the session price | — | Yes | No |
+| Sets the cancellation policy | — | Yes | No |
+| Pays for the session | Yes | — | — |
+| Receives the money | — | Yes | Takes a fee from it |
+| Merchant on the card statement | — | Yes | No |
+| Verifies registration | — | — | Yes |
+| Holds the clinical record | — | Yes | Stores it |
+
+<Note>
+  The therapist is the merchant of record on every payment. Their practice name — not Open Therapy —
+  is what appears on the client's card statement.
+</Note>
+
+## Two domains
+
+Open Therapy runs on two hostnames, and both are legitimate.
+
+<Columns cols={2}>
+  <Card title="opentherapy.app" icon="globe">
+    The marketplace: search, profiles, booking, and both portals.
+  </Card>
+  <Card title="opentherapy.link" icon="link">
+    Vanity links only. A therapist hands out `opentherapy.link/sarah-chen` and it opens their profile.
+  </Card>
+</Columns>
+
+## Where to go next
+
+<Columns cols={2}>
+  <Card title="Client documentation" icon="heart" href="/clients/overview" horizontal>
+    Accounts, matching, booking, payment and your portal.
+  </Card>
+  <Card title="Therapist documentation" icon="stethoscope" href="/therapists/overview" horizontal>
+    Verification, your listing, sessions and payouts.
+  </Card>
+</Columns>

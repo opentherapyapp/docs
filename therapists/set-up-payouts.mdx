@@ -1,0 +1,98 @@
+---
+title: "Set up payouts"
+description: "Connect your Stripe account, understand the account states, and know when money reaches your bank."
+keywords: ["payouts", "stripe", "connect", "bank", "onboarding", "transfers"]
+---
+
+Open Therapy pays you through Stripe. You need a connected account before clients can book you.
+
+Set it up under **Payouts** in your workspace.
+
+## You are the merchant of record
+
+Every payment is made on your behalf. Your practice name — not Open Therapy — appears on the client's card statement, the charge runs in your country, and the transaction is yours.
+
+That's why the account has to be fully verified before you can take a booking, and why the verification is Stripe's rather than ours.
+
+## Setting up
+
+<Steps>
+  <Step title="Start onboarding">
+    Select **Set up payouts with Stripe**. You'll be handed to Stripe.
+  </Step>
+  <Step title="Provide your details">
+    Your legal entity, ABN, identity documents, and the bank account you want to be paid into.
+  </Step>
+  <Step title="Come back">
+    Stripe returns you to Open Therapy. Your status updates once Stripe has processed it, which is
+    usually immediate but can take longer if documents need review.
+  </Step>
+</Steps>
+
+## Account states
+
+| State | What it means | What you can do |
+|---|---|---|
+| **Not started** | No account yet | Start onboarding |
+| **Pending** | Stripe is reviewing | Wait, or supply anything outstanding |
+| **Restricted** | Stripe needs more from you | The outstanding requirements are listed on the page — resolve them |
+| **Active** | Fully verified | Take bookings and receive transfers |
+
+<Warning>
+  Clients cannot book you until your account is **active**. Someone who tries will be told you haven't
+  finished setting up payments yet, and invited to message you instead — so an incomplete account
+  costs you bookings quietly.
+</Warning>
+
+## Changing your bank details
+
+Select **Change bank details**, which opens your Stripe dashboard. Bank details live with Stripe, not with Open Therapy.
+
+## When you get paid
+
+Two stages, and it helps to keep them separate.
+
+<Steps>
+  <Step title="Transfer — 24 hours after the session ends">
+    Once you've recorded attendance, your share is transferred to your Stripe balance. The 24-hour
+    hold is the post-session equivalent of a cancellation window: the last stretch in which a mistake
+    can be put right while the money is still recoverable.
+  </Step>
+  <Step title="Payout — on Stripe's schedule">
+    Stripe pays your balance to your bank on its normal schedule for your country. Most banks show it
+    within one to two business days.
+  </Step>
+</Steps>
+
+Transfers are attempted every hour, so a session recorded this afternoon is queued without you doing anything further.
+
+<Note>
+  Nothing transfers until you've recorded attendance. See
+  [Managing sessions](/therapists/managing-sessions#recording-attendance).
+</Note>
+
+## Why a transfer might not have happened
+
+All of these must be true before your share moves:
+
+- The session has been settled
+- Attendance has been recorded, or the session was cancelled
+- 24 hours have passed since the session ended
+- The real card processing fee is known
+- Transfers are enabled on your account and it isn't frozen
+
+A transfer that fails is retried automatically on the next hourly pass, with Stripe's own reason recorded against it. The usual causes are a charge not yet available for transfer, or a frozen account.
+
+## Frozen accounts
+
+A payment dispute freezes transfers on your account until a person clears it. See [Refunds and disputes](/therapists/refunds-and-disputes).
+
+## Payout emails
+
+You get a **Payout sent** email when money goes to your bank, showing the period and the amount.
+
+That figure is your **net earnings**. Platform and introduction fees are invoiced separately rather than being netted invisibly, so your income and your costs stay legible at tax time. See [Invoices and tax](/therapists/invoices-and-tax).
+
+## Problems
+
+Write to [billing@opentherapy.app](mailto:billing@opentherapy.app) with the session date or the payout period. Expect a reply within one business day.

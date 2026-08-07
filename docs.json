@@ -1,72 +1,212 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "theme": "maple",
+  "name": "Open Therapy",
+  "description": "Help for clients booking therapy and for therapists practising on Open Therapy.",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#174038",
+    "light": "#ACE5BA",
+    "dark": "#4A796F"
   },
   "favicon": "/favicon.svg",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg",
+    "href": "https://opentherapy.app"
+  },
+  "fonts": {
+    "heading": {
+      "family": "Instrument Serif",
+      "weight": 400
+    },
+    "body": {
+      "family": "Inter Tight",
+      "weight": 400
+    }
+  },
+  "icons": {
+    "library": "lucide"
+  },
+  "appearance": {
+    "default": "light",
+    "strict": true
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs"
+  },
+  "search": {
+    "prompt": "Search Open Therapy help"
+  },
   "navigation": {
-    "pages": [
+    "tabs": [
       {
-        "group": "Getting Started",
-        "pages": [
-          "index",
-          "quickstart"
+        "tab": "Overview",
+        "icon": "compass",
+        "groups": [
+          {
+            "group": "Start here",
+            "pages": ["index", "how-it-works"]
+          },
+          {
+            "group": "How Open Therapy works",
+            "pages": ["fees", "safety-and-privacy", "getting-help"]
+          }
+        ]
+      },
+      {
+        "tab": "For clients",
+        "icon": "heart",
+        "groups": [
+          {
+            "group": "Getting started",
+            "pages": [
+              "clients/overview",
+              "clients/create-an-account",
+              "clients/find-a-therapist",
+              "clients/browse-the-directory",
+              "clients/therapist-profiles"
+            ]
+          },
+          {
+            "group": "Sessions",
+            "pages": [
+              "clients/book-a-session",
+              "clients/manage-your-sessions",
+              "clients/cancellations-and-refunds"
+            ]
+          },
+          {
+            "group": "Paying",
+            "pages": [
+              "clients/paying-for-sessions",
+              "clients/rebates-and-funding",
+              "clients/invoices-and-receipts"
+            ]
+          },
+          {
+            "group": "Your account",
+            "pages": [
+              "clients/your-account",
+              "clients/journal",
+              "clients/reviews"
+            ]
+          },
+          {
+            "group": "More ways to get support",
+            "pages": ["clients/groups", "clients/membership"]
+          }
+        ]
+      },
+      {
+        "tab": "For therapists",
+        "icon": "stethoscope",
+        "groups": [
+          {
+            "group": "Joining",
+            "pages": [
+              "therapists/overview",
+              "therapists/join",
+              "therapists/verification"
+            ]
+          },
+          {
+            "group": "Your listing",
+            "pages": [
+              "therapists/build-your-profile",
+              "therapists/services-and-pricing",
+              "therapists/availability",
+              "therapists/your-booking-link"
+            ]
+          },
+          {
+            "group": "Running sessions",
+            "pages": [
+              "therapists/managing-sessions",
+              "therapists/cancellation-policy",
+              "therapists/reviews-and-advertising-rules"
+            ]
+          },
+          {
+            "group": "Getting paid",
+            "pages": [
+              "therapists/set-up-payouts",
+              "therapists/fees-and-earnings",
+              "therapists/invoices-and-tax",
+              "therapists/refunds-and-disputes"
+            ]
+          }
         ]
       }
     ],
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Open Therapy",
+          "href": "https://opentherapy.app",
+          "icon": "external-link"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Crisis support",
+          "href": "https://opentherapy.app/crisis-support",
+          "icon": "life-buoy"
         }
       ]
     }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
   },
   "navbar": {
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "https://opentherapy.app/support"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.mintlify.com"
+      "label": "Go to Open Therapy",
+      "href": "https://opentherapy.app"
     }
   },
   "contextual": {
-    "options": [
-      "copy",
-      "view",
-      "chatgpt",
-      "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
-    ]
+    "options": ["copy", "view", "chatgpt", "claude", "cursor"]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
-    }
+      "website": "https://opentherapy.app"
+    },
+    "links": [
+      {
+        "header": "Clients",
+        "items": [
+          { "label": "Find a therapist", "href": "/clients/find-a-therapist" },
+          { "label": "Book a session", "href": "/clients/book-a-session" },
+          { "label": "Cancellations", "href": "/clients/cancellations-and-refunds" }
+        ]
+      },
+      {
+        "header": "Therapists",
+        "items": [
+          { "label": "Join Open Therapy", "href": "/therapists/join" },
+          { "label": "Fees and earnings", "href": "/therapists/fees-and-earnings" },
+          { "label": "Set up payouts", "href": "/therapists/set-up-payouts" }
+        ]
+      },
+      {
+        "header": "Company",
+        "items": [
+          { "label": "About", "href": "https://opentherapy.app/about" },
+          { "label": "Terms", "href": "https://opentherapy.app/terms" },
+          { "label": "Privacy", "href": "https://opentherapy.app/privacy" },
+          { "label": "Clinical governance", "href": "https://opentherapy.app/clinical-governance" }
+        ]
+      }
+    ]
+  },
+  "seo": {
+    "metatags": {
+      "canonical": "https://docs.opentherapy.app",
+      "og:site_name": "Open Therapy",
+      "og:locale": "en_AU"
+    },
+    "indexing": "navigable"
   }
 }

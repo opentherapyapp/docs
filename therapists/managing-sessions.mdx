@@ -1,0 +1,94 @@
+---
+title: "Managing sessions"
+description: "See what's booked, run the session, and record attendance — the step that releases your payment."
+keywords: ["sessions", "attendance", "no-show", "settle", "schedule", "bookings"]
+---
+
+## When a booking arrives
+
+You get a **New booking** email with the day, time, client, service, where, and what they said they're seeking.
+
+If it's a client's first session with you, the email says so and notes that an introduction fee applies to this booking — once, not on every session after it.
+
+The client has already paid. Their money is held until the session happens.
+
+## Recording attendance
+
+This is the one action that matters most, because **nothing settles and nothing transfers until you do it.**
+
+After a session has finished, it appears in the **Waiting on you** queue on your earnings screen with one of two buttons.
+
+<Columns cols={2}>
+  <Card title="Attended" icon="check">
+    The session happened. Fees are calculated and your share is queued for transfer.
+  </Card>
+  <Card title="No-show" icon="user-x">
+    The client didn't turn up. Your policy's no-show rate is charged and the rest is refunded.
+  </Card>
+</Columns>
+
+<Note>
+  Attendance is your word, not an inference from the clock. A session that has passed its end time
+  isn't assumed to have happened — someone has to say so, and only you can.
+</Note>
+
+Pressing the button twice is safe. It's idempotent, so a double-click can't settle a session twice.
+
+## Why you might not be able to settle
+
+| Message | Reason |
+|---|---|
+| *"You can close this once the session has finished."* | Its end time hasn't passed |
+| *"A cancelled session can't be settled."* | It was called off |
+| *"Only the therapist who ran the session can close it."* | It isn't yours |
+
+The timing check exists so nobody can be paid for next Tuesday.
+
+## The two things the queue asks for
+
+| Flag | What it means |
+|---|---|
+| **Attendance** | The hour has passed and nobody has said whether it happened |
+| **Settlement** | You recorded it, but the fee calculation didn't complete. Press the button again to re-run it. |
+
+<Tip>
+  Make it the last thing you do at the end of a day rather than the first thing on Monday. An
+  unrecorded session is an unpaid one, and the queue is the only place it will chase you.
+</Tip>
+
+## Cancelling a session
+
+You can cancel from the session itself. **A therapist's own cancellation never charges the client**, whatever the notice and whatever your policy. That isn't a setting, and it's deliberately not one.
+
+The client is refunded in full and told straight away.
+
+<Warning>
+  If a client asks to move a session inside your notice window, cancelling from your side is the
+  courteous option — it costs them nothing. Cancelling from theirs may charge them a late fee even if
+  they rebook immediately.
+</Warning>
+
+## Rescheduling
+
+There's no reschedule action yet. Cancel and have the client rebook, or cancel and rebook on their behalf.
+
+## No-shows
+
+Recording a no-show charges the rate in your cancellation policy — 100% on three of the four presets, 50% on Flexible. Only you can mark a session as a no-show.
+
+See [Cancellation policy](/therapists/cancellation-policy).
+
+## Your schedule
+
+**Schedule** shows the week as a grid: booked sessions with their mode, admin blocks you've held for notes or supervision, and blocked time. Your waitlist sits alongside it.
+
+**Overview** shows today's sessions and anything needing attention — unsigned notes, referrals to review, and registration documents approaching expiry.
+
+## Messaging clients
+
+<Info>
+  Client messaging is being rolled out. Until it's live for your account, use the contact details you
+  exchange at booking.
+</Info>
+
+Threaded and attached to the clinical record. Intended for scheduling, worksheets and short check-ins rather than clinical work between sessions, and clients are told to expect a reply within one business day.

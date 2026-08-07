@@ -1,0 +1,357 @@
+/*
+ * Open Therapy brand styling.
+ *
+ * Ported from the app's design system. The app uses its pastels as solid
+ * fills — never tinted down against white — on borderless, generously rounded
+ * blocks with brand-coloured text. The four tones cycle mint, butter, blush,
+ * sky, so no tone repeats beside or below its neighbour in a grid.
+ *
+ * Token values are copied verbatim from the app's src/styles.css rather than
+ * converted to hex, so the two stay in step. Appearance is locked to light in
+ * docs.json, so there are no dark variants here.
+ */
+
+:root {
+  --ot-brand: oklch(0.34 0.048 178);
+  /* The app's tiles set body copy at brand/70, but that is decorative subtext.
+     Card bodies here carry real prose, and 70% lands under 4.5:1 on mint and
+     blush, so this is held at 85%. */
+  --ot-brand-body: oklch(0.34 0.048 178 / 0.85);
+
+  --ot-mint: oklch(0.87 0.083 152);
+  --ot-butter: oklch(0.955 0.065 108);
+  --ot-blush: oklch(0.872 0.055 40);
+  --ot-sky: oklch(0.905 0.04 235);
+
+  --ot-surface: oklch(1 0 0);
+  --ot-sunken: oklch(0.972 0.016 165);
+
+  --ot-ink: oklch(0.29 0.045 178);
+  --ot-ink-muted: oklch(0.48 0.028 178);
+  --ot-ink-subtle: oklch(0.63 0.02 178);
+
+  --ot-hairline: oklch(0.29 0.045 178 / 14%);
+
+  /* The app's --radius, plus Tailwind's rounded-2xl (radius + 8px). */
+  --ot-radius: 1rem;
+  --ot-radius-lg: 1.5rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Type                                                                       */
+/* -------------------------------------------------------------------------- */
+
+body {
+  letter-spacing: -0.011em;
+  color: var(--ot-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Instrument Serif ships a single weight, so any weight utility on a heading
+   would trigger faux-bold synthesis. Force 400 and colour them brand. */
+h1,
+h2,
+h3,
+h4 {
+  color: var(--ot-brand) !important;
+  letter-spacing: -0.01em;
+}
+
+h1,
+h2 {
+  font-weight: 400 !important;
+  line-height: 1.1;
+}
+
+/* The sidebar and other chrome reuse h3; only style headings in the article. */
+main h3,
+main h4 {
+  font-weight: 600;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Sidebar — the app's portal nav sits on the page surface with no fill, and  */
+/* uses the sunken tone only as a hover state on individual items             */
+/* -------------------------------------------------------------------------- */
+
+#sidebar {
+  background-color: transparent;
+  border-right-color: var(--ot-hairline) !important;
+}
+
+#sidebar a:hover {
+  color: var(--ot-brand);
+}
+
+/* The pinned links at the foot of the sidebar carry their own solid surface. */
+#sidebar > ul {
+  background-color: transparent !important;
+  border-top-color: var(--ot-hairline) !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Callouts — the four accents at full strength, borderless like the app      */
+/* -------------------------------------------------------------------------- */
+
+.callout {
+  border-radius: var(--ot-radius) !important;
+  border: 0 !important;
+  color: var(--ot-ink);
+}
+
+/* Mintlify tints the body text to match each callout's default hue. The copy
+   is a wrapper div rather than a paragraph, so reset the whole subtree. */
+.callout div,
+.callout p,
+.callout li,
+.callout span,
+.callout strong {
+  color: var(--ot-ink);
+}
+
+.callout a {
+  color: var(--ot-brand);
+}
+
+.callout svg {
+  color: var(--ot-brand) !important;
+}
+
+/* Note → sky */
+.callout.bg-blue-50 {
+  background-color: var(--ot-sky) !important;
+}
+
+/* Tip and Check → mint */
+.callout.bg-green-50 {
+  background-color: var(--ot-mint) !important;
+}
+
+/* Warning → butter */
+.callout.bg-yellow-50 {
+  background-color: var(--ot-butter) !important;
+}
+
+/* Danger → blush */
+.callout.bg-red-50 {
+  background-color: var(--ot-blush) !important;
+}
+
+/* Info → the plain sunken surface */
+.callout.bg-neutral-50 {
+  background-color: var(--ot-sunken) !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Cards — solid pastel tiles cycling mint, butter, blush, sky                */
+/* -------------------------------------------------------------------------- */
+
+.card {
+  border-width: 0 !important;
+  border-radius: var(--ot-radius-lg) !important;
+  background-color: var(--ot-mint) !important;
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+/* Offsetting by four gives a diagonal, so a tone never lands next to itself
+   in either a two- or three-column grid. */
+.card-group > .card:nth-child(4n + 2) {
+  background-color: var(--ot-butter) !important;
+}
+
+.card-group > .card:nth-child(4n + 3) {
+  background-color: var(--ot-blush) !important;
+}
+
+.card-group > .card:nth-child(4n + 4) {
+  background-color: var(--ot-sky) !important;
+}
+
+/* On a solid tone the app drops to brand for everything, body at 70%. */
+.card [data-component-part="card-title"],
+.card [data-component-part="card-icon"],
+.card svg {
+  color: var(--ot-brand) !important;
+  fill: var(--ot-brand) !important;
+}
+
+/* Instrument Serif at the theme's base size sits too close to the body copy to
+   register as a heading. */
+.card [data-component-part="card-title"] {
+  font-size: 1.25rem;
+  line-height: 1.2;
+  margin-bottom: 0.125rem;
+}
+
+.card [data-component-part="card-content"],
+.card [data-component-part="card-content"] p {
+  color: var(--ot-brand-body) !important;
+}
+
+.card [data-component-part="card-content-container"] {
+  padding: 1.5rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Tables — the app frames these in a rounded, hairline-ringed panel with     */
+/* horizontal rules only                                                      */
+/* -------------------------------------------------------------------------- */
+
+/* A real border rather than a ring: Mintlify wraps tables in a scroll container
+   with overflow hidden, and a box-shadow paints outside the border box, so the
+   bottom and side edges were being clipped off. */
+main table {
+  border-collapse: separate !important;
+  border-spacing: 0;
+  border-radius: var(--ot-radius-lg);
+  border: 1px solid var(--ot-hairline);
+}
+
+main table thead tr {
+  background-color: var(--ot-mint);
+}
+
+main table thead th {
+  color: var(--ot-brand);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  border: 0 !important;
+  padding: 0.75rem 1rem;
+}
+
+main table tbody td {
+  border: 0 !important;
+  padding: 0.75rem 1rem;
+  color: var(--ot-ink-muted);
+}
+
+main table tbody tr + tr td {
+  border-top: 1px solid var(--ot-hairline) !important;
+}
+
+main table tbody td:first-child {
+  color: var(--ot-ink);
+  font-weight: 500;
+}
+
+/* Markdown has no way to write a table without a header row, so key/value
+   tables are authored as `| | |` and render as an empty mint band. Drop it.
+   Written as :not(:has()) rather than :has(:has()), which the spec forbids, and
+   so an unsupported :has() leaves the header visible rather than hiding it. */
+main table thead:not(:has(th:not(:empty))) {
+  display: none;
+}
+
+/* border-collapse: separate means the corners have to be rounded cell by cell.
+   Inset by the 1px border so the mint header doesn't peek past the curve. */
+main table thead tr:first-child th:first-child {
+  border-top-left-radius: calc(var(--ot-radius-lg) - 1px);
+}
+
+main table thead tr:first-child th:last-child {
+  border-top-right-radius: calc(var(--ot-radius-lg) - 1px);
+}
+
+/* Carries the curve when the header above is hidden. A no-op otherwise, since
+   body cells have no fill of their own to square off the corner. */
+main table tbody tr:first-child td:first-child {
+  border-top-left-radius: calc(var(--ot-radius-lg) - 1px);
+}
+
+main table tbody tr:first-child td:last-child {
+  border-top-right-radius: calc(var(--ot-radius-lg) - 1px);
+}
+
+main table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: calc(var(--ot-radius-lg) - 1px);
+}
+
+main table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: calc(var(--ot-radius-lg) - 1px);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Accordions, steps, tabs                                                    */
+/* -------------------------------------------------------------------------- */
+
+.accordion-group {
+  border-radius: var(--ot-radius-lg) !important;
+  border-color: var(--ot-hairline) !important;
+}
+
+.accordion-group summary {
+  background-color: var(--ot-sunken);
+}
+
+.accordion-group summary:hover {
+  background-color: var(--ot-mint);
+}
+
+.accordion-group svg {
+  color: var(--ot-brand);
+}
+
+.steps svg {
+  color: var(--ot-brand);
+}
+
+.steps [class*="step-indicator"] {
+  background-color: var(--ot-mint) !important;
+  color: var(--ot-brand) !important;
+}
+
+.steps .step > div > p {
+  color: var(--ot-brand);
+}
+
+[role="tablist"] {
+  border-bottom-color: var(--ot-hairline) !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Inline code, links, quotes                                                 */
+/* -------------------------------------------------------------------------- */
+
+/* The app's bg-brand/10 chip. A translucent fill rather than a solid one so it
+   sits correctly on white and on any of the pastel tiles. */
+main :not(pre) > code {
+  background-color: oklch(0.34 0.048 178 / 0.1);
+  color: var(--ot-brand);
+  border: 0;
+  border-radius: 0.375rem;
+}
+
+/* Cards restyle their own contents, so keep the underline out of them. */
+main p a,
+main li a,
+main td a {
+  text-decoration-color: var(--ot-mint);
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 2px;
+}
+
+main p a:hover,
+main li a:hover,
+main td a:hover {
+  text-decoration-color: var(--ot-brand);
+}
+
+blockquote {
+  border-radius: var(--ot-radius);
+  border-left-color: var(--ot-mint) !important;
+  background-color: var(--ot-sunken);
+}
+
+pre {
+  border-radius: var(--ot-radius);
+}
+
+::selection {
+  background-color: oklch(0.34 0.048 178 / 0.1);
+}

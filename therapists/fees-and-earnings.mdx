@@ -1,0 +1,127 @@
+---
+title: "Fees and earnings"
+description: "How a session fee is divided, and how to read and reconcile your earnings screen."
+keywords: ["earnings", "fees", "net", "settlement", "platform fee", "introduction fee", "dashboard"]
+---
+
+## What comes off a session
+
+Four deductions, all from your payout. Nothing is ever added to what the client pays.
+
+| Deduction | Amount |
+|---|---|
+| Platform fee | **2.5%** of the session |
+| Introduction fee | **\$20–\$75**, once per new client, by discipline |
+| Card processing | Stripe's actual cost |
+| GST | **10%** on Open Therapy's two fees |
+
+The full table of introduction fees by discipline, and how GST is applied to each line, is on [Fees](/fees).
+
+## The shape of it
+
+<Tabs>
+  <Tab title="First session — \$180">
+    | Line | Amount |
+    |---|---|
+    | Client pays | \$180.00 |
+    | Platform fee (2.5%) | −\$4.50 |
+    | Introduction fee (Psychologist) | −\$45.00 |
+    | Card processing | −\$3.36 |
+    | GST on Open Therapy's fees | −\$4.95 |
+    | **You receive** | **\$122.19** |
+
+    32.1% deducted, almost all of it the one-off introduction.
+  </Tab>
+  <Tab title="Every session after — \$180">
+    | Line | Amount |
+    |---|---|
+    | Client pays | \$180.00 |
+    | Platform fee (2.5%) | −\$4.50 |
+    | Card processing | −\$3.36 |
+    | GST on Open Therapy's fees | −\$0.45 |
+    | **You receive** | **\$171.69** |
+
+    4.6% deducted.
+  </Tab>
+</Tabs>
+
+Over a course of care the blended rate lands under 10%. Two ways to improve it:
+
+<Columns cols={2}>
+  <Card title="Use your own booking link" icon="link" href="/therapists/your-booking-link" horizontal>
+    Clients who arrive through it carry no introduction fee at all.
+  </Card>
+  <Card title="Price your initial consultation properly" icon="dollar-sign" href="/therapists/services-and-pricing" horizontal>
+    The introduction fee lands on the first session. A realistic initial fee protects your margin on it.
+  </Card>
+</Columns>
+
+<Note>
+  The introduction fee is capped at what a session can carry after processing, the platform fee and
+  GST. A cheap or free first session nets you nothing rather than putting you in debt to us.
+</Note>
+
+## Your earnings screen
+
+**Earnings** in your workspace, and the numbers on it are real rather than estimated.
+
+### The chart
+
+Twelve months of **net** earnings, oldest first, with the current month flagged. Months with no work are shown as empty rather than skipped — a chart that skips them implies a busier year than you had.
+
+### Totals
+
+For this calendar month and for all time:
+
+| Figure | Meaning |
+|---|---|
+| Gross | What clients paid |
+| Platform fee | 2.5% total |
+| Introduction fee | One-off fees charged in the period |
+| Processing fee | What the cards actually cost |
+| Fee GST | Tax on Open Therapy's two fees |
+| **Net** | What reached you |
+| Sessions | Count |
+| New clients | First sessions, whether or not an introduction was charged |
+
+### Settlements
+
+One line per session: gross, each fee, net, the platform fee rate that was in force, whether it was a first session, and its status.
+
+| Status | Meaning |
+|---|---|
+| **Pending** | Settled, not yet transferred |
+| **Settled** | Divided and queued |
+| **Paid out** | Transferred to your Stripe balance |
+
+### Payouts and invoices
+
+Payout lines show the period, the date paid, the amount and the status — processing, paid or failed. Fee invoice lines show the reference, period, subtotal, GST and total.
+
+## Waiting on you
+
+The queue of sessions that have finished but haven't been recorded as attended or missed. **Nothing settles and nothing transfers until you clear it.** See [Managing sessions](/therapists/managing-sessions#recording-attendance).
+
+## Fee changes never re-price the past
+
+Every settlement stores the rate that applied when it was made. A rate change tomorrow applies to new sessions only — it cannot re-price what you earned yesterday.
+
+## Reconciling
+
+<Steps>
+  <Step title="Start from the payout">
+    A payout is the sum of the settlements transferred in that period. It's your net.
+  </Step>
+  <Step title="Match it against settlements">
+    Filter settlements by **Paid out** for the period.
+  </Step>
+  <Step title="Take fees from the invoice, not the payout">
+    Your deductible expenses are on the platform fee invoice, which shows them ex-GST with the GST
+    separated. See [Invoices and tax](/therapists/invoices-and-tax).
+  </Step>
+</Steps>
+
+<Tip>
+  Don't reconstruct your fees by subtracting net from gross. The invoice is the document your
+  accountant needs, because it separates GST you can claim from fees you can deduct.
+</Tip>
