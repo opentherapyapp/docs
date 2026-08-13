@@ -146,13 +146,19 @@ symptom — running the migrations avoids it.
 Five things about the images themselves:
 
 - They're taken at 1440×900 with `deviceScaleFactor: 2`, so they stay sharp
-  rendered at half size on the page. `style.css` does that halving with a single
-  `zoom: 0.5`, which is what keeps a narrow clip — a 224px workspace rail, a phone
-  at 390 — at its own size instead of being stretched across the article, while a
-  full-page shot still comes back to the width of the column.
-- Every tag carries the file's pixel dimensions so the browser can reserve the
-  space before the image lands. `npm run screenshots` writes them, and
-  `npm run size-images` puts them back if you wire in an image by hand.
+  rendered at half size on the page.
+- Every tag states that half size as an inline width, plus the file's real pixel
+  dimensions so the browser can reserve the box before the image lands. That's what
+  keeps a narrow clip — a 224px workspace rail, a phone at 390 — at its own size
+  rather than stretched across the article, while a full-page shot is clamped back
+  to the column by `max-width`. `npm run screenshots` writes all of it, and
+  `npm run size-images` puts it back if you wire in an image by hand.
+- The drawn size has to be a real layout width. On the published site Mintlify
+  serves images through its CDN at a size chosen from the element's layout box, so
+  halving with `zoom` or a transform feeds a smaller box back to the CDN and every
+  shot arrives at half the resolution it needs. `mint dev` serves the file
+  untouched, so that particular mistake looks perfect locally — check a change to
+  image sizing against the deployed site, not just the preview.
 - They're written as WebP at quality 90. Playwright can only emit PNG, and as
   PNG this set came to 32MB with single images over 2MB — a cost the reader pays.
   Quality 90 is a seventh of the weight and the difference is invisible on UI

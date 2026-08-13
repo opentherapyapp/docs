@@ -1,18 +1,27 @@
 /**
- * Put each screenshot's real pixel dimensions on its tag in the MDX.
+ * Write the size of every screenshot onto its tag in the MDX.
  *
- * This is only about layout shift: an image with no dimensions has no size until
- * it has downloaded, so every shot on the page shoves the text below it downwards
- * as it arrives. With the dimensions on the tag the browser reserves the box up
- * front.
+ * Each tag gets three things: the file's real pixel `width` and `height`, so the
+ * browser can reserve the box before the image arrives rather than reflowing the
+ * page as each one lands, and an inline width of half that, which is the size the
+ * shot is meant to be drawn at — every capture is at `deviceScaleFactor: 2`.
  *
- * The numbers written here are the file's own pixel dimensions, not the size the
- * shot is drawn at — `style.css` halves every screenshot, because they're all
- * captured at `deviceScaleFactor: 2`. So the reserved box and the final box come
- * out identical, and nothing moves.
+ * Two reasons the drawn size has to be stated rather than derived. Mintlify's own
+ * stylesheet sizes an image from its intrinsic pixels, so a narrow clip — a 224px
+ * workspace rail, a phone at 390 — is otherwise stretched to the width of the
+ * article as a wall of soft pixels. And on the published site every image is served
+ * through Mintlify's CDN at a size chosen from the element's layout box, so this
+ * has to be a real layout width: halving with `zoom` or a transform shrinks the box,
+ * the CDN then serves an image to match the smaller box, and the shot arrives at
+ * half the resolution it needs. That failure is invisible in `mint dev`, which
+ * serves the file untouched.
  *
- * Idempotent — it rewrites whatever width and height are already there, so run it
- * after `npm run screenshots` and after wiring a new image into a page:
+ * A wide shot ends up with an inline width larger than the column, and `style.css`
+ * clamps it back with `max-width: 100%`. Stating it anyway keeps every tag the same
+ * shape, and keeps the rendering correct at any column width.
+ *
+ * Idempotent — it rewrites whatever sizes are already there, so run it after
+ * `npm run screenshots` and after wiring a new image into a page:
  *
  *     npm run size-images
  */
@@ -22,6 +31,9 @@ import { join } from "node:path";
 import sharp from "sharp";
 
 const ROOT = join(import.meta.dirname, "..");
+
+/** Captures are 2x, so a shot is drawn at half its pixel size. */
+const SCALE = 2;
 
 function pages(dir: string): string[] {
   return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
@@ -49,15 +61,21 @@ for (const page of pages(ROOT)) {
     const size = src ? sizes.get(src[1]!) : undefined;
     if (!size) return tag;
 
-    // Drop any existing width and height, then put ours back in a fixed place:
-    // after `src`, before `alt`, so the long descriptive attribute stays last
-    // and the tags read the same way on every page.
+    // Drop whatever sizing is already there, then put ours back in a fixed order:
+    // after `src`, before `alt`, so the long descriptive attribute stays last and
+    // the tags read the same way on every page.
     const rest = attributes
       .replace(/\s(?:width|height)="[^"]*"/g, "")
+      .replace(/\sstyle=\{\{[^}]*\}\}/g, "")
       .replace(/^\s+|\s+$/g, "")
       .replace(/^src="[^"]*"\s*/, "");
 
-    return `<img src="/images/${src![1]}" width="${size.width}" height="${size.height}" ${rest} />`;
+    const drawn = Math.round(size.width / SCALE);
+
+    return (
+      `<img src="/images/${src![1]}" width="${size.width}" height="${size.height}"` +
+      ` style={{ width: ${drawn} }} ${rest} />`
+    );
   });
 
   if (updated !== source) {

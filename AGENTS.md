@@ -14,6 +14,12 @@
   first is not optional: a shot of a page that failed to load is still a valid image
 - Every image must be referenced by a page and every reference must resolve.
   `npm run check:images` enforces both
+- The imagery is photographic, never illustrated. The app dropped illustration in the
+  redesign — a care category carries an environmental photograph shot to the brief at
+  `docs/superpowers/plans/2026-08-12-photography-brief.md`, and `ServiceType` had its
+  `illustration` "removed rather than photographed" (`src/lib/service-icons.ts`), with
+  a lucide mark doing that job now. So the only pictures here are screenshots of the
+  app, and anything decorative would be a photograph or a mark — never a drawing
 - The logo and favicon are generated too, by `scripts/wordmark.py`
 - Use the Mintlify MCP server, `https://mcp.mintlify.com`, to edit content and settings via MCP
 - Use the Mintlify docs MCP server, `https://www.mintlify.com/docs/mcp`, to query information about using Mintlify via MCP

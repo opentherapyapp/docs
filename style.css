@@ -374,22 +374,19 @@ main table tbody tr:last-child td:last-child {
 /* -------------------------------------------------------------------------- */
 
 /*
- * Screenshots are captured at deviceScaleFactor 2, so a shot is twice the size it
- * should be drawn at. Mintlify renders it at its pixel width, which stretches a
- * narrow clip — a 224px workspace rail, a phone at 390 — across the whole article
- * as a wall of soft pixels.
+ * Screenshots are captured at deviceScaleFactor 2, so the size to draw a shot at
+ * is half its pixel width. That number is written onto each tag as an inline
+ * width by `scripts/size-images.ts`, and these two rules are what make it safe:
+ * never wider than the column, and height from the ratio rather than the
+ * attribute.
  *
- * `zoom` halves every shot in one rule, which works precisely because the 2x is
- * uniform. It also leaves `max-width` doing the right thing: the clamp resolves
- * in unzoomed pixels, so a 2880px full-page shot still comes back to the width of
- * the column instead of overflowing it, and only the shots that are genuinely
- * narrower than the column stay small.
- *
- * The width and height on each tag are separate, and are there so the browser can
- * reserve the space before the image arrives — see `scripts/size-images.ts`.
+ * It has to be a real layout width, not a `zoom` or a transform. On the published
+ * site Mintlify serves every image through its CDN at a size derived from the
+ * element's layout box, so anything that scales the box after the fact feeds a
+ * smaller box back to the CDN and the shot arrives at half the resolution it
+ * needs — invisible locally, where the file is served raw.
  */
 main figure img {
-  zoom: 0.5;
   max-width: 100%;
   height: auto;
 }
