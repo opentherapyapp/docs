@@ -20,7 +20,9 @@
   `illustration` "removed rather than photographed" (`src/lib/service-icons.ts`), with
   a lucide mark doing that job now. So the only pictures here are screenshots of the
   app, and anything decorative would be a photograph or a mark — never a drawing
-- The logo and favicon are generated too, by `scripts/wordmark.py`
+- The header logos are generated too, by `scripts/wordmark.py`. The favicon is not:
+  `favicon.png` is copied from the app's own icon at
+  `static.opentherapy.app/favicon/`, so both tabs carry one mark
 - Use the Mintlify MCP server, `https://mcp.mintlify.com`, to edit content and settings via MCP
 - Use the Mintlify docs MCP server, `https://www.mintlify.com/docs/mcp`, to query information about using Mintlify via MCP
 

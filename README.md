@@ -75,9 +75,9 @@ generated anyway, so the mark is ready if that changes.
 
 ### Regenerating the logo
 
-`logo/light.svg`, `logo/dark.svg` and `favicon.svg` are the words "Open Therapy"
-set in Switzer and converted to outlines, so they render before any font has
-loaded. They are generated, not drawn:
+`logo/light.svg` and `logo/dark.svg` are the words "Open Therapy" set in Switzer
+and converted to outlines, so they render before any font has loaded. They are
+generated, not drawn:
 
 ```sh
 python3 scripts/wordmark.py    # needs fonttools and uharfbuzz
@@ -86,6 +86,21 @@ python3 scripts/wordmark.py    # needs fonttools and uharfbuzz
 That script bakes in the three values the app's own wordmark uses — weight 650,
 tracking `-0.03em`, ink — reading them from the same font file in `fonts/`. Edit
 the script and re-run it rather than touching the path data.
+
+### The favicon
+
+`favicon.png` is the app's own icon rather than anything made here, so a tab from
+the docs and a tab from the app carry the same mark. Mintlify wants a file in the
+repo and resizes it itself, so the largest source is the one to take:
+
+```sh
+curl -sfo favicon.png https://static.opentherapy.app/favicon/android-chrome-512x512.png
+```
+
+Re-run that if the app's icon changes. The rest of the set in that bucket —
+`favicon.ico`, the 16 and 32 PNGs, `apple-touch-icon.png`, `site.webmanifest` —
+is for the app to serve; Mintlify generates its own equivalents from this one
+file.
 
 ## Development
 

@@ -1,5 +1,7 @@
 """
-Draw the Open Therapy wordmark as outlines.
+Draw the Open Therapy wordmark as outlines, for the two header logos.
+
+The favicon is not made here — it's the app's own, copied from R2. See `README.md`.
 
 The app sets its wordmark as live text — Switzer at weight 650, tracking
 -0.03em, in ink. A docs site can't do that: `docs.json` points at SVG files that
@@ -38,11 +40,8 @@ TRACKING = -0.03
 INK = "#1C1C1E"
 MINT = "#ACE5BA"
 
-# The rendered height of the mark in the docs header, and the padding the
-# favicon's tile leaves around it.
+# The rendered height of the mark in the docs header.
 LOGO_HEIGHT = 26
-FAVICON_SIZE = 64
-FAVICON_RADIUS = 14
 
 
 def instance() -> tuple[TTFont, bytes]:
@@ -134,22 +133,6 @@ def main() -> None:
 
     write(ROOT / "logo" / "light.svg", logo.format(fill=INK))
     write(ROOT / "logo" / "dark.svg", logo.format(fill=MINT))
-
-    # The favicon is the mark on a mint tile, sized to leave an even margin.
-    inset = FAVICON_SIZE * 0.12
-    tile_scale = (FAVICON_SIZE - inset * 2) / width
-    write(
-        ROOT / "favicon.svg",
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{FAVICON_SIZE}" '
-        f'height="{FAVICON_SIZE}" viewBox="0 0 {FAVICON_SIZE} {FAVICON_SIZE}" '
-        f'role="img" aria-label="{TEXT}">\n'
-        f'  <rect width="{FAVICON_SIZE}" height="{FAVICON_SIZE}" '
-        f'rx="{FAVICON_RADIUS}" fill="{MINT}"/>\n'
-        f'  <g transform="translate({inset:g} '
-        f'{(FAVICON_SIZE - height * tile_scale) / 2:.2f}) scale({tile_scale:.5f})">\n'
-        f"    {group.format(fill=INK)}\n"
-        f"  </g>\n</svg>\n",
-    )
 
 
 if __name__ == "__main__":
