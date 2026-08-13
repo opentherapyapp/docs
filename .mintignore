@@ -5,3 +5,9 @@
 # Draft content
 drafts/
 *.draft.mdx
+
+# The screenshot tooling. `images/` is published; the scripts that write it,
+# and Playwright's traces when one fails, are not.
+scripts/
+test-results/
+playwright-report/

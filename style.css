@@ -1,40 +1,72 @@
 /*
  * Open Therapy brand styling.
  *
- * Ported from the app's design system. The app uses its pastels as solid
- * fills — never tinted down against white — on borderless, generously rounded
- * blocks with brand-coloured text. The four tones cycle mint, butter, blush,
- * sky, so no tone repeats beside or below its neighbour in a grid.
+ * Ported from the app's design system. Three things carry the brand since the
+ * Switzer redesign: one sans face set tight and heavy for headlines, near-black
+ * ink for anything that is an action, and the five pastels used as solid fills
+ * on generously rounded blocks — never tinted down against white, never a
+ * gradient. Teal is an accent now: links, focus, and the mint band on a table.
  *
- * Token values are copied verbatim from the app's src/styles.css rather than
- * converted to hex, so the two stay in step. Appearance is locked to light in
- * docs.json, so there are no dark variants here.
+ * Token values are copied verbatim from the app's src/styles.css in oklch rather
+ * than converted to hex, so the two stay in step and a diff between them is
+ * readable. Appearance is locked to light in docs.json, so there are no dark
+ * variants here.
  */
 
+/*
+ * Switzer, self-hosted from /fonts, same files as the app.
+ *
+ * docs.json also names these, which is what gets them preloaded. Declared again
+ * here with the full 100-900 range because the docs.json font block takes a
+ * single weight: without a variable face on record, a heading asking for 650
+ * finds only the 400 face and the browser synthesises the rest, which is the
+ * smeared bold the redesign was moving away from.
+ *
+ * The files ship unmodified — the Fontshare licence in fonts/FFL.txt forbids
+ * altering or subsetting them.
+ */
+@font-face {
+  font-family: "Switzer";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/Switzer-Variable.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Switzer";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/Switzer-VariableItalic.woff2") format("woff2");
+}
+
 :root {
+  /* Accent. Links, focus, the mint family it heads — no longer the type colour. */
   --ot-brand: oklch(0.34 0.048 178);
-  /* The app's tiles set body copy at brand/70, but that is decorative subtext.
-     Card bodies here carry real prose, and 70% lands under 4.5:1 on mint and
-     blush, so this is held at 85%. */
-  --ot-brand-body: oklch(0.34 0.048 178 / 0.85);
 
   --ot-mint: oklch(0.87 0.083 152);
   --ot-butter: oklch(0.955 0.065 108);
   --ot-blush: oklch(0.872 0.055 40);
   --ot-sky: oklch(0.905 0.04 235);
+  /* Added in the redesign, for the fifth tile in a row of five. */
+  --ot-lavender: oklch(0.89 0.048 295);
 
   --ot-surface: oklch(1 0 0);
-  --ot-sunken: oklch(0.972 0.016 165);
+  /* Neutral in the redesign. It used to be mint-tinted, which read as a colour
+     rather than as an absence of one next to the actual pastels. */
+  --ot-sunken: oklch(0.965 0 0);
 
-  --ot-ink: oklch(0.29 0.045 178);
-  --ot-ink-muted: oklch(0.48 0.028 178);
-  --ot-ink-subtle: oklch(0.63 0.02 178);
+  --ot-ink: oklch(0.17 0 0);
+  --ot-ink-muted: oklch(0.47 0 0);
+  --ot-ink-subtle: oklch(0.62 0 0);
 
-  --ot-hairline: oklch(0.29 0.045 178 / 14%);
+  --ot-hairline: oklch(0.17 0 0 / 12%);
 
-  /* The app's --radius, plus Tailwind's rounded-2xl (radius + 8px). */
+  /* The app's --radius for callouts and code, and the literal the redesign
+     settled on for cards, which is larger than radius + 8px. */
   --ot-radius: 1rem;
-  --ot-radius-lg: 1.5rem;
+  --ot-radius-lg: 1.75rem;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -42,37 +74,47 @@
 /* -------------------------------------------------------------------------- */
 
 body {
-  letter-spacing: -0.011em;
-  color: var(--ot-ink);
+  letter-spacing: -0.01em;
+  color: var(--ot-ink-muted);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* Instrument Serif ships a single weight, so any weight utility on a heading
-   would trigger faux-bold synthesis. Force 400 and colour them brand. */
+/*
+ * Headings are ink, not brand. This is the single most visible thing the
+ * redesign changed: the teal wordmark-coloured heading gave way to near-black
+ * set tight, with teal kept for the things you can click.
+ */
 h1,
 h2,
 h3,
 h4 {
-  color: var(--ot-brand) !important;
-  letter-spacing: -0.01em;
+  color: var(--ot-ink) !important;
 }
 
+/* 650, not 700 — Switzer's bold closes up at display sizes. */
 h1,
 h2 {
-  font-weight: 400 !important;
-  line-height: 1.1;
+  font-weight: 650 !important;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
 }
 
 /* The sidebar and other chrome reuse h3; only style headings in the article. */
 main h3,
 main h4 {
   font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+main strong {
+  color: var(--ot-ink);
+  font-weight: 600;
 }
 
 /* -------------------------------------------------------------------------- */
-/* Sidebar — the app's portal nav sits on the page surface with no fill, and  */
-/* uses the sunken tone only as a hover state on individual items             */
+/* Sidebar — the app's workspace nav sits on the page surface with no fill and */
+/* marks the current page with a solid ink pill                               */
 /* -------------------------------------------------------------------------- */
 
 #sidebar {
@@ -81,7 +123,7 @@ main h4 {
 }
 
 #sidebar a:hover {
-  color: var(--ot-brand);
+  color: var(--ot-ink);
 }
 
 /* The pinned links at the foot of the sidebar carry their own solid surface. */
@@ -91,7 +133,18 @@ main h4 {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Callouts — the four accents at full strength, borderless like the app      */
+/* Buttons — solid ink is reserved for these and for chips                    */
+/* -------------------------------------------------------------------------- */
+
+#navbar a[href]:is(.bg-primary, [class*="bg-primary"]),
+#topbar a[href]:is(.bg-primary, [class*="bg-primary"]) {
+  background-color: var(--ot-ink) !important;
+  color: var(--ot-surface) !important;
+  border-radius: 9999px !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Callouts — the accents at full strength, borderless like the app           */
 /* -------------------------------------------------------------------------- */
 
 .callout {
@@ -115,7 +168,7 @@ main h4 {
 }
 
 .callout svg {
-  color: var(--ot-brand) !important;
+  color: var(--ot-ink) !important;
 }
 
 /* Note → sky */
@@ -133,7 +186,8 @@ main h4 {
   background-color: var(--ot-butter) !important;
 }
 
-/* Danger → blush */
+/* Danger → blush. Load-bearing in the app, where blush means bad news, so it
+   stays on the callout that carries the same meaning here. */
 .callout.bg-red-50 {
   background-color: var(--ot-blush) !important;
 }
@@ -144,7 +198,7 @@ main h4 {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Cards — solid pastel tiles cycling mint, butter, blush, sky                */
+/* Cards — solid pastel tiles cycling the five tones                          */
 /* -------------------------------------------------------------------------- */
 
 .card {
@@ -155,47 +209,86 @@ main h4 {
   transition: transform 0.2s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
+/* The app's shared curve, described in its stylesheet as the iOS sheet ease. */
 .card:hover {
   transform: translateY(-2px);
 }
 
-/* Offsetting by four gives a diagonal, so a tone never lands next to itself
-   in either a two- or three-column grid. */
-.card-group > .card:nth-child(4n + 2) {
+/* Five tones rather than four since lavender joined. The cycle lands with no
+   tone beside or above itself in either a two- or three-column grid: at two
+   columns the rows read mint/butter, blush/sky, lavender/mint; at three,
+   mint/butter/blush then sky/lavender/mint. */
+.card-group > .card:nth-child(5n + 2) {
   background-color: var(--ot-butter) !important;
 }
 
-.card-group > .card:nth-child(4n + 3) {
+.card-group > .card:nth-child(5n + 3) {
   background-color: var(--ot-blush) !important;
 }
 
-.card-group > .card:nth-child(4n + 4) {
+.card-group > .card:nth-child(5n + 4) {
   background-color: var(--ot-sky) !important;
 }
 
-/* On a solid tone the app drops to brand for everything, body at 70%. */
+.card-group > .card:nth-child(5n + 5) {
+  background-color: var(--ot-lavender) !important;
+}
+
+/* Ink type on a pastel ground, which is how every tile in the app is drawn. */
 .card [data-component-part="card-title"],
 .card [data-component-part="card-icon"],
 .card svg {
-  color: var(--ot-brand) !important;
-  fill: var(--ot-brand) !important;
+  color: var(--ot-ink) !important;
+  fill: var(--ot-ink) !important;
 }
 
-/* Instrument Serif at the theme's base size sits too close to the body copy to
-   register as a heading. */
 .card [data-component-part="card-title"] {
-  font-size: 1.25rem;
-  line-height: 1.2;
-  margin-bottom: 0.125rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-bottom: 0.25rem;
 }
 
 .card [data-component-part="card-content"],
 .card [data-component-part="card-content"] p {
-  color: var(--ot-brand-body) !important;
+  color: var(--ot-ink-muted) !important;
 }
 
 .card [data-component-part="card-content-container"] {
   padding: 1.5rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Frames — a screenshot is a block on the page, hard-edged inside its own     */
+/* rounded panel, never a floating drop-shadowed rectangle                     */
+/* -------------------------------------------------------------------------- */
+
+#content-area .frame,
+#content-area [data-component-part="frame"] {
+  border-radius: var(--ot-radius-lg);
+  border: 1px solid var(--ot-hairline);
+  background-color: var(--ot-sunken);
+  overflow: hidden;
+}
+
+#content-area .frame img,
+#content-area [data-component-part="frame"] img {
+  border-radius: 0;
+  display: block;
+  width: 100%;
+}
+
+/* The caption under a shot is secondary to it, and reads as a label rather
+   than as prose that happens to sit there. */
+#content-area .frame figcaption,
+#content-area [data-component-part="frame"] figcaption {
+  color: var(--ot-ink-subtle);
+  font-size: 0.8125rem;
+  letter-spacing: -0.005em;
+  padding: 0.75rem 1rem;
+  margin: 0;
+  border-top: 1px solid var(--ot-hairline);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -218,9 +311,9 @@ main table thead tr {
 }
 
 main table thead th {
-  color: var(--ot-brand);
+  color: var(--ot-ink);
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   border: 0 !important;
   padding: 0.75rem 1rem;
 }
@@ -277,6 +370,44 @@ main table tbody tr:last-child td:last-child {
 }
 
 /* -------------------------------------------------------------------------- */
+/* Screenshots                                                                */
+/* -------------------------------------------------------------------------- */
+
+/*
+ * Screenshots are captured at deviceScaleFactor 2, so a shot is twice the size it
+ * should be drawn at. Mintlify renders it at its pixel width, which stretches a
+ * narrow clip — a 224px workspace rail, a phone at 390 — across the whole article
+ * as a wall of soft pixels.
+ *
+ * `zoom` halves every shot in one rule, which works precisely because the 2x is
+ * uniform. It also leaves `max-width` doing the right thing: the clamp resolves
+ * in unzoomed pixels, so a 2880px full-page shot still comes back to the width of
+ * the column instead of overflowing it, and only the shots that are genuinely
+ * narrower than the column stay small.
+ *
+ * The width and height on each tag are separate, and are there so the browser can
+ * reserve the space before the image arrives — see `scripts/size-images.ts`.
+ */
+main figure img {
+  zoom: 0.5;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Narrow shots are centred rather than ragged against the left margin. */
+main figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* A rail or a phone is a picture of a piece of UI, and the app's own hairline is
+   the right edge for it. A full-page shot already has its own edges. */
+main figure img {
+  border-radius: var(--ot-radius);
+}
+
+/* -------------------------------------------------------------------------- */
 /* Accordions, steps, tabs                                                    */
 /* -------------------------------------------------------------------------- */
 
@@ -294,20 +425,22 @@ main table tbody tr:last-child td:last-child {
 }
 
 .accordion-group svg {
-  color: var(--ot-brand);
+  color: var(--ot-ink);
 }
 
 .steps svg {
-  color: var(--ot-brand);
+  color: var(--ot-ink);
 }
 
+/* The step number is a chip, and a chip is one of the two places the app still
+   fills with solid ink. */
 .steps [class*="step-indicator"] {
-  background-color: var(--ot-mint) !important;
-  color: var(--ot-brand) !important;
+  background-color: var(--ot-ink) !important;
+  color: var(--ot-surface) !important;
 }
 
 .steps .step > div > p {
-  color: var(--ot-brand);
+  color: var(--ot-ink);
 }
 
 [role="tablist"] {
@@ -318,11 +451,11 @@ main table tbody tr:last-child td:last-child {
 /* Inline code, links, quotes                                                 */
 /* -------------------------------------------------------------------------- */
 
-/* The app's bg-brand/10 chip. A translucent fill rather than a solid one so it
+/* The app's bg-ink/8 chip. A translucent fill rather than a solid one so it
    sits correctly on white and on any of the pastel tiles. */
 main :not(pre) > code {
-  background-color: oklch(0.34 0.048 178 / 0.1);
-  color: var(--ot-brand);
+  background-color: oklch(0.17 0 0 / 0.08);
+  color: var(--ot-ink);
   border: 0;
   border-radius: 0.375rem;
 }
@@ -331,6 +464,7 @@ main :not(pre) > code {
 main p a,
 main li a,
 main td a {
+  color: var(--ot-brand);
   text-decoration-color: var(--ot-mint);
   text-underline-offset: 0.2em;
   text-decoration-thickness: 2px;

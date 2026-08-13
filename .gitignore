@@ -1,0 +1,6 @@
+node_modules/
+
+# Playwright's own output. The screenshots this repo keeps are written to
+# `images/`, not here; `test-results/` is only failure traces and retries.
+test-results/
+playwright-report/

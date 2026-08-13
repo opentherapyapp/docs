@@ -4,47 +4,71 @@ description: "Search, filter and sort every therapist on Open Therapy, and use t
 keywords: ["browse", "directory", "search", "filters", "map", "near me"]
 ---
 
-If you'd rather look for yourself than answer questions, **Browse** gives you the full list with everything filterable.
+If you'd rather look for yourself than answer questions, select **Therapists** in the header for the full list with everything filterable.
+
+## Starting from what you need instead
+
+Most people don't arrive knowing whether they want a psychologist or a psychiatrist — they know they want an ADHD assessment. **Services** in the header is the directory arranged that way, grouped by what you're after rather than by who provides it.
+
+<Frame caption="Services groups the directory by what you're looking for rather than by discipline">
+  <img src="/images/services.webp" width="2880" height="1800" alt="The Services page headed Start with what you need, explaining that you can browse by what you need and see everyone qualified to do it, above an Assessments and diagnosis group containing an ADHD assessment tile" />
+</Frame>
+
+Each service has its own page explaining what's involved, what it typically costs, whether a rebate applies, and which disciplines can deliver it — then hands you back to a search for that service near you.
 
 ## Searching
 
-Two boxes at the top:
+Two boxes at the top, and nothing runs until you select **Search** or press Enter.
 
 | Box | What it matches |
 |---|---|
-| **What do you need help with?** | Name, discipline, focus, specialties, suburb, city, and the services a therapist offers |
-| **Where** | A suburb or city, or "online" |
+| **What do you need help with?** | Name, discipline, focus, specialties, suburb, city, the approaches they name, and the services they offer |
+| **Where** | A suburb or city, or `online` |
 
-Service search understands that practices name the same thing differently. Searching *ADHD screening* will find a therapist whose menu says *ADHD assessment*.
+Both boxes suggest as you type. Service search understands that practices name the same thing differently — search *ADHD screening* and you'll find a therapist whose menu says *ADHD assessment*. Every word you type has to match something, so fewer words find more people.
+
+<Frame caption="The two boxes sit above the results, with the count telling you where you are">
+  <img src="/images/browse.webp" width="2880" height="1800" alt="The Browse therapists page with a what do you need help with box, a suburb or online box and a Search button, a row of care types marked coming soon, the filter column, and three therapist cards showing discipline, location, ratings and prices" />
+</Frame>
 
 ## Filters
 
-Options inside a group widen your results; options across groups narrow them. Choosing both Psychology and Counselling shows you both, but adding a language filter narrows that to therapists who speak it.
+Options inside a group widen your results; options across groups narrow them. Ticking both Psychology and Counselling shows you both, but adding a language narrows that to therapists who speak it.
+
+<Frame caption="Each group of filters is its own block, with Clear all at the top">
+  <img src="/images/browse-filters.webp" width="548" height="1866" alt="The filter column with a Clear all link, then tick boxes grouped under Care type, Service, Availability and Session mode" />
+</Frame>
 
 <AccordionGroup>
   <Accordion title="Care type" icon="stethoscope">
-    Psychology, Counselling, Psychiatry, Speech pathology, Occupational therapy, Disability support,
-    Behaviour support, Art & music therapy, Dietetics, Exercise physiology, Physiotherapy, Osteopathy,
-    Chiropractic, Podiatry.
+    Only the care types that are open for bookings appear here, which today means **Psychology** and
+    **Counselling**. A care type that hasn't launched has nobody to return, so it isn't offered as a
+    tickbox. See [Care types](/care-types).
   </Accordion>
   <Accordion title="Service" icon="list-checks">
-    Specific services rather than disciplines — assessments, initial consultations, couples work and
-    the rest, drawn from what therapists actually offer.
+    Specific services rather than disciplines — assessments, initial consultations, couples work and the
+    rest — drawn from what therapists actually offer.
   </Accordion>
   <Accordion title="Availability" icon="clock">
-    Available today, This week, Weekends, Evenings, Overnight support.
+    **This week**, **Weekends**, **Evenings**, **Overnight support**. All four are read off the hours a
+    therapist published, not off a sentence someone typed once.
   </Accordion>
   <Accordion title="Session mode" icon="video">
-    Online, In person, and **Comes to you** for home visits.
+    **Online**, **In person**, and **Comes to you** for home visits.
   </Accordion>
   <Accordion title="Price" icon="dollar-sign">
     Per session: under \$130, \$130–\$170, \$170–\$220, \$220+. Per hour: under \$80, \$80+.
 
-    Session fees and hourly support rates never mix in the same band, so a support worker's four-hour
-    minimum block doesn't get swept into "under \$130".
+    Session fees and hourly rates never mix in the same band, so a support worker's hourly rate doesn't
+    get swept into "under \$130".
   </Accordion>
   <Accordion title="Funding" icon="badge-percent">
-    Medicare rebate, NDIS, Private health.
+    **Medicare rebate**, **NDIS**, **Private health**, **DVA**, and **Sliding scale** for therapists who
+    publish reduced fee bands.
+  </Accordion>
+  <Accordion title="Gender" icon="users">
+    Built from the therapists who answered the question. Ticking it hides anyone who hasn't, which is
+    why [matching](/clients/find-a-therapist) weights the same preference instead of excluding on it.
   </Accordion>
   <Accordion title="Language" icon="languages">
     Built from the languages therapists in the directory actually speak.
@@ -58,30 +82,38 @@ Options inside a group widen your results; options across groups narrow them. Ch
 
 ## Sorting
 
-- **Soonest available** — the default
-- **Highest rated**
-- **Lowest price**
+| | |
+|---|---|
+| **Soonest available** | The default. Therapists taking clients with published hours first, then those taking clients without, then waitlists. Rating breaks the tie |
+| **Highest rated** | Rating first, then how many reviews it rests on |
+| **Lowest price** | Session fees ascending, then hourly rates ascending — the two are never interleaved |
+
+The count above the results tells you where you are: **Showing 12 of 40 therapists** when filters are narrowing things, and just the count when they aren't.
 
 ## The map
 
-The map appears automatically once you show interest in a place — a suburb in the **Where** box, or an in-person or home-visit filter. You can force it either way with the **List** and **Map** toggle.
+The map appears on its own once place is in play — a real suburb in the **Where** box, or an in-person or home-visit filter. Type *online* and it stays a list. You can force it either way with the **List** and **Map** toggle.
+
+<Frame caption="In map view the results run down the left and the pins carry the price">
+  <img src="/images/browse-map.webp" width="2880" height="1800" alt="The directory in map view, with the List and Map toggle set to Map, therapist cards down the left showing ratings and prices, and a map of the Queensland coast with a single price pin near the Gold Coast" />
+</Frame>
 
 | Pin | Meaning |
 |---|---|
-| **Solid** | An address you can attend |
-| **Dashed**, with a circle | The centre of a travel radius — the circle is how far they'll come to you |
+| **A pin with a tail** | An address you can attend |
+| **A dashed pill**, with a circle | The middle of a travel radius, not somewhere the therapist sits. The circle is how far they'll come |
 
-Pins show the price. Pins close together merge into a count bubble you can zoom into.
+Pins carry the price. Pins close together merge into a count bubble you can zoom into, and the radius is only drawn when a pin belongs to one person.
 
-Location matching covers *every* clinic a therapist works from, plus anywhere they'll travel to, not just their first listed address.
+Location matching covers *every* clinic a therapist works from, plus anywhere they'll travel to — not just the first address on their profile.
 
 ## On a phone
 
-Filters open as a bottom sheet with a button showing what you'll get — **Show 12 therapists** — so you can see the effect before closing it.
+Filters open as a bottom sheet, and the button at the bottom counts the result for you — **Show 12 therapists** — so you can see the effect before you close it.
 
 ## No results
 
-You'll get a **Clear all filters** button. Price and language are usually the two doing the narrowing.
+You'll get a **Clear all filters** button, which clears the two search boxes as well. Price, gender and language are usually the ones doing the narrowing.
 
 ## Next
 

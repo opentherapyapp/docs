@@ -16,11 +16,15 @@
   },
   "fonts": {
     "heading": {
-      "family": "Instrument Serif",
-      "weight": 400
+      "family": "Switzer",
+      "source": "/fonts/Switzer-Variable.woff2",
+      "format": "woff2",
+      "weight": 650
     },
     "body": {
-      "family": "Inter Tight",
+      "family": "Switzer",
+      "source": "/fonts/Switzer-Variable.woff2",
+      "format": "woff2",
       "weight": 400
     }
   },
@@ -49,7 +53,7 @@
           },
           {
             "group": "How Open Therapy works",
-            "pages": ["fees", "safety-and-privacy", "getting-help"]
+            "pages": ["care-types", "fees", "safety-and-privacy", "getting-help"]
           }
         ]
       },
@@ -72,6 +76,7 @@
             "pages": [
               "clients/book-a-session",
               "clients/manage-your-sessions",
+              "clients/video-sessions",
               "clients/cancellations-and-refunds"
             ]
           },
@@ -80,20 +85,28 @@
             "pages": [
               "clients/paying-for-sessions",
               "clients/rebates-and-funding",
-              "clients/invoices-and-receipts"
+              "clients/invoices-and-receipts",
+              "clients/gift-cards"
+            ]
+          },
+          {
+            "group": "Between sessions",
+            "pages": [
+              "clients/messages",
+              "clients/journal",
+              "clients/prompts",
+              "clients/library",
+              "clients/forms-and-measures",
+              "clients/documents"
             ]
           },
           {
             "group": "Your account",
-            "pages": [
-              "clients/your-account",
-              "clients/journal",
-              "clients/reviews"
-            ]
+            "pages": ["clients/your-account", "clients/reviews"]
           },
           {
             "group": "More ways to get support",
-            "pages": ["clients/groups", "clients/membership"]
+            "pages": ["clients/groups", "clients/ask-a-therapist"]
           }
         ]
       },
@@ -119,9 +132,20 @@
             ]
           },
           {
-            "group": "Running sessions",
+            "group": "Your practice",
             "pages": [
               "therapists/managing-sessions",
+              "therapists/client-files",
+              "therapists/messages",
+              "therapists/forms-and-measures",
+              "therapists/connected-calendar",
+              "therapists/waitlist",
+              "therapists/groups"
+            ]
+          },
+          {
+            "group": "Policies",
+            "pages": [
               "therapists/cancellation-policy",
               "therapists/reviews-and-advertising-rules"
             ]
@@ -133,6 +157,15 @@
               "therapists/fees-and-earnings",
               "therapists/invoices-and-tax",
               "therapists/refunds-and-disputes"
+            ]
+          },
+          {
+            "group": "Being found",
+            "pages": [
+              "therapists/writing",
+              "therapists/answering-questions",
+              "therapists/prompts",
+              "therapists/referrals"
             ]
           }
         ]
@@ -169,6 +202,16 @@
   "contextual": {
     "options": ["copy", "view", "chatgpt", "claude", "cursor"]
   },
+  "redirects": [
+    {
+      "source": "/clients/membership",
+      "destination": "/clients/library"
+    },
+    {
+      "source": "/clients/saved",
+      "destination": "/clients/find-a-therapist"
+    }
+  ],
   "footer": {
     "socials": {
       "website": "https://opentherapy.app"
@@ -196,7 +239,7 @@
           { "label": "About", "href": "https://opentherapy.app/about" },
           { "label": "Terms", "href": "https://opentherapy.app/terms" },
           { "label": "Privacy", "href": "https://opentherapy.app/privacy" },
-          { "label": "Clinical governance", "href": "https://opentherapy.app/clinical-governance" }
+          { "label": "Support", "href": "https://opentherapy.app/support" }
         ]
       }
     ]

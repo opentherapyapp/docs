@@ -1,40 +1,94 @@
 ---
 title: "Managing sessions"
 description: "See what's booked, run the session, and record attendance — the step that releases your payment."
-keywords: ["sessions", "attendance", "no-show", "settle", "schedule", "bookings"]
+keywords: ["sessions", "attendance", "no-show", "settle", "schedule", "bookings", "reschedule"]
 ---
 
 ## When a booking arrives
 
-You get a **New booking** email with the day, time, client, service, where, and what they said they're seeking.
+You get a **New booking** email. If it's a client's first session with you it reads *"A new client booked in"*, and if they've seen you before, *"Another session booked."*
 
-If it's a client's first session with you, the email says so and notes that an introduction fee applies to this booking — once, not on every session after it.
+A first booking carries a line about the introduction fee: *"New client — an introduction fee applies to this booking. It appears on your next invoice, once."* Once, not on every session after it. See [Fees and earnings](/therapists/fees-and-earnings).
 
-The client has already paid. Their money is held until the session happens.
+The client has already paid. Their money sits with Open Therapy until the session is closed off.
+
+## Your day
+
+**Overview** opens on **Today**: each session with its time, the client, the service and the mode. Two buttons sit on each row — **Prepare** takes you into the client's file, and **Join** appears on an online session from fifteen minutes before it starts until its end time. **Open next room** at the top does the same thing without you having to find the row.
+
+Underneath, **Needs you** lists what's outstanding: sessions in the last fortnight with no note against them, a payout setup left unfinished, no hours published, and messages waiting for a reply. Tick one off and it stays off.
+
+## Your schedule
+
+**Schedule** draws the diary as a grid, in day, week or month view. Four things appear on it:
+
+| | |
+|---|---|
+| **Sessions** | The client's name and the mode. Click one to open their file. Past sessions stay on the grid, set back rather than removed |
+| **Unopened hours** | Time outside your weekly pattern, shaded so you can see the shape of what you've published |
+| **Busy** | Events mirrored from a [connected calendar](/therapists/connected-calendar). Nobody sees what they are — only that you're unavailable |
+| **Block-outs** | One-off time you've closed. Click to edit or remove |
+
+Click any empty stretch to block it out, and **New appointment** to book one yourself.
+
+<Frame caption="Week view, with each booked session showing the client and the mode">
+  <img src="/images/therapist-schedule.webp" width="2880" height="1800" alt="The Schedule grid for Monday 10 to Sunday 16 August, headed 5 sessions booked this week, with Day, Week and Month views, hatched Unavailable hours, and three sessions: Maya Okonkwo online on Tuesday, Harriet Blake in person on Wednesday, and Daniel Okonjo online on Friday" />
+</Frame>
+
+## Booking an appointment yourself
+
+**New appointment** on Schedule, or **Add appointment** on Overview.
+
+Choose the client — an existing one, or file a record for someone you already see off-platform. Then the service, the day and time, and whether it's online or at one of your locations.
+
+The fee defaults to the service's listed price. You can reduce it, or set it to zero, but not raise it: *"Reduce it or set it to zero — you can't charge more than the service lists."*
+
+### Repeat bookings
+
+Tick **Repeat this appointment** to book the same hour on the same weekday ahead — weekly or fortnightly, up to twelve occurrences. Any date already busy is skipped and named, so you don't lose the series to one clash.
+
+On a repeat booking with a fee, the client is asked to pay for the first session now and for each of the others the week before it. Nobody is charged months in advance for a course of therapy they might not finish.
+
+### Asking for payment
+
+**Email them a payment request** sends a link. The hour is held and confirms itself the moment they pay, and nothing is charged before that. For a client filing in from off-platform, they set up their account from the link and then pay.
+
+The option needs two things: a finished payout setup and an email address to send to. Without either you can still book the session and take payment your own way.
+
+You can also add a private note to the appointment — *"What this one is for. Only you see it."*
 
 ## Recording attendance
 
-This is the one action that matters most, because **nothing settles and nothing transfers until you do it.**
+This is the one action that matters most, because **nothing settles and nothing transfers until the session is closed off.**
 
-After a session has finished, it appears in the **Waiting on you** queue on your earnings screen with one of two buttons.
+After a session has finished it appears in **Waiting on you** on your earnings screen, described as *"Not paid out until you mark each session complete."* Two buttons:
 
 <Columns cols={2}>
-  <Card title="Attended" icon="check">
-    The session happened. Fees are calculated and your share is queued for transfer.
+  <Card title="Mark complete" icon="check">
+    The session happened. Fees are itemised, the client's invoice is issued, and your share is queued
+    for transfer.
   </Card>
   <Card title="No-show" icon="user-x">
-    The client didn't turn up. Your policy's no-show rate is charged and the rest is refunded.
+    The client didn't turn up. Your cancellation policy's no-show rate is charged and the rest is
+    refunded.
   </Card>
 </Columns>
 
-<Note>
-  Attendance is your word, not an inference from the clock. A session that has passed its end time
-  isn't assumed to have happened — someone has to say so, and only you can.
-</Note>
+Pressing a button twice is safe. Every write is idempotent, so a double-click can't settle a session twice or invoice a client twice.
 
-Pressing the button twice is safe. It's idempotent, so a double-click can't settle a session twice.
+<Warning>
+  **Record a no-show before the session closes itself.** A confirmed session whose end time passed more
+  than 24 hours ago is closed automatically by an hourly pass, and a session that has already been held
+  can't be cancelled — which is what a no-show is. Once it closes, the option is gone.
+</Warning>
 
-## Why you might not be able to settle
+### Why the automatic close exists
+
+A client's ability to claim a Medicare rebate shouldn't depend on their therapist doing admin, and the invoice is raised when the session closes. So the pass closes anything the hour has clearly passed for, and **Mark complete** is a way to do it sooner rather than the only way.
+
+A full day of grace is deliberate: short enough that a client isn't waiting on paperwork to claim, long enough that a therapist who means to record a no-show has a whole working day to do it.
+
+### Why a session might refuse to close
 
 | Message | Reason |
 |---|---|
@@ -44,51 +98,49 @@ Pressing the button twice is safe. It's idempotent, so a double-click can't sett
 
 The timing check exists so nobody can be paid for next Tuesday.
 
-## The two things the queue asks for
+### Waiting on a Stripe fee
 
-| Flag | What it means |
-|---|---|
-| **Attendance** | The hour has passed and nobody has said whether it happened |
-| **Settlement** | You recorded it, but the fee calculation didn't complete. Press the button again to re-run it. |
+A second panel, *"Marked complete. We ask Stripe again every hour — nothing for you to do."*
+
+Your share is worked out from the real card processing fee, so it can't be estimated while Stripe hasn't stated what the charge cost. Nothing is lost — the split and the transfer happen as soon as it arrives. **Ask now** asks early if you'd rather not wait for the hour.
+
+## Cancelling and rescheduling
+
+A client can cancel or move their own session from **Sessions**, on the terms of [your cancellation policy](/therapists/cancellation-policy). Moving is always free; cancelling may not be.
+
+There's no cancel or move button on your side of a booked session yet. Message the client and ask them to move it, which costs them nothing at any notice a move is allowed at, or write to [support@opentherapy.app](mailto:support@opentherapy.app) if the hour has to come off the diary. A cancellation recorded as yours never charges the client, whatever the notice — that isn't a setting, and it's deliberately not one.
 
 <Tip>
-  Make it the last thing you do at the end of a day rather than the first thing on Monday. An
-  unrecorded session is an unpaid one, and the queue is the only place it will chase you.
+  If a client asks to move a session inside your notice window, a move is nearly always the better
+  answer than a cancellation: it costs them nothing and leaves you with the hour sold.
 </Tip>
 
-## Cancelling a session
+Either way you're emailed. A client cancellation that carried a fee says so: *"Under your cancellation policy, a fee of \$90.00 is retained and will settle with your other sessions."* One that didn't says *"No cancellation fee applies. The hour is free again."*
 
-You can cancel from the session itself. **A therapist's own cancellation never charges the client**, whatever the notice and whatever your policy. That isn't a setting, and it's deliberately not one.
+When an hour comes free before its start time, anyone [waiting](/therapists/waitlist) is told.
 
-The client is refunded in full and told straight away.
+## What lives elsewhere
 
-<Warning>
-  If a client asks to move a session inside your notice window, cancelling from your side is the
-  courteous option — it costs them nothing. Cancelling from theirs may charge them a late fee even if
-  they rebook immediately.
-</Warning>
+Much of the work around a session has its own page:
 
-## Rescheduling
-
-There's no reschedule action yet. Cancel and have the client rebook, or cancel and rebook on their behalf.
-
-## No-shows
-
-Recording a no-show charges the rate in your cancellation policy — 100% on three of the four presets, 50% on Flexible. Only you can mark a session as a no-show.
-
-See [Cancellation policy](/therapists/cancellation-policy).
-
-## Your schedule
-
-**Schedule** shows the week as a grid: booked sessions with their mode, admin blocks you've held for notes or supervision, and blocked time. Your waitlist sits alongside it.
-
-**Overview** shows today's sessions and anything needing attention — unsigned notes, referrals to review, and registration documents approaching expiry.
-
-## Messaging clients
-
-<Info>
-  Client messaging is being rolled out. Until it's live for your account, use the contact details you
-  exchange at booking.
-</Info>
-
-Threaded and attached to the clinical record. Intended for scheduling, worksheets and short check-ins rather than clinical work between sessions, and clients are told to expect a reply within one business day.
+<CardGroup cols={2}>
+  <Card title="Client files" icon="folder-open" href="/therapists/client-files">
+    Notes, documents, measures and history. Notes live inside the client's file — there's no separate
+    notes page.
+  </Card>
+  <Card title="Messages" icon="message-square" href="/therapists/messages">
+    Threaded messaging with your clients, live now.
+  </Card>
+  <Card title="Forms and measures" icon="clipboard-list" href="/therapists/forms-and-measures">
+    Intake forms and outcome measures you send and score.
+  </Card>
+  <Card title="Connected calendar" icon="calendar-sync" href="/therapists/connected-calendar">
+    Mirror your own calendar's busy hours so nothing double-books.
+  </Card>
+  <Card title="Waitlist" icon="list" href="/therapists/waitlist">
+    People waiting for an hour, told when one comes free.
+  </Card>
+  <Card title="Groups" icon="users" href="/therapists/groups">
+    Group programs and enrolments, which settle differently.
+  </Card>
+</CardGroup>

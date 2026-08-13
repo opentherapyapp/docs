@@ -1,7 +1,7 @@
 ---
 title: "How it works"
 description: "The path from searching for a therapist to a first session, and what happens on the practitioner side of the same booking."
-keywords: ["how it works", "booking", "matching", "payment", "session"]
+keywords: ["how it works", "booking", "matching", "payment", "session", "settlement"]
 ---
 
 Open Therapy connects two sides of the same appointment. This page follows one booking from both.
@@ -10,56 +10,104 @@ Open Therapy connects two sides of the same appointment. This page follows one b
 
 <Steps>
   <Step title="Answer five questions" icon="clipboard-list">
-    The matching questionnaire asks who the therapy is for, what you're bringing, anything running
-    through your story, what would make it easier, and the practical constraints — how you'd like to
-    meet, where you are, and how you'll pay. Only the first two are required.
+    Tap **Match me** and the questionnaire asks who the therapy is for, what you're bringing, anything
+    running through your story, what would make it easier, and the practical constraints — how you'd
+    like to meet, where you are, and how you'll pay. Only the first two are required. Naming something
+    in your story adds one screen, where you say whether you want someone who has lived it or someone
+    who works with it.
   </Step>
   <Step title="Review your shortlist" icon="layers">
     Every therapist who scores against your answers is dealt to you as a card, ranked, each with a
-    one-line reason. Keep the ones worth a second look and pass on the rest. Nothing is booked and
-    nobody is told either way.
+    one-line reason. Keep the ones worth a second look and pass on the rest. Kept therapists go to
+    your **Shortlist**. Nothing is booked and nobody is told either way.
   </Step>
   <Step title="Read the profile" icon="user">
-    Bio, qualifications, registration, focus areas, services and prices, locations, funding accepted,
-    and reviews. You can also skip matching entirely and search the directory yourself.
+    Bio, qualifications, registration, focus areas, services and prices, locations, funding
+    information, and reviews. You can also skip matching entirely and search the directory yourself
+    under **Therapists**, as a list or on a map.
   </Step>
   <Step title="Book and pay" icon="calendar-check">
-    Pick a service, a session mode, a date and a time. You'll need an account. Your card is charged at
-    booking and the money is held until the session happens.
+    Pick a service, a session mode, a date and a time. You'll need an account. The therapist's full
+    fee is charged to your card at booking — there's no deposit and no part-payment — and it sits with
+    Open Therapy until the session has happened.
   </Step>
   <Step title="Attend" icon="video">
-    Online sessions get an encrypted video link. In-person sessions get the address. Home visits get
-    confirmed arrival details.
+    Online sessions get an encrypted video link that opens in your browser. In-person sessions get the
+    address and access notes. Home visits get confirmed arrival details.
   </Step>
 </Steps>
+
+<Frame caption="The first of the five questions, with the rest tracked along the top">
+  <img src="/images/match-question.webp" width="2880" height="1800" alt="First screen of the matching questionnaire asking Who is the therapy for, with Individual selected and options for Couple, Teen, Child and Someone I care for listed below." />
+</Frame>
+
+Three defaults shape what you can pick. A therapist can change any of them, and the times you're shown already account for all three.
+
+| | |
+| --- | --- |
+| Earliest you can book | 24 hours from now |
+| Furthest ahead you can book | 2 months |
+| Notice needed to move a session | 24 hours |
+
+<Note>
+  Moving a session never carries a fee. You need enough notice to move it — your therapist's
+  reschedule notice, or their free-cancellation window, whichever is longer — and there's no limit on
+  how many times you can. Cancelling is a separate thing with its own terms. See
+  [Cancellations and refunds](/clients/cancellations-and-refunds).
+</Note>
 
 ## For a therapist
 
 <Steps>
   <Step title="Create an account and apply" icon="user-plus">
-    Sign up as a therapist and complete onboarding: your discipline, registration body and number,
-    where and how you practise, what you work with, your approaches, your fees and your availability.
+    Sign up as a therapist and work through onboarding in five phases: **Registration** (your care
+    type, your title, your registering body and number), **Your practice** (where and how you work,
+    and your hours), **Your work** (what you work with, your approaches, your own story), **Fees**,
+    then **Your profile** (name, photo, bio, your booking handle and an intro video).
   </Step>
   <Step title="Get verified" icon="badge-check">
-    Open Therapy checks your registration against the relevant national register. Nothing goes live
-    until it clears.
+    Open Therapy checks your registration against the body that holds it. Professions with no board
+    are verified on a screening check instead. Nothing goes live until it clears. See
+    [Verification](/therapists/verification).
   </Step>
   <Step title="Go live" icon="globe">
-    Your profile appears in the directory and in client shortlists where your experience overlaps
-    with theirs. You also get a personal booking link at `opentherapy.link/your-name`.
+    Your profile appears in the directory and in client shortlists where your experience overlaps with
+    theirs. You also get a personal booking link at `opentherapy.link/your-handle`.
   </Step>
   <Step title="Take the session" icon="calendar">
-    Bookings arrive against the availability you set. The client has already paid.
+    Bookings arrive against the availability you set, in your **Schedule**. The client has already
+    paid in full.
   </Step>
   <Step title="Record what happened" icon="check">
-    After the session you mark it as attended or a no-show. Nothing settles and nothing transfers
-    until you do — attendance is your word, not an inference from the clock.
+    Afterwards you mark the session attended or a no-show. This is the step that divides the money:
+    nothing is settled and nothing can transfer until you do it. Attendance is your word, not an
+    inference from the clock. Unmarked sessions wait for you under **Waiting on you** on your
+    **Earnings** page.
   </Step>
   <Step title="Get paid" icon="banknote">
-    Your share transfers 24 hours after the session ends, then Stripe pays it to your bank on its
-    normal schedule.
+    Marking the session works out what you're owed. A scheduled pass runs **every hour** and moves
+    your share to your connected Stripe account, then Stripe's own payout schedule pays it into your
+    bank. See [Set up payouts](/therapists/set-up-payouts).
   </Step>
 </Steps>
+
+### What has to be true before your share moves
+
+The hourly pass doesn't pay out on trust. Every transfer waits until all of this holds, and a
+settlement that isn't ready is picked up by the next pass rather than dropped.
+
+| | |
+| --- | --- |
+| The session is settled | You've marked it attended or a no-show |
+| The client's payment completed | The card actually cleared |
+| Stripe's real cost is known | Read off the charge itself, never estimated. A cost that couldn't be read leaves the settlement waiting rather than guessed at |
+| Payouts are set up | Your Stripe account can receive transfers |
+| Nothing is frozen | A dispute on your account pauses transfers until a person has read it |
+
+<Note>
+  There is no fixed delay in hours between a session ending and your money moving. What starts the
+  clock is you recording attendance, and the pass that follows runs on the hour.
+</Note>
 
 ## Who does what
 
@@ -68,34 +116,67 @@ Open Therapy connects two sides of the same appointment. This page follows one b
 | Sets the session price | — | Yes | No |
 | Sets the cancellation policy | — | Yes | No |
 | Pays for the session | Yes | — | — |
-| Receives the money | — | Yes | Takes a fee from it |
+| Receives the session fee | — | Yes | Deducts its own fees from the payout |
 | Merchant on the card statement | — | Yes | No |
 | Verifies registration | — | — | Yes |
-| Holds the clinical record | — | Yes | Stores it |
+| Decides the session happened | — | Yes | No |
+| Holds the clinical record | — | Yes | Stores it, doesn't read it |
+
+<Frame caption="A therapist's own services, prices and session modes are what a client picks from">
+  <img src="/images/profile-booking-panel.webp" width="758" height="1824" alt="Booking panel on a therapist profile listing four services with durations and prices, an Online or In person toggle, and a monthly calendar with unavailable dates greyed out." />
+</Frame>
 
 <Note>
   The therapist is the merchant of record on every payment. Their practice name — not Open Therapy —
-  is what appears on the client's card statement.
+  is what appears on the client's card statement. Open Therapy earns from a one-off introduction fee
+  the first time a client and therapist are matched, and nothing per session after that. See
+  [Fees](/fees).
 </Note>
+
+## Where you'll be working
+
+Both sides share one signed-in area, at `/workspace`. A client's sidebar groups **Care**, **Between
+sessions**, **Finding care** and **Account**; a therapist's groups **Practice**, **Clients**,
+**Money** and **Profile**. On a phone the same thing collapses to four tabs and your avatar.
+
+Older links still work. `/account/...` and `/therapist/...` redirect into the workspace, and `/saved`
+redirects to `/shortlist`, because both were in email that has already gone out.
+
+<Frame caption="A client's workspace, with the sidebar grouped into Care, Between sessions, Finding care and Account">
+  <img src="/images/client-sessions.webp" width="2880" height="1800" alt="Sessions page in the workspace, with a sidebar grouped into Care, Between sessions, Finding care and Account, and a list of upcoming sessions each offering Move and Cancel." />
+</Frame>
 
 ## Two domains
 
-Open Therapy runs on two hostnames, and both are legitimate.
+Open Therapy runs on two hostnames a person sees, and both are legitimate.
 
 <Columns cols={2}>
   <Card title="opentherapy.app" icon="globe">
-    The marketplace: search, profiles, booking, and both portals.
+    Everything: marketing, the directory, profiles, booking, signing in and the workspace.
   </Card>
   <Card title="opentherapy.link" icon="link">
     Vanity links only. A therapist hands out `opentherapy.link/sarah-chen` and it opens their profile.
   </Card>
 </Columns>
 
+## What you can't book yet
+
+Only privately paid sessions can be booked. Bulk-billed, NDIS, WorkCover and DVA bookings are
+refused rather than taken and mishandled. Profiles still show what rebates and funding a therapist
+accepts, and claiming is arranged between you and them. See
+[Rebates and funding](/clients/rebates-and-funding).
+
+Twelve of the fourteen care types are also not open for booking yet. See [Care types](/care-types).
+
+<Frame caption="Unopened care types sit above the results as Coming soon, and only the open two can be filtered on">
+  <img src="/images/browse.webp" width="2880" height="1800" alt="Browse therapists page with a row of Coming soon care type pills above the results, a filter panel offering only Psychology and Counselling under Care type, and three therapist cards with prices and availability." />
+</Frame>
+
 ## Where to go next
 
 <Columns cols={2}>
   <Card title="Client documentation" icon="heart" href="/clients/overview" horizontal>
-    Accounts, matching, booking, payment and your portal.
+    Accounts, matching, booking, payment and your workspace.
   </Card>
   <Card title="Therapist documentation" icon="stethoscope" href="/therapists/overview" horizontal>
     Verification, your listing, sessions and payouts.

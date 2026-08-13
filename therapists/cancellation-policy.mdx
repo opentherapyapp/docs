@@ -1,44 +1,55 @@
 ---
 title: "Cancellation policy"
 description: "Choose from four cancellation presets, and understand exactly what each one charges and when."
-keywords: ["cancellation", "policy", "no-show", "late fee", "flexible", "standard", "firm", "strict"]
+keywords: ["cancellation", "policy", "no-show", "late fee", "reschedule", "flexible", "standard", "firm", "strict"]
 ---
 
 Your cancellation policy belongs to your practice. Open Therapy enforces the one you choose rather than imposing one.
 
-Set it under **Availability** in your workspace.
+You choose it on **Availability**, and it saves the moment you pick a card.
 
 ## The four presets
 
-| Policy | Free cancellation | Inside the window | No-show |
+| Policy | Free cancellation | Inside the window | Did not attend |
 |---|---|---|---|
 | **Flexible** | 12 hours | No fee | 50% |
-| **Standard** | 24 hours | 50% | 100% |
-| **Firm** | 48 hours | 50% | 100% |
-| **Strict** | 48 hours | 100% | 100% |
+| **Standard** | 24 hours | 50% | Full fee |
+| **Firm** | 48 hours | 50% | Full fee |
+| **Strict** | 48 hours | Full fee | Full fee |
 
-What each is for:
+The one-line summaries you're choosing between:
 
 <AccordionGroup>
-  <Accordion title="Flexible — half a day's notice and no fee" icon="lock-open">
-    Suits short-notice and first-time bookings. Worth considering for initial consultations
-    specifically: someone who's never met you is the most likely to get cold feet, and a fee at that
-    moment costs you the client rather than the hour.
+  <Accordion title="Flexible" icon="lock-open">
+    *"Half a day's notice and no fee. Suits short-notice and first-time bookings."*
+
+    Because the late fee is 0%, the twelve-hour window never actually decides anything — a client on
+    Flexible can cancel at any time before the session starts and pay nothing. What it does charge for is
+    not turning up: 50% of the fee.
+
+    Worth considering for initial consultations specifically. Someone who has never met you is the most
+    likely to get cold feet, and a fee at that moment costs you the client rather than the hour.
   </Accordion>
-  <Accordion title="Standard — a day's notice, then half the fee" icon="calendar">
-    What most therapists here use, and the default.
+  <Accordion title="Standard" icon="calendar">
+    *"A day's notice, then half the fee. What most therapists here use."*
+
+    The default.
   </Accordion>
-  <Accordion title="Firm — two days' notice, then half the fee" icon="calendar-clock">
-    For a diary that's hard to refill.
+  <Accordion title="Firm" icon="calendar-clock">
+    *"Two days' notice, then half the fee. For a diary that's hard to refill."*
   </Accordion>
-  <Accordion title="Strict — two days' notice, then the full fee" icon="lock">
-    The strictest we'll enforce.
+  <Accordion title="Strict" icon="lock">
+    *"Two days' notice, then the full fee. The strictest we'll enforce."*
   </Accordion>
 </AccordionGroup>
 
+<Frame caption="Pick a card and it saves — the rates under each name are the ones a client is quoted">
+  <img src="/images/therapist-cancellation-policy.webp" width="1254" height="1002" alt="The cancellation policy chooser with four cards: Flexible, free before 12 hours with no late fee and 50 per cent for a no-show; Standard, selected, free before 24 hours with 50 per cent late and the full fee for a no-show; Firm, free before 2 days with 50 per cent late and the full fee for a no-show; and Strict, free before 2 days with the full fee for both. Underneath, the three rows a client reads on Standard, and a line saying existing bookings keep the policy they were booked under" />
+</Frame>
+
 <Tip>
-  The four are spread so that two differ only in the fee and two only in the window. That lets you
-  move one dimension at a time — if 24 hours isn't enough notice, try Firm before reaching for Strict.
+  The four are spread so that two differ only in the fee and two only in the window. That lets you move
+  one dimension at a time — if 24 hours isn't enough notice, try Firm before reaching for Strict.
 </Tip>
 
 ## Choose one before you take bookings
@@ -48,9 +59,9 @@ What each is for:
   no-show fee. A fee nobody chose is not one we'll collect on your behalf.
 </Warning>
 
-Changing your policy applies to new bookings. A session already booked keeps the terms it was booked under, which is what makes them enforceable.
+The terms are copied onto each session as it's booked. Changing your policy applies to new bookings, and a session already in the diary keeps the terms it was booked under — which is both what makes them enforceable and why you can't tighten your way into a fee on an appointment the client already agreed to.
 
-## Two rules that aren't yours
+## Three rules that aren't yours to set
 
 <Columns cols={2}>
   <Card title="You never charge for your own cancellation" icon="shield-check">
@@ -59,40 +70,98 @@ Changing your policy applies to new bookings. A session already booked keeps the
   </Card>
   <Card title="Cancelling after the start time is a no-show" icon="clock">
     A client who cancels once the session was due to begin pays the no-show rate, not the late rate.
-    Otherwise the no-show fee is avoidable by anyone who remembers to press the button on their way
-    past.
+    Otherwise the no-show fee is avoidable by anyone who remembers to press the button on their way past.
+  </Card>
+  <Card title="The boundary itself is free" icon="equal">
+    Notice is measured as "at least". Exactly 24 hours before a Standard session costs nothing.
   </Card>
 </Columns>
 
-## What the client sees
+Only you can record a no-show, and a session can only be cancelled once — a second attempt is refused rather than re-quoted, because an hour later the same session has crossed into the no-show tier.
 
-The policy is generated from the terms actually in force, so the wording on your profile, at checkout, in the confirmation email and in the cancellation dialog is the policy being enforced rather than a description of it.
+## Rescheduling
 
-On **Standard**, a client reads:
+Moving a session is free. Always, with no cap on the number of moves.
+
+There's nothing to charge for: a move leaves you with the hour sold and the client with the session they paid for. And there's nothing to charge it *from* — the fee is already captured against a session that's still going ahead.
+
+What free rescheduling can't be is unlimited in *timing*, or it becomes the way to avoid a cancellation fee. Cancel an hour before a Standard session and half the fee applies; move it to next month and cancel that with a fortnight's notice and the same client pays nothing, having done the same thing in two steps.
+
+So the notice a client needs to move a session is:
+
+**max(your reschedule notice, the free-cancellation window of the policy the session was booked under)**
+
+Your reschedule notice can therefore only ever ask for *more* warning than a cancellation needs, never less. Any move that's permitted leaves more notice than the cancellation policy requires, so it can't convert a chargeable cancellation into a free one.
 
 | | |
 |---|---|
-| More than 24 hours | Cancel or reschedule yourself, no fee, no conversation needed. |
-| Inside 24 hours | 50% of the session fee, charged to the card on file. |
-| Did not attend | Full fee. Rebates can't be claimed on a missed session. |
+| **Standard, 24-hour notice** | A client needs 24 hours to move |
+| **Firm, 24-hour notice** | 48 hours, because the policy's window is longer |
+| **Flexible, 24-hour notice** | 24 hours, because yours is longer |
 
-And in one line on your profile: *"Free cancellation up to 24 hours before. Inside that, 50% of the fee."*
+Inside the threshold the honest answer is that the hour can no longer be moved. It can still be cancelled, on the terms the client agreed to and has already been quoted. What they're told is: *"Moving needs 24 hours notice. You can still cancel, under your therapist's policy."*
 
-Before confirming, the client sees the exact amount on the confirm button — for example, **Cancel and pay \$105.00** — so the charge can't be dismissed by reflex.
+A session that was due to start can't be moved at all — *"This session was due to start, so it can't be moved."*
+
+<Note>
+  You can always move your own appointment, whatever the notice, for the same reason your own
+  cancellation is never charged for.
+</Note>
+
+## What the client sees
+
+The wording is generated from the terms actually in force, so what appears on the booking page, in the confirmation email and in the cancellation dialog is the policy being enforced rather than a description of it that was true when somebody typed it.
+
+On **Standard**, a client reads three rows:
+
+| | |
+|---|---|
+| More than 24 hours | Cancel or reschedule yourself, no fee, no conversation needed |
+| Inside 24 hours | 50% of the session fee, charged to the card on file |
+| Did not attend | Full fee. Rebates can't be claimed on a missed session |
+
+On **Flexible** they read two, because a window with no fee behind it decides nothing and printing "no fee" either side of a deadline reads as a mistake rather than as generosity:
+
+| | |
+|---|---|
+| Any time before it starts | Cancel or reschedule yourself, whenever you need to. No fee, nothing to explain |
+| Did not attend | 50% of the fee. Rebates can't be claimed on a missed session |
+
+In one line, Standard summarises as *"Free cancellation up to 24 hours before. Inside that, 50% of the fee."* Flexible as *"Cancel whenever you need to, no fee. A missed session is charged at 50%."*
+
+Before confirming, a client is told the exact amount — *"\$90.00 late cancellation fee. The remaining \$90.00 goes back on your card."* — so the charge can't be dismissed by reflex. They can also give a reason, up to 500 characters, which reaches you.
 
 ## What you receive
 
-A cancellation fee settles like a session fee: the platform fee, card processing and GST come off it, and the rest is yours. Card processing is clamped so a refund can never put you in debt — you net zero rather than owing us the difference.
+A cancellation fee is your earnings on a session that never happened, so it settles like any other: the fee becomes the gross, and the deductions come off that rather than off the original price.
 
-See [Fees](/fees) and [Refunds and disputes](/therapists/refunds-and-disputes).
+The one thing to know is that Stripe keeps its processing fee when money goes back to a client. That cost was taken against the full price, so on a smaller cancellation fee it's clamped to what the fee can carry. You net zero rather than owing us the difference.
 
-## Worked example
+### Worked example
 
-A \$210 session on **Standard**:
+A \$180.00 session on **Standard**, with a returning client, cancelled with five hours' notice.
+
+The fee is 50% of \$180.00, so \$90.00 is retained and \$90.00 goes back on the client's card. That \$90.00 then settles as its own gross. Stripe's fee on the original charge was \$3.36 and it keeps it:
+
+| | |
+|---|---|
+| Cancellation fee retained | \$90.00 |
+| Card processing | −\$3.36 |
+| **You receive** | **\$86.64** |
+
+The same session with no notice, or a no-show, charges the full fee: \$180.00 settles, less \$3.36 of processing, and you receive \$176.64.
 
 | Client cancels | You're paid | Client refunded |
 |---|---|---|
-| 3 days before | \$0.00 | \$210.00 |
-| 6 hours before | \$105.00, less fees | \$105.00 |
-| Doesn't attend | \$210.00, less fees | \$0.00 |
-| You cancel | \$0.00 | \$210.00 |
+| 3 days before | \$0.00 | \$180.00 |
+| 5 hours before | \$86.64 | \$90.00 |
+| Doesn't attend | \$176.64 | \$0.00 |
+| You cancel | \$0.00 | \$180.00 |
+
+<Note>
+  Those figures assume a returning client, so no introduction fee. If it's the client's first settled
+  session with you, the introduction fee comes off as well — clamped so your payout can't go below zero.
+  See [Fees and earnings](/therapists/fees-and-earnings#the-two-clamps).
+</Note>
+
+See [Fees](/fees) for the canonical fee breakdown, and [Refunds and disputes](/therapists/refunds-and-disputes) for what happens when money has already moved.

@@ -1,0 +1,114 @@
+---
+title: "Referrals"
+description: "Bringing your own clients through your link with no introduction fee, and how a GP or another clinician refers someone to you at /refer."
+keywords: ["referrals", "introduction fee", "ref link", "attribution", "GP referral", "refer"]
+---
+
+Two different things are called a referral here, and they work nothing alike.
+
+| | |
+|---|---|
+| **Your own clients** | Someone you sent to Open Therapy, arriving through your link. No introduction fee |
+| **A clinician's referral** | A GP or another practitioner sending someone to us at `/refer` |
+
+## Bringing your own clients
+
+Anyone arriving through your booking link, or through any Open Therapy URL carrying `?ref=<your-handle>`, is recorded as yours.
+
+**A client attributed to your link carries no introduction fee, ever.** We didn't make that introduction, so we don't charge for it — on their first session or any session after it.
+
+See [Your booking link](/therapists/your-booking-link) for claiming your handle and the rules on what it can be. This page is only about how the attribution behaves.
+
+### First touch wins
+
+The handle is stored in a cookie the moment the link is opened, before anyone has signed in or booked anything.
+
+| | |
+|---|---|
+| When it's remembered | On the visit, from `?ref=` or your booking link |
+| How long it lasts | 90 days |
+| Which link wins | The first one. A later link for a different therapist is discarded |
+| When it's written down | When the client signs in, and at the latest when they check out |
+| How long the pairing lasts | Permanently. The first attribution for a client is the only one |
+
+The reasoning behind first-touch is that someone who read your link and then browsed the directory was brought here by you. The reasoning behind one row per client is that a client belongs to whoever introduced them, once.
+
+<Note>
+  It's per client, not per pairing. A client attributed to you is attributed to you, and a second
+  therapist can't take that over by sending them a link later.
+</Note>
+
+### When attribution is lost
+
+The cookie is the weak link, and there are ordinary ways to break it:
+
+- The client opens your link on their phone and books on their laptop
+- They clear cookies, or use a private window for one visit and not the other
+- They find you by searching the directory rather than following your link
+- They took your link more than 90 days before booking
+- They already have an Open Therapy account with an earlier attribution on it
+
+Nothing recovers it after the fact — there's no field to type a handle into at checkout, and the introduction fee for that first session is charged normally. If you think a client was misattributed, write to [billing@opentherapy.app](mailto:billing@opentherapy.app) with the client's name and the session date.
+
+<Tip>
+  Send the link itself rather than telling someone to look you up. "Book at
+  `opentherapy.link/your-name`" is worth the fee; "find me on Open Therapy" isn't.
+</Tip>
+
+A link to your own profile from your own account does nothing. A self-referral is discarded rather than recorded.
+
+## Taking a referral from a GP or another clinician
+
+`/refer` is a form for a referring clinician — a GP, a paediatrician, another therapist, a school counsellor. It's public and needs no account on either side.
+
+They give:
+
+| | |
+|---|---|
+| **Your patient** | Their name, and a phone number or email address |
+| What it's for | Psychology, psychiatry, counselling, speech pathology, occupational therapy, an assessment or report, or Not sure |
+| How soon | Routine, within a fortnight, or this week if possible |
+| Preferences | Optional. Gender, language, format — anything that makes the first call shorter |
+| A therapist | Optional. They can name you specifically |
+| Themselves | Name, practice, email, and a phone number if they want |
+| Attachments | Optional. The referral letter or treatment plan |
+
+Attachments are up to five files, 10MB each and 15MB in total, as PDF, PNG, JPEG, WebP or Word.
+
+<Frame caption="The form asks for enough to make one phone call, and the letter comes across as an attachment">
+  <img src="/images/refer.webp" width="2880" height="1800" alt="The public referral form at /refer, promising a call within a business day, the person's own choice of clinician and word back once they've been seen, with fields for the person's name, phone and email, chips for what they're referred for and how soon, an optional therapist name, an attachment field for the referral letter and treatment plan, a referrals email address and phone number, and a note that it is not a crisis service with the numbers for 000 and Lifeline" />
+</Frame>
+
+### Two things the form insists on
+
+**Consent is a checkbox, not an assumption.** *"My patient knows about this referral and has agreed to be contacted by Open Therapy."* Somebody is about to get a phone call they didn't ask for, from a service they may not have heard of, and the only person who can say they're expecting it is the clinician sitting with them.
+
+**The typed part is a handoff, not a history.** Who they are, how to reach them, what they need and how soon — enough to make one phone call. Clinical detail belongs in the attached letter, in the format the practice software already produces. A textarea is the wrong container for a treatment plan and a worse one for a diagnosis.
+
+### What happens to it
+
+The referral is emailed to Open Therapy and the referrer gets a copy at their own address. The person referred is contacted within one business day.
+
+Nothing from the form is written to a database. The attachments pass through into the email and aren't kept — the person they describe has no account to file them against and hasn't consented to anything being stored. Once they have an account, documents go into their file the ordinary way.
+
+<Info>
+  A referral through `/refer` does not appear in your workspace, and there is no referrals queue for
+  therapists. If the referrer named you, the person is put in touch with you and turns up as a
+  booking or an enquiry like anyone else.
+</Info>
+
+### Naming you on the form
+
+The referrer can search for a therapist and pick you. If they type a name that doesn't resolve, the name they typed travels with the referral anyway rather than being dropped.
+
+<Warning>
+  A referral arriving this way is not attributed to your link and carries the ordinary introduction
+  fee, because Open Therapy made the arrangement. If you want a referrer to send people straight to
+  you fee-free, give them your booking link instead of the referral form.
+</Warning>
+
+### If someone is at immediate risk
+
+The referral form is not an urgent care pathway. Nobody is watching it out of hours, and "this week if possible" is the fastest it goes.
+
+If someone is at immediate risk, call 000. Lifeline is 13 11 14. See [Getting help](/getting-help).

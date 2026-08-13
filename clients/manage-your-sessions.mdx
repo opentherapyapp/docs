@@ -1,48 +1,79 @@
 ---
 title: "Manage your sessions"
-description: "See what's booked, join an online session, and understand what each therapist's terms mean for you."
-keywords: ["sessions", "upcoming", "join", "video", "reschedule", "appointments"]
+description: "See what's booked, move or cancel a session, join an online room, and read your therapist's terms."
+keywords: ["sessions", "upcoming", "join", "video", "reschedule", "move", "calendar"]
 ---
 
-Everything booked, attended and cancelled sits under **Sessions** in your account.
+Everything booked, attended and cancelled sits under **Sessions** in your workspace, at **/workspace/sessions**.
 
 ## The three tabs
 
 | Tab | What's in it |
 |---|---|
 | **Upcoming** | Everything ahead of you, soonest first |
-| **Past** | Sessions that have happened, each with **Book again** |
+| **Past** | Sessions that have happened, each with **Book again** and any notes from the room |
 | **Cancelled** | Sessions called off, by either side |
 
-Times are shown in your local timezone, and the page says which one it's using.
+Each tab carries a count, and the page says which timezone it's using — **Times in AEST**, or whatever yours is.
+
+A row shows the service, how you're meeting, the duration, the day and time, and a status. Where a session is part of a repeating booking, the row says which one it is — *2 of 6, weekly*.
+
+<Frame caption="Each upcoming row carries its status, and Move and Cancel where they're still open to you">
+  <img src="/images/client-sessions.webp" width="2880" height="1800" alt="The Sessions page on the Upcoming tab, with counts beside Upcoming, Past and Cancelled, a Times in AEST note, and rows listing the service, therapist, duration, day and time with a Confirmed status and Move and Cancel links" />
+</Frame>
+
+## Your therapist's terms, on the row
+
+Their name carries a dotted underline. Hover or tap it and you get their cancellation terms as a small card, headed **Cancelling with Sarah** — each window and what it costs. Two therapists means two sets of terms, each on their own row.
+
+See [Cancellations and refunds](/clients/cancellations-and-refunds) for what those numbers mean in money.
+
+## Moving a session
+
+<Info>
+  Rescheduling is live, and it's free. Nothing is charged again — it's the same session at a different
+  hour.
+</Info>
+
+Select **Move** on an upcoming session. The dialog opens on **Move this session?**, tells you when it currently is, and lists your therapist's open hours for the next six weeks, grouped by day. Pick one, add a reason if you want to, and select **Move the session**.
+
+You can only land on an hour your therapist publishes, and the hour you're already in isn't offered. If they've nothing else open, the dialog says so and suggests you message them.
+
+<Note>
+  Moving needs at least as much notice as cancelling for free does. If you're inside that window, the
+  **Move** button still opens, but the dialog tells you what notice was needed and that cancelling is
+  still available. See [how the notice is worked
+  out](/clients/cancellations-and-refunds#the-notice-you-need-to-move).
+</Note>
+
+Your therapist is emailed the new time and the old hour goes back into their diary.
+
+## Cancelling
+
+Select **Cancel** on the row. What it costs is worked out before you confirm — see [Cancellations and refunds](/clients/cancellations-and-refunds#how-to-cancel).
 
 ## Joining an online session
 
-The **Join** button appears on a session when it's close enough to start. The room opens ten minutes early, and the link is the same every time — the one in your confirmation email works too.
+The **Join** button appears ten minutes before the start and stays up until the session ends. The room is the same link every time, and the one in your confirmation email works too.
 
-Inside, you have your microphone, camera, screen share, a way to raise your hand, and side panels for chat and notes.
+Inside, you have your microphone, your camera, screen share, a way to raise your hand, and two side panels — **Chat** and **Notes**.
 
 <Note>
-  Nothing is recorded unless you and your therapist both agree to it in the room.
+  Sessions aren't recorded. Recording isn't switched on for Open Therapy rooms at all, so there's
+  nothing to turn off and no file kept afterwards.
 </Note>
 
-## Cancellation terms per therapist
+If the room won't open, it tells you why: too early, in person rather than online, cancelled, not yet confirmed, or finished. The room closes an hour after the session's end time.
 
-Below your session list, you'll see one policy panel for each therapist you have something booked with. If you're seeing two therapists, you're under two sets of terms, and both are shown.
+## Your calendar
 
-See [Cancellations and refunds](/clients/cancellations-and-refunds) for what each one means in money.
+**Calendar**, at **/workspace/calendar**, is the same information by day rather than by list, and it includes more than sessions: **Sessions**, **Entries** from your journal, **Check-ins**, and **Listens** from the library.
 
-## Rescheduling
+On a desktop you get a month grid with the day's agenda beside it, a legend counting each kind, and arrows to page through months. On a phone the months scroll instead of paging.
 
-There's no reschedule button yet. To move a session, cancel it and book the new time.
-
-<Warning>
-  Cancelling inside the therapist's notice window may charge a fee even if you rebook straight away.
-  If you're outside the window you can cancel free and rebook at no cost. Check the terms on your
-  session before you cancel.
-</Warning>
-
-If you're inside the window, message the therapist first — they can cancel from their side, and a therapist's own cancellation never carries a fee.
+<Frame caption="The legend counts the month, and selecting a day opens its agenda on the right">
+  <img src="/images/client-calendar.webp" width="2880" height="1800" alt="The Calendar page for August 2026 with a legend counting sessions, entries, check-ins and listens, a month grid with small labels on the days that have something on them, and Friday 14 August's agenda showing one online session" />
+</Frame>
 
 ## Sessions you don't recognise
 
@@ -50,4 +81,4 @@ Your card statement shows the **therapist's practice name**, not Open Therapy, b
 
 ## Exporting
 
-**Export** on the sessions page gives you your session history. **Export my record** in settings gives you everything.
+**Settings** has an export of your whole record, sessions included. See [Your account](/clients/your-account#settings).

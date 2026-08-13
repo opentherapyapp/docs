@@ -7,18 +7,25 @@ keywords: ["therapist", "practitioner", "join", "listing", "practice", "private 
 
 Open Therapy is a directory and booking platform for verified practitioners in Australia. You keep your own fees, your own cancellation terms and your own clinical judgement. We handle the listing, the matching, the booking and the money.
 
+<Frame caption="Your workspace opens on today's sessions, anything waiting on you, and this week's numbers">
+  <img src="/images/therapist-overview.webp" width="2880" height="1800" alt="Therapist workspace overview showing a greeting, one 9:00 AM online initial consultation under Today, a Needs you panel with four messages awaiting a reply, and cards reading 4 sessions scheduled this week, 7 active clients and $6,040.00 billed this month before fees" />
+</Frame>
+
 ## What it costs
 
-**Free to list.** No monthly fee, no seat licence, no minimum.
+**Free to list.** No monthly fee, no seat licence, no minimum. There is no percentage taken from a one-to-one session.
 
 | | |
 |---|---|
 | Listing | **\$0** forever |
-| Platform fee | **2.5%** per session |
-| Introduction fee | **One-off** per new client, \$20–\$75 by discipline |
-| Card processing | At cost |
+| Introduction fee | **One-off** per new client, \$70–\$120 ex-GST by discipline |
+| Card processing | Stripe's actual cost, passed through |
+| GST | **10%** on our introduction fee |
+| Group enrolments | **15%** commission plus GST |
 
-We earn when you do, and nothing when we bring you nobody. Clients who arrive through your own booking link carry no introduction fee at all. See [Fees](/fees) for the full breakdown with worked examples.
+The introduction fee is charged once, the first time a particular client books with you, and never again for that pair. So every returning session costs you nothing beyond card processing — around \$3.36 on a \$180 session paid by an Australian domestic card.
+
+Clients who arrive through your own booking link carry no introduction fee at all. See [Fees](/fees) for the canonical breakdown, and [Fees and earnings](/therapists/fees-and-earnings) for worked examples and how to read your earnings screen.
 
 ## What you get
 
@@ -26,33 +33,40 @@ We earn when you do, and nothing when we bring you nobody. Clients who arrive th
   <Card title="A profile that says who you're for" icon="user" href="/therapists/build-your-profile" horizontal>
     Beyond modalities — including the experiences you hold yourself.
   </Card>
-  <Card title="Matching on lived experience" icon="sparkles" href="/therapists/build-your-profile#lived-experience" horizontal>
+  <Card title="Matching on lived experience" icon="sparkles" href="/therapists/build-your-profile#lived-experience-and-what-you-work-with" horizontal>
     Clients who need you specifically can find you.
   </Card>
   <Card title="Your own booking link" icon="link" href="/therapists/your-booking-link" horizontal>
     `opentherapy.link/your-name`, and no introduction fee on anyone who uses it.
   </Card>
   <Card title="Payments handled" icon="banknote" href="/therapists/set-up-payouts" horizontal>
-    Clients pay at booking. You're the merchant of record.
+    Clients pay in full at booking. You're the merchant of record.
   </Card>
 </Columns>
+
+A workspace comes with the listing: your schedule, [client files](/therapists/client-files) with notes and goals, [messaging](/therapists/messages), [forms and measures](/therapists/forms-and-measures), [group programs](/therapists/groups), a [waitlist](/therapists/waitlist) and [earnings](/therapists/fees-and-earnings).
+
+<Frame caption="The workspace sidebar groups everything under Practice, Clients, Money and Profile">
+  <img src="/images/therapist-sidebar-nav.webp" width="448" height="1580" alt="Workspace sidebar navigation with Overview, Schedule, Groups and Availability under Practice; Clients, Messages and Forms under Clients; Earnings and Payouts under Money; and Writing, Prompts, Answers and Settings under Profile" />
+</Frame>
 
 ## Getting started
 
 <Steps>
   <Step title="Apply">
-    Sign up as a therapist and complete onboarding — see [Join Open Therapy](/therapists/join).
+    Sign up as a therapist and work through the setup — see [Join Open Therapy](/therapists/join).
   </Step>
   <Step title="Get verified">
-    We check your registration against the national register. See
+    We check your registration with the body you nominated. See
     [Verification](/therapists/verification).
   </Step>
   <Step title="Set up payouts">
-    Connect a Stripe account. You can't take bookings until this is done — see
+    Connect a Stripe account. Clients can't check out until it's active — see
     [Set up payouts](/therapists/set-up-payouts).
   </Step>
-  <Step title="Go live">
-    Publish your profile, set your availability, and start appearing in the directory.
+  <Step title="Publish your hours">
+    Set your weekly pattern, choose a cancellation policy, and start appearing in the directory. See
+    [Availability](/therapists/availability).
   </Step>
 </Steps>
 
@@ -63,7 +77,7 @@ We earn when you do, and nothing when we bring you nobody. Clients who arrive th
 | Your session fees | You |
 | Which services you offer, and their length | You |
 | Your cancellation policy | You — from four presets |
-| Your availability | You |
+| Your hours, and how far ahead they open | You |
 | Whether you're taking new clients | You |
 | Whether a session was attended | You |
 | Whether a client is right for you | You |
@@ -72,13 +86,20 @@ Two rules are ours rather than yours, and both are deliberate: **you never charg
 
 ## Who can list
 
-Practitioners registered with Ahpra, Speech Pathology Australia, Dietitians Australia, PACFA or ACA. See [Verification](/therapists/verification) for what's checked.
+Practitioners registered with Ahpra, Speech Pathology Australia, Dietitians Australia, PACFA or ACA, ESSA, ANZACATA or AMTA — plus support and developmental education roles where no board exists, which are checked differently. See [Verification](/therapists/verification).
+
+<Info>
+  Two care categories are open for booking so far: **Psychology** and **Counselling**. The other twelve
+  have a landing page and take waitlist interest, and profiles in them are reachable by link, but they
+  aren't in the directory and can't be booked yet. You can apply now either way. See
+  [Care types](/care-types).
+</Info>
 
 ## Next
 
 <Columns cols={2}>
   <Card title="Join Open Therapy" icon="user-plus" href="/therapists/join" horizontal>
-    The application and what onboarding asks you.
+    The application, phase by phase.
   </Card>
   <Card title="Fees and earnings" icon="chart-line" href="/therapists/fees-and-earnings" horizontal>
     How a session is divided and how to read your earnings.

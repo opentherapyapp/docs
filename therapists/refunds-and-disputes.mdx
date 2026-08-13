@@ -6,57 +6,73 @@ keywords: ["refund", "dispute", "chargeback", "reversal", "frozen", "receivable"
 
 ## Refunds
 
-A refund happens in two steps, in this order: the client is refunded first, because it's their money, and then your transfer is reversed if one had already been made.
+A refund runs in two steps, in this order: the client is refunded first, because it's their money and they're the one waiting, and then your transfer is reversed if one had already been made.
 
-Each step can succeed or fail independently, which is deliberate — a failure in the second step doesn't leave a client without their refund.
+Each step succeeds or fails on its own, which is deliberate — a problem taking money back off you must not leave a client without their refund.
+
+Most cancellations never reach the second step. The settlement is written after the refund and from the reduced amount, so you were never paid the part being given back. The case that does need a reversal is the one the transfer pass created: a no-show billed, transferred within the hour, and then refunded afterwards.
+
+The client's receipt is amended rather than reversed by a second document — they had one transaction and should read one line. A cancelled session was never closed off, so there's no session invoice to correct.
 
 ### Card processing on a refund
 
-Stripe keeps its fee when money goes back. Its real cost, taken against the full price, can be larger than the cancellation fee it's now being deducted from.
+Stripe keeps its fee when money goes back, and that cost was taken against the full price. It can therefore be larger than the cancellation fee it's now being deducted from.
 
 <Note>
-  Processing is clamped to what the session can carry. On a refunded session you net **zero** rather
-  than owing us the difference.
+  Processing is clamped to what the remaining amount can carry. On a refunded session you net **zero**
+  rather than owing us the difference. See
+  [Fees and earnings](/therapists/fees-and-earnings#the-two-clamps).
 </Note>
 
 ## Failed reversals
 
-Sometimes Stripe has already paid your balance out to your bank before a refund is issued. The reversal then fails, the client's refund stands, and the shortfall becomes a **receivable** recorded against your account.
+Sometimes Stripe has already paid your balance out to your bank before the refund is issued. A reversal can only take back what's there, so it may recover part of the amount or none of it. The client's refund stands either way, and the shortfall is recorded as a **receivable** against your account.
 
-This isn't treated as an error to retry. It's a debt for a person to work out with you, and you can see anything you're said to owe — somebody should be able to see what they're being told they owe.
+That isn't treated as an error to retry. You did nothing wrong by receiving money you were owed at the time, so it's a figure for a person to work out with you rather than an automatic clawback. Write to [support@opentherapy.app](mailto:support@opentherapy.app) if you're told about one and it doesn't look right.
 
 ## Disputes
 
-A dispute — a chargeback — is a client's bank pulling a payment back.
+A dispute — a chargeback — is a client's card issuer pulling a payment back. The issuer opens it, not Open Therapy and not the client directly.
 
 <Warning>
-  A dispute **freezes all transfers** on your account until a person clears it. Nothing thaws
-  automatically. If a payout you expected hasn't arrived, this is the first thing to check.
+  A dispute **freezes transfers across your whole account** while it's open. If a payout you expected
+  hasn't arrived, this is the first thing to check.
 </Warning>
 
-If your share of the disputed session had already been transferred, it's recorded as a receivable.
+You're emailed as soon as it happens, and told the part that changes your week: *"Your payouts are paused while this is open."* That's a precaution on the account, not a judgement about the session. Open Therapy carries the loss on a disputed payment, which is why freezing is the cheap and reversible move.
 
-Open Therapy holds the payment losses on disputes, but the freeze is not a judgement about you — it's a hold while the facts are established.
+If your share of the disputed session had already been transferred, it's recorded as a receivable at the same time.
 
-### If your account is frozen
+### What happens next
 
-Write to [billing@opentherapy.app](mailto:billing@opentherapy.app) with the session details. Include anything relevant: appointment records, correspondence with the client, and your attendance record for the session.
+Open Therapy handles the response. Card networks give a fixed window to reply, usually under two weeks, and you're told the outcome either way. If you have appointment records, messages or notes showing the session went ahead, reply to the email and they go in with the response.
+
+| Outcome | What happens |
+|---|---|
+| **Resolved in your favour** | The money stays with you, the freeze lifts, and the next transfer includes anything held while the dispute was open |
+| **Decided for the client** | The money goes back to them. If the session had already been paid out, the amount is recorded against your account and comes out of a future payout rather than being charged to your bank. Transfers stay frozen and need a person — write to [support@opentherapy.app](mailto:support@opentherapy.app) |
+
+The issuer's decision is final on their side. If you think it's wrong, say so anyway — the records are worth seeing either way.
+
+### Reversed transfers
+
+If a transfer is reversed you're told, with the amount, and told what it means: nothing is charged to your bank account, and the amount comes off a future payout instead. It happens when a session is refunded or disputed after its money had already gone out.
 
 ## Reducing disputes before they happen
 
-Most disputes are a client not recognising a charge, not a client contesting the care.
+Most disputes are a client not recognising a charge rather than a client contesting the care.
 
 <Columns cols={2}>
   <Card title="Your name is on the statement" icon="credit-card">
-    You're the merchant of record, so your practice name appears — not Open Therapy. Make sure the
-    name a client sees at booking matches the one on your Stripe account.
+    You're the merchant of record, so your name appears rather than Open Therapy's. Make sure the name
+    a client sees when they book is the one on your Stripe account.
   </Card>
   <Card title="Choose a policy and keep it visible" icon="calendar-x">
-    Cancellation fees are the most disputed charges. The policy is quoted at checkout and in the
-    confirmation email, which is exactly the evidence that resolves it.
+    Cancellation fees are the most disputed charges. Your policy is quoted at checkout, in the
+    confirmation email and in the cancellation dialog, which is exactly the evidence that settles it.
   </Card>
   <Card title="Record attendance promptly" icon="check">
-    An attendance record contemporaneous with the session is stronger than one added a fortnight later.
+    An attendance record made on the day is stronger than one added a fortnight later.
   </Card>
   <Card title="Answer messages" icon="message-circle">
     A client who can reach you asks you before asking their bank.
@@ -65,14 +81,10 @@ Most disputes are a client not recognising a charge, not a client contesting the
 
 ## Where to see all of this
 
-Your earnings screen shows settlements with their status, payouts with theirs — processing, paid or failed — and anything recorded as owing.
+Your earnings screen shows each session with the fees as they were charged, and your payouts with their status. A payout returned by your bank is emailed to you rather than left to be noticed.
 
-See [Fees and earnings](/therapists/fees-and-earnings#your-earnings-screen).
+See [Fees and earnings](/therapists/fees-and-earnings#your-earnings-screen) and [Set up payouts](/therapists/set-up-payouts#frozen-accounts).
 
 ## Getting help
 
-| Issue | Contact |
-|---|---|
-| A frozen account, a dispute, or a receivable | [billing@opentherapy.app](mailto:billing@opentherapy.app) |
-| A client's conduct | [governance@opentherapy.app](mailto:governance@opentherapy.app) |
-| Anything else | [support@opentherapy.app](mailto:support@opentherapy.app) |
+Write to [support@opentherapy.app](mailto:support@opentherapy.app) with the session date, or ring 1800 318 517, Monday to Friday, 9am–5pm AEST.

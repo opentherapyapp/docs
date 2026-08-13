@@ -10,52 +10,72 @@ Every therapist gets a personal address at **`opentherapy.link/your-name`**. It 
 
 **A client who arrives through your own link carries no introduction fee.** We didn't make that introduction, so we don't charge for it.
 
-That makes the link worth putting on your card, in your email signature, on your own website, and anywhere else you'd normally send someone. You get the booking, the payments and the workspace, and pay only the 2.5% platform fee and card processing.
+There is no platform fee and no monthly fee, so for a client of your own the only deduction on a session is card processing at Stripe's actual cost. The workspace panel says it plainly: *"Clients who book through this link carry no introduction fee. Card processing is all that comes off."*
+
+That makes the link worth putting on your card, in your email signature, on your own website, and anywhere else you'd normally send someone.
 
 <Note>
-  Attribution is first-touch and is recorded when the client signs in, or at the latest when they check
-  out. Once a client is attributed to your link, that pairing stands.
+  Attribution is first touch. The handle is remembered for 90 days while a client is deciding, and the
+  pairing is written the moment they sign in — or at the latest at checkout, because once the session row
+  exists the introduction fee has been decided. Somebody who followed one therapist's link and then
+  another's belongs to the first: the earlier claim is the one that actually brought them here.
 </Note>
+
+The pairing is per therapist, so it doesn't follow the client around the platform. If they later book someone else from the directory, that therapist's introduction fee applies as normal.
 
 ## Claiming your handle
 
-Set it in **Settings**, in the handle panel. Availability is checked as you type.
+Your handle is the second question in the practice setup, and it's held for you the moment you claim it. Afterwards you'll find it under **Your link** in **Settings**, where availability is checked as you type.
 
-Rules:
+The rules:
 
 - Between **3 and 30 characters**
 - Lowercase letters, numbers and single hyphens
-- Must start and end with a letter or number
-- No double hyphens
+- No double hyphens, and it can't start or end with one
+
+Anything else you type is folded into that shape rather than rejected — capitals are lowercased, spaces and punctuation become hyphens.
 
 ## If your handle isn't available
 
 | Message | What it means |
 |---|---|
 | *"Use 3 to 30 letters, numbers and single hyphens."* | The format is wrong |
-| *"That one is reserved. Try adding your discipline or suburb."* | It clashes with a page on the site — like `about`, `blog` or `browse` |
-| *"Someone already has that one."* | Another therapist claimed it |
-| *"That one belonged to another therapist. Pick a different name."* | It was previously used and has been retired |
+| *"That one is reserved. Try adding your discipline or suburb."* | It clashes with a page on the site — like `about`, `blog`, `browse` or `fees` |
+| *"Someone already has that one."* | Another therapist holds it |
+| *"That one belonged to another therapist. Pick a different name."* | It's retired. Retired names are never reissued |
+
+Where a suffixed version would do, we offer one — **Try sarah-chen-2** — and you have to accept it rather than having it imposed.
 
 <Tip>
-  If your name is taken, add your discipline or your suburb — `sarah-chen-psychology` or
+  If your name is taken, add your discipline or your suburb: `sarah-chen-psychology` or
   `sarah-chen-newtown`. Both read well on a card and are easier to say over the phone than a number.
 </Tip>
+
+## Before you're verified
+
+The address is reserved from the day you claim it, and the page behind it opens the day your registration is verified. Until then the panel reads **Your link, reserved** and the page returns nothing.
+
+<Warning>
+  Don't hand it out before you're live. Save it somewhere by all means — but the first client who taps a
+  reserved link gets a dead page.
+</Warning>
 
 ## Changing it later
 
 <Warning>
-  You can change your handle once every **30 days**. Choose deliberately — a handle on a printed card
-  is hard to take back.
+  You can change your handle once every **30 days**. If you try sooner, we tell you how many days are
+  left. Choose deliberately — a handle on a printed card is hard to take back.
 </Warning>
 
-Your old handle keeps working. It redirects to your current one, so a card printed last year still gets someone to the right place.
+Your profile moves with it, and your old link keeps working: the previous name is retired to you and redirects to the current one, so a card printed last year still gets someone to the right place. It never resolves to anyone else, and you can always take your own former name back.
 
 ## What clients see
 
-The same profile as the directory version, minus the breadcrumb and the "similar therapists" rail. Nothing about it says "this person paid less for you" — it's your profile, at your address.
+Your profile, at your address. Nothing on it says a client came in more cheaply than another one.
 
 ## Using it well
+
+The workspace gives you two things to copy: the link itself, and a line for your email signature — *"Book a session with me: https://opentherapy.link/your-name"*.
 
 <Columns cols={2}>
   <Card title="Email signature" icon="mail">
@@ -65,9 +85,16 @@ The same profile as the directory version, minus the breadcrumb and the "similar
     A GP forwarding a referral can send the client straight to your booking page.
   </Card>
   <Card title="Business cards" icon="credit-card">
-    Reads as a URL without the scheme: `opentherapy.link/sarah-chen`.
+    It reads as a URL without the scheme: `opentherapy.link/sarah-chen`.
   </Card>
   <Card title="Your own website" icon="globe">
     Use it as your book-now button rather than building a booking flow.
   </Card>
 </Columns>
+
+<Note>
+  Your existing clients count too, but only if they arrive through the link. **Invite a client** from your
+  workspace emails them your booking address, so the pairing is recorded when they sign up. Filing
+  somebody as a client record is a different thing — a file rather than a referral — and it doesn't
+  record one. See [Client files](/therapists/client-files).
+</Note>

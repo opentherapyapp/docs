@@ -1,39 +1,43 @@
 ---
 title: "Find a therapist"
-description: "How the matching questionnaire works, how your shortlist is built, and how to change it later."
-keywords: ["matching", "match", "questionnaire", "shortlist", "lived experience", "saved"]
+description: "How the matching questionnaire works, how your shortlist is built, and how to change your answers later."
+keywords: ["matching", "match", "questionnaire", "shortlist", "lived experience"]
 ---
 
-Matching asks five questions, then deals you every therapist who fits — ranked, with a reason on each. Nothing is booked and nobody is told you looked.
+Matching asks five questions, then ranks every therapist who fits and puts the reason on each card. Nothing is booked and nobody is told you looked.
 
-Start at **Find your match** in the main navigation.
+Start at **Match me** in the header. You don't need an account.
 
 ## The questions
 
-Only the first two are required. You can skip the rest and still get a shortlist.
+Only the first two are required. Skip the rest and you'll still get a shortlist — you're just handing the ranking less to work with.
+
+<Frame caption="The first question, with your progress through the five marked above the card">
+  <img src="/images/match.webp" width="2880" height="1800" alt="The matching questionnaire asking Who is the therapy for?, with selectable rows for Individual, Couple, Teen, Child and Someone I care for, each with a short description and a photograph" />
+</Frame>
 
 <AccordionGroup>
   <Accordion title="1. Who is the therapy for?" icon="user" defaultOpen>
-    One choice: for yourself, for you and your partner, for your child aged 12 to 17, for your child
-    under 12, or for someone you care for.
+    One choice: **Individual**, **Couple**, **Teen** (12 to 17), **Child** (under 12), or **Someone I
+    care for**.
   </Accordion>
 
   <Accordion title="2. What brings you here?" icon="list">
-    Pick as many as fit. This decides which kind of therapist we look at first. The options run from
-    anxiety, low mood and trauma through focus and ADHD, burnout, relationships, grief, life changes,
-    parenting, eating and body image, assessment and diagnosis, daily living and NDIS, speech and
-    language — and **Not sure yet**, which is a real answer.
+    Pick as many as fit. This is what decides which kind of therapist we look at first. The options run
+    from anxiety, low mood and trauma through focus and ADHD, burnout, relationships, grief, a big life
+    change, parenting, eating and body image, assessment and diagnosis, daily living and NDIS, speech
+    and language — and **Not sure yet**, which is a real answer.
   </Accordion>
 
   <Accordion title="3. Anything running through your story?" icon="heart">
     Eight themes: culture and belonging; family; identity, gender and sexuality; neurodivergence,
-    disability and health; faith and community; work, money and study; parenting, fertility and
-    caring; loss, harm and survival. Choose **None of these** to skip.
+    disability and health; faith and community; work, money and study; parenting, fertility and caring;
+    loss, harm and survival. Choose **None of these** to skip — that's a finished answer, not a gap.
   </Accordion>
 
   <Accordion title="4. Which of these is the work about?" icon="target">
-    Only appears if you named a theme. You'll see the specific experiences inside the themes you chose.
-    Not everything that's true of you — the handful a therapist would need to understand. **These are
+    Only appears if you named a theme, and only shows experiences from the themes you picked. Not
+    everything that's true of you — the handful a therapist would need to understand. **These are
     weighted hardest.**
   </Accordion>
 
@@ -45,69 +49,75 @@ Only the first two are required. You can skip the rest and still get a shortlist
 
   <Accordion title="6. The practical bits" icon="map-pin">
     How you'd like to meet (online, in person, home visit), roughly where you are, and how you'll pay
-    (Medicare with a GP mental health plan, NDIS, private health extras, or paying yourself). This
-    exists so we only show you therapists you can actually see, afford and get to.
+    (Medicare with a GP mental health plan, NDIS, private health extras, or paying yourself). Only
+    therapists you can see, afford and get to.
   </Accordion>
 </AccordionGroup>
 
-## How the shortlist is ranked
+If you're signed in and it's your first run, three short profile screens come first: a photo, a bit about you, and your health and context. All three are skippable, and you're only asked once.
 
-Each therapist is scored against your answers. The weights are deliberate:
+## How the ranking works
 
-| Signal | Weight |
+Every therapist is scored against your answers, and the weights are deliberate.
+
+| Signal | Points |
 |---|---|
-| They have **lived** an experience you named | Highest |
-| They work with that experience clinically | Moderate |
-| Your preferred language | Moderate |
-| Your concerns match their focus or specialties | Lower |
-| Session mode overlaps | Low |
-| Funding overlaps | Low |
+| They have **lived** an experience you named | 9 each |
+| Your preferred language | 6 |
+| Their gender matches what you asked for | 5 |
+| They **work with** an experience you named | 4 each |
+| Your concerns match their focus or specialties | 3 each |
+| A session mode you asked for | 2 |
+| A funding route you asked for | 2 |
 
-If you asked for someone who *has lived some of this too* or *gets my culture without a tutorial*, shared experience is weighted higher still.
+If you asked for someone who *has lived some of this too* or *gets my culture without a tutorial*, each shared lived experience is worth two more points again.
 
 <Note>
-  A shared lived experience outranks everything else, including how closely their clinical specialties
-  match your concerns. That's the core of how Open Therapy differs from a filtered list.
+  A single shared lived experience outranks a gender preference, a language match, and any number of
+  matching specialties. That's the whole point of the questions — matching on demographics is the
+  shallow version, so gender never outranks having been there.
 </Note>
 
-Ties break on rating. Anyone who scores nothing is dropped. Everyone else is dealt to you — ranking sets the order, but you decide who's worth keeping.
+Ties break on rating. Anyone who scores nothing at all is dropped. Gender and funding are scored rather than filtered on, so a therapist who hasn't answered those questions still appears — the directory's filters are the strict version if you want it.
 
 ## Working through your matches
 
-Each card carries a one-line reason, such as *"Sarah has lived what you named, not only trained in it"* or *"This is the work Sarah does most."*
+Your matches arrive as a list, five at a time, most-likely first. **Show more matches** brings the next five.
 
-<Tabs>
-  <Tab title="Cards">
-    Swipe or select to keep or pass. **Bring back** undoes the last decision. A counter shows how many
-    are left.
-  </Tab>
-  <Tab title="List">
-    All your matches at once with the same keep and pass buttons. Switch views at any time — your
-    place is kept.
-  </Tab>
-</Tabs>
+Each card carries up to two reasons — **Has lived this**, **Works with**, **Speaks** or **Treats** — with the specific experiences named as chips. Where there's nothing personal to say, the card falls back to **Specialises in**. The top card is flagged **Closest fit**.
 
-When the deck is empty you're taken to **Saved**, which is everyone you kept.
+Select **Shortlist** on anyone worth a second look. The button flips to **Shortlisted**, a **See times** button appears alongside **View profile**, and a counter in the corner links to your shortlist. There's nothing to press to turn someone down — scrolling past them is the whole of it.
 
-## Saved and passed
+## Your shortlist
 
-Your saved list lives at **Saved** and works whether or not you're signed in. Nobody on it has been contacted — saving is just for you.
+Your shortlist is at **/workspace/shortlist**, reachable from your matches or from **Shortlist** in your workspace sidebar. Signed out, the same list is at **/shortlist**. Nobody on it has been contacted. It's a list for you.
 
-Passed therapists are tucked into a collapsible section on the same page. Select **Deal these again** to clear those decisions and go back through them.
+<Frame caption="An empty shortlist points you back to your matches or the directory">
+  <img src="/images/client-shortlist.webp" width="2880" height="1800" alt="The Your shortlist page in the workspace reading Nothing shortlisted yet, with See your matches and Browse the directory buttons, and Shortlist highlighted under Finding care in the sidebar" />
+</Frame>
+
+Shortlisting works signed out too, in which case it's kept in that browser — the page tells you so and offers **Keep these**, which moves the list onto a new account. See [Create an account](/clients/create-an-account#if-you-shortlisted-things-before-signing-up).
 
 ## Changing your answers
 
-Select **Update what I'm looking for**, or open **Preferences** in your account. Every question is on one page there.
+Select **Change what you're looking for** under your matches, or open **Match preferences** in your workspace, where every question sits on one page.
 
-Changing your answers rebuilds your next shortlist without emptying the current one. Therapists you've already decided on stay decided, so you pick up rather than start over.
+Your matches are ranked fresh from your answers every time you look, so a change takes effect immediately. Your shortlist isn't touched.
 
 ## If nothing matches
 
-You'll see **Let's widen the search**, with two ways out: browse the full directory with your answers carried across as filters, or go back and loosen your answers.
+You'll see **Widen the search**, with two ways on: browse the full directory with your answers carried across as filters, or go back and loosen a couple of answers.
+
+<Info>
+  Two care types can be booked today — **Psychology** and **Counselling**. Some concerns point at care
+  types that aren't open yet, such as eating and body image (Dietetics) or speech and language (Speech
+  pathology). Those therapists appear with a **Coming soon** pill and a waitlist. See
+  [Care types](/care-types).
+</Info>
 
 ## What you get by email
 
-Saving your match preferences triggers a **Your matches are ready** email listing three matches with the same one-line reason shown on the card.
+Finishing the questions triggers a **Your matches are ready** email with the same reasons the cards show. Start the questions and stop, and you'll get one reminder that your answers are still there. Neither email tells any therapist anything.
 
 ## Next
 

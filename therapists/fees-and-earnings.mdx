@@ -1,127 +1,214 @@
 ---
 title: "Fees and earnings"
 description: "How a session fee is divided, and how to read and reconcile your earnings screen."
-keywords: ["earnings", "fees", "net", "settlement", "platform fee", "introduction fee", "dashboard"]
+keywords: ["earnings", "fees", "net", "settlement", "introduction fee", "group commission", "dashboard"]
 ---
 
 ## What comes off a session
 
-Four deductions, all from your payout. Nothing is ever added to what the client pays.
+You keep the session fee, less the following.
 
 | Deduction | Amount |
 |---|---|
-| Platform fee | **2.5%** of the session |
-| Introduction fee | **\$20–\$75**, once per new client, by discipline |
-| Card processing | Stripe's actual cost |
-| GST | **10%** on Open Therapy's two fees |
+| Introduction fee | **\$70–\$120**, once per new client, by discipline |
+| Card processing | Stripe's actual cost, passed through |
+| GST | **10%** on Open Therapy's own fee |
 
-The full table of introduction fees by discipline, and how GST is applied to each line, is on [Fees](/fees).
+There is **no platform fee**. It was a percentage of every session and it's retired — the rate is zero. The arithmetic survives in the code only so that a statement settled while it applied still renders the fee it actually paid, and your earnings screen drops the line entirely on anything settled since.
+
+Nothing is ever added to what the client pays. The full table of introduction fees by discipline is on [Fees](/fees), which is the canonical page for all of this.
+
+<Note>
+  The session itself is GST-free health care and carries no tax. GST applies to Open Therapy's fee to
+  you, which is a taxable supply — claimable if you're registered. Card processing arrives GST-inclusive,
+  so its tax is carved back out rather than added again.
+</Note>
 
 ## The shape of it
 
+Card processing is Stripe's own number, read off the charge when it clears, so it varies with the card. The figures below use the published Australian domestic rate — 1.7% plus 30c — as an estimate: \$180 quotes at \$3.36 and \$220 at \$4.04.
+
 <Tabs>
   <Tab title="First session — \$180">
+    A psychologist, \$90 introduction fee.
+
     | Line | Amount |
     |---|---|
     | Client pays | \$180.00 |
-    | Platform fee (2.5%) | −\$4.50 |
-    | Introduction fee (Psychologist) | −\$45.00 |
+    | Introduction fee | −\$90.00 |
+    | GST on the introduction fee | −\$9.00 |
     | Card processing | −\$3.36 |
-    | GST on Open Therapy's fees | −\$4.95 |
-    | **You receive** | **\$122.19** |
+    | **You receive** | **\$77.64** |
 
-    32.1% deducted, almost all of it the one-off introduction.
+    \$102.36 deducted, or 56.9% — almost all of it the one-off.
   </Tab>
   <Tab title="Every session after — \$180">
     | Line | Amount |
     |---|---|
     | Client pays | \$180.00 |
-    | Platform fee (2.5%) | −\$4.50 |
     | Card processing | −\$3.36 |
-    | GST on Open Therapy's fees | −\$0.45 |
-    | **You receive** | **\$171.69** |
+    | **You receive** | **\$176.64** |
 
-    4.6% deducted.
+    \$3.36 deducted, or 1.9%.
+  </Tab>
+  <Tab title="A \$220 first session">
+    A psychiatrist, \$120 introduction fee.
+
+    | Line | Amount |
+    |---|---|
+    | Client pays | \$220.00 |
+    | Introduction fee | −\$120.00 |
+    | GST on the introduction fee | −\$12.00 |
+    | Card processing | −\$4.04 |
+    | **You receive** | **\$83.96** |
+
+    Returning, the same session nets \$215.96.
+  </Tab>
+  <Tab title="A \$180 first session — counsellor">
+    A \$70 introduction fee.
+
+    | Line | Amount |
+    |---|---|
+    | Client pays | \$180.00 |
+    | Introduction fee | −\$70.00 |
+    | GST on the introduction fee | −\$7.00 |
+    | Card processing | −\$3.36 |
+    | **You receive** | **\$99.64** |
   </Tab>
 </Tabs>
 
-Over a course of care the blended rate lands under 10%. Two ways to improve it:
+### What that averages to
+
+Because the introduction fee is charged once and never again, your effective rate falls with every session the same client books. Six \$180 sessions with one new client, at the psychologist's \$90:
+
+- Gross: 6 × \$180.00 = \$1,080.00
+- First session deductions: \$90.00 + \$9.00 + \$3.36 = \$102.36
+- The other five: 5 × \$3.36 = \$16.80
+- Total deducted: \$119.16
+- You receive: \$960.84
+
+\$119.16 of \$1,080.00 is **11.0%** across those six sessions. Over twelve sessions it's \$102.36 plus eleven lots of \$3.36, so \$139.32 of \$2,160.00, or **6.5%**. There is no single blended figure — it depends entirely on how long people stay.
+
+Two things move it in your favour:
 
 <Columns cols={2}>
   <Card title="Use your own booking link" icon="link" href="/therapists/your-booking-link" horizontal>
-    Clients who arrive through it carry no introduction fee at all.
+    A client who arrives through it carries no introduction fee at all, ever. Card processing is the
+    only deduction.
   </Card>
-  <Card title="Price your initial consultation properly" icon="dollar-sign" href="/therapists/services-and-pricing" horizontal>
-    The introduction fee lands on the first session. A realistic initial fee protects your margin on it.
+  <Card title="Price your first session properly" icon="dollar-sign" href="/therapists/services-and-pricing" horizontal>
+    The introduction fee lands on the first session and nowhere else. A realistic initial fee protects
+    your margin on it.
   </Card>
 </Columns>
 
-<Note>
-  The introduction fee is capped at what a session can carry after processing, the platform fee and
-  GST. A cheap or free first session nets you nothing rather than putting you in debt to us.
-</Note>
+## Group programs
+
+A group enrolment is charged differently: a flat **15% commission** plus GST on the commission, and nothing else. No introduction fee, and no card processing passed through — Open Therapy absorbs Stripe's fee on group enrolments.
+
+A \$400.00 enrolment:
+
+| | |
+|---|---|
+| Client pays | \$400.00 |
+| Commission at 15% | −\$60.00 |
+| GST on the commission | −\$6.00 |
+| **You receive** | **\$334.00** |
+
+\$66.00 deducted, or 16.5%, whichever card the client used. See [Groups](/therapists/groups).
+
+## The two clamps
+
+Both exist so a session can never cost you money.
+
+### A payout can never go negative
+
+An introduction fee larger than the session it lands on is reduced to what the session can carry after card processing and the GST that will be charged on our fee. You earn nothing on that session rather than owing us the difference.
+
+Take a psychologist's \$90 introduction fee against a \$90.00 session — a first appointment cancelled late on Standard, where the \$90.00 cancellation fee becomes the gross:
+
+- Room for our fees, ex-GST: \$90.00 − \$3.36 = \$86.64, and \$86.64 ÷ 1.1 = \$78.76
+- The introduction fee is charged at \$78.76 rather than \$90.00
+- GST on it: \$7.88
+- You receive: \$90.00 − \$78.76 − \$3.36 − \$7.88 = **\$0.00**
+
+Zero, not a debt. The \$11.24 of introduction fee that didn't fit is not carried forward.
+
+### The processing fee is clamped too
+
+Stripe keeps its fee when money goes back to a client, and that cost was taken against the full price. On a partial refund the fee can therefore be larger than the amount it's now deducted from, so it's clamped the same way and you net zero instead of owing us.
 
 ## Your earnings screen
 
-**Earnings** in your workspace, and the numbers on it are real rather than estimated.
+**Earnings** in your workspace. The numbers on it are real rather than estimated — every line is read from what was settled on the day.
 
-### The chart
+The heading tells you where you stand this month: *"\$1,412.28 yours this month, after \$102.36 in fees and GST."* Before anything has settled it explains the deductions instead.
 
-Twelve months of **net** earnings, oldest first, with the current month flagged. Months with no work are shown as empty rather than skipped — a chart that skips them implies a busier year than you had.
+<Frame caption="The **Platform** column is an em dash on every session — that percentage is zero">
+  <img src="/images/therapist-earnings.webp" width="2880" height="2400" alt="The Earnings screen with a twelve-month net earnings chart ending on the current month, a Waiting on a Stripe fee panel holding one couples session, a sessions table where each $220.00 session shows a dash for platform and introduction and $4.04 of card processing, a This month panel reading $1,640.00 billed less $29.98 card processing leaving $1,610.02 yours, and a list of past payouts badged Paid" />
+</Frame>
 
-### Totals
+### Earnings by month
 
-For this calendar month and for all time:
+Twelve months of **net** earnings, oldest first, with the current month flagged. Months with no work show as empty rather than being skipped — a chart that skips them implies a busier year than you had. A session counts in the month it *settled*, not the month it happened.
 
-| Figure | Meaning |
+### This month
+
+| Line | Meaning |
 |---|---|
-| Gross | What clients paid |
-| Platform fee | 2.5% total |
-| Introduction fee | One-off fees charged in the period |
-| Processing fee | What the cards actually cost |
-| Fee GST | Tax on Open Therapy's two fees |
-| **Net** | What reached you |
-| Sessions | Count |
-| New clients | First sessions, whether or not an introduction was charged |
+| **Billed** | What clients paid |
+| **New client introductions** | Introduction fees charged in the period |
+| **Card processing** | What the cards actually cost |
+| **GST on our fees** | Tax on Open Therapy's fee |
+| **Yours** | What reached you |
 
-### Settlements
+<Note>
+  A retired platform fee only appears on a period old enough to have paid one. It isn't printed as a
+  \$0.00 row forever.
+</Note>
 
-One line per session: gross, each fee, net, the platform fee rate that was in force, whether it was a first session, and its status.
+### Sessions
 
-| Status | Meaning |
-|---|---|
-| **Pending** | Settled, not yet transferred |
-| **Settled** | Divided and queued |
-| **Paid out** | Transferred to your Stripe balance |
+One line per session — *"each fee as it was charged on the day"* — with columns for **Billed**, **Platform**, **Introduction**, **Card**, **GST** and **Yours**. A fee that wasn't charged shows an em dash rather than a zero, so a returning client's row is visibly two deductions rather than five.
 
-### Payouts and invoices
+### Payouts
 
-Payout lines show the period, the date paid, the amount and the status — processing, paid or failed. Fee invoice lines show the reference, period, subtotal, GST and total.
+Each payout with its amount, period and date, badged **Paid** or **Processing**. Empty until a settled session has transferred.
 
-## Waiting on you
+### Our invoices to you
 
-The queue of sessions that have finished but haven't been recorded as attended or missed. **Nothing settles and nothing transfers until you clear it.** See [Managing sessions](/therapists/managing-sessions#recording-attendance).
+Your monthly fee invoices, with the total, the period and the GST inside it. Click one to open it. They're issued **Paid**, because every amount on them came off a payout weeks earlier. See [Invoices and tax](/therapists/invoices-and-tax).
+
+### Waiting on you, and waiting on Stripe
+
+Two panels that only appear when they have something in them. **Waiting on you** is sessions you haven't recorded attendance for — nothing settles or transfers until you do. **Waiting on a Stripe fee** is sessions already closed whose real processing fee hasn't arrived; nothing there is yours to do. Both are covered in [Managing sessions](/therapists/managing-sessions#recording-attendance).
+
+If your payout setup isn't finished, a banner sits above the numbers: your earnings have nowhere to go, and clients can't check out at all.
 
 ## Fee changes never re-price the past
 
-Every settlement stores the rate that applied when it was made. A rate change tomorrow applies to new sessions only — it cannot re-price what you earned yesterday.
+Every settlement stores the rates that applied when it was made, and the invoice recomputes its lines from those frozen rows. A change tomorrow applies to new sessions only.
 
 ## Reconciling
 
 <Steps>
   <Step title="Start from the payout">
-    A payout is the sum of the settlements transferred in that period. It's your net.
+    A payout is the sum of the settlements transferred in that period, and it's already net of
+    everything.
   </Step>
-  <Step title="Match it against settlements">
-    Filter settlements by **Paid out** for the period.
+  <Step title="Match it against the sessions table">
+    Each line's **Yours** column is what went into a payout. Remember the month is the month it
+    settled.
   </Step>
-  <Step title="Take fees from the invoice, not the payout">
-    Your deductible expenses are on the platform fee invoice, which shows them ex-GST with the GST
-    separated. See [Invoices and tax](/therapists/invoices-and-tax).
+  <Step title="Take your expenses from the invoice, not the payout">
+    The fee invoice states the fees ex-GST with the GST separated, which is what your accountant needs.
+    See [Invoices and tax](/therapists/invoices-and-tax).
   </Step>
 </Steps>
 
 <Tip>
-  Don't reconstruct your fees by subtracting net from gross. The invoice is the document your
-  accountant needs, because it separates GST you can claim from fees you can deduct.
+  Don't reconstruct your fees by subtracting net from gross. That total mixes a deductible expense, a
+  GST credit and a cost recharged at cost, and the invoice is the only document that separates them.
 </Tip>
+
+Open Therapy can't advise you on tax. Your accountant can, and the fee invoice is the document to hand them.

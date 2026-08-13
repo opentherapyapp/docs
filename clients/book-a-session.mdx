@@ -1,10 +1,10 @@
 ---
 title: "Book a session"
 description: "Choose a service, time and session mode, then pay. What's collected, what's confirmed, and what happens if payment is slow."
-keywords: ["book", "booking", "checkout", "session", "appointment", "confirmation"]
+keywords: ["book", "booking", "checkout", "session", "appointment", "confirmation", "gift card"]
 ---
 
-Booking runs from the panel on a therapist's profile through a two-step checkout. You need an account.
+Booking runs from the panel on a therapist's profile through a two-step checkout. You need an account, and you can make one inside the checkout without leaving it.
 
 ## Choose your slot
 
@@ -14,51 +14,64 @@ Booking runs from the panel on a therapist's profile through a two-step checkout
     differently from a review session.
   </Step>
   <Step title="Pick how you'll meet">
-    Online, in person, or a home visit, from whichever the therapist offers.
+    Online, in person, or a home visit, from whichever the therapist offers. Changing this clears your
+    time, because it moves the appointment.
   </Step>
   <Step title="Pick where">
-    For in-person work, which clinic. For a home visit, your suburb. If you're outside their usual
-    travel area there's an option for that too — they'll confirm before the visit.
+    For in-person work, which clinic. For a home visit, your suburb — or **Somewhere else** if you're
+    outside their usual round, in which case message them before booking.
   </Step>
   <Step title="Pick a date and time">
-    Times are grouped into **Morning**, **Afternoon** and **Evening**.
+    Times sit on the hour and are grouped into **Morning**, **Afternoon** and **Evening**, shown in your
+    own timezone with the zone named underneath.
   </Step>
 </Steps>
+
+<Frame caption="You work down the panel in order, and only the days with times left are selectable">
+  <img src="/images/profile-booking-panel.webp" width="758" height="1824" alt="The booking panel with a list of services and their durations and prices, an Online and In person toggle, and an August calendar where unavailable days are greyed out, under the line Select a date to see Sarah's open times" />
+</Frame>
+
+If the therapist offers a Medicare rebate on that service, the panel also shows **Your gap with a Medicare care plan** under the price.
 
 ## Checkout
 
 ### Step 1 — your details
 
-Your phone number, which is optional, and **What would you like to work on?**, also optional. That second box goes to the therapist before the session. You don't have to fill it in.
+Your phone number, which is optional, and **What would you like to work on?**, also optional — that box goes to the therapist before the session. There's a **Gift card code** field here too.
+
+If your therapist publishes a sliding scale, you'll see it offered as a choice between the standard fee and their reduced bands, each with the household income it's for. Nothing is checked and you won't be asked for paperwork.
 
 <Info>
-  There's no guest checkout. An account is how you get your receipts, your documents and your video
-  link — and how the therapist knows who they're seeing. If you sign in from here, your chosen time is
-  held and you come straight back to it.
+  No account yet? The signup happens in this page: your name, your email, and a six-digit code, with the
+  card form appearing underneath. See [Create an
+  account](/clients/create-an-account#signing-up-during-a-booking).
 </Info>
 
 ### Step 2 — payment
 
-Your card is charged now, and the money is held until the session happens.
+Your card is charged in full now, and the money is held until the session happens. If you've paid on Open Therapy before, your saved cards appear here.
 
-The summary beside the form shows the therapist, service, duration, when, how, where, and the total, plus a **Change service or time** link and the cancellation policy in one line.
+The summary beside the form shows the therapist, service, duration, when, how, where and the total, a **Change service or time** link, and the cancellation terms in one line. Where a gift card or a reduced fee has brought the total down, it says so and names the original price.
 
 <Warning>
-  Your slot isn't held until you pay. If you leave checkout to think about it, someone else can take
-  the time.
+  Your slot isn't held until you pay. If you leave checkout to think about it, someone else can take the
+  time.
 </Warning>
+
+If a gift card covers the whole fee, there's nothing to pay and you go straight to the confirmation.
 
 ## Booking rules
 
-| Rule | Value |
+| | |
 |---|---|
-| Minimum notice | 1 hour before the session starts |
-| Furthest ahead you can book | 365 days |
-| Price and duration | Set by the therapist, applied server-side |
+| Minimum notice | **24 hours** before the session starts, by default |
+| Furthest ahead you can book | **2 months**, by default |
+| Slot length | On the hour |
+| Price and duration | Set by the therapist and applied server-side |
 
-Two people can't buy the same hour. If a slot goes while you're at checkout you'll be told, rather than double-booked.
+Both defaults are the therapist's to change, along with any gap they want either side of a session. The calendar in the booking panel will page further ahead than the booking window, but there'll be no times on those days.
 
-If you reload the payment page, you're returned to the same payment rather than charged twice.
+Two people can't buy the same hour. If a slot goes while you're at checkout you'll be told — *"That time was just taken. Choose another slot."* — rather than double-booked. Reloading the payment page returns you to the same payment rather than charging you twice.
 
 ## Confirmation
 
@@ -67,27 +80,32 @@ If you reload the payment page, you're returned to the same payment rather than 
     You'll see the therapist, service, when, how, where and what you paid, with links to your sessions
     and to what happens next.
 
-    You'll get an email with your confirmation, the video link or address, and the therapist's
-    cancellation terms in writing.
+    Your confirmation email carries the video link or the address, and the therapist's cancellation
+    terms in writing.
   </Tab>
   <Tab title="Confirming your payment">
-    Some payment methods take a few seconds to settle, so you may briefly see **Confirming your
-    payment**. You can close the page — the confirmation is emailed either way, and nothing is charged
+    Some payment methods take a few seconds to settle, so you may briefly see the booking still
+    confirming. You can close the page — the confirmation is emailed either way and nothing is charged
     twice. The page refreshes itself while it waits.
   </Tab>
 </Tabs>
 
-What you get depends on how you're meeting:
+What arrives depends on how you're meeting:
 
 | Mode | What arrives |
 |---|---|
-| Online | An encrypted video link. The room opens ten minutes before the start, and it's the same link every time. |
-| In person | The clinic address and arrival notes. |
-| Home visit | Confirmation of your street address before the visit. |
+| Online | An encrypted video link. The room opens ten minutes before the start, and it's the same link every time |
+| In person | The clinic address and arrival notes |
+| Home visit | Your street address confirmed before the visit |
 
-## If the therapist can't take payment yet
+## When you can't book
 
-If a therapist hasn't finished setting up payments, you'll see a message saying so, with an invitation to message them instead. It isn't a fault on your side and it doesn't affect your account.
+| | |
+|---|---|
+| **The therapist isn't taking new clients** | Their profile offers a waitlist instead, or says plainly that they're closed |
+| **Payments aren't set up on their side** | You'll be told, and invited to message them. Nothing is wrong with your account |
+| **The care type isn't open yet** | Only Psychology and Counselling can be booked today. Other care types offer a waitlist — see [Care types](/care-types) |
+| **They arrange work by the hour** | Support work is requested rather than booked, below |
 
 ## Booking with a support worker
 
@@ -100,6 +118,6 @@ Disability support workers are engaged by the hour on a roster rather than booke
     When you're charged, what appears on your statement, and refunds.
   </Card>
   <Card title="Cancellations" icon="calendar-x" href="/clients/cancellations-and-refunds" horizontal>
-    The windows and what a late cancellation costs.
+    Moving a session, the windows, and what a late cancellation costs.
   </Card>
 </Columns>

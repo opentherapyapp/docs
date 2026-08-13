@@ -1,119 +1,134 @@
 ---
 title: "Fees"
 description: "What clients pay, what therapists pay, and exactly how a session fee is divided."
-keywords: ["fees", "pricing", "platform fee", "introduction fee", "commission", "GST"]
+keywords: ["fees", "pricing", "introduction fee", "commission", "GST", "group commission"]
 ---
 
-One rule sits above everything on this page: **clients pay the therapist's published price and nothing more.** There is no booking fee, no service charge and no surcharge. Every Open Therapy fee comes out of the therapist's payout.
+Two rules sit above everything on this page.
+
+**Clients pay the therapist's published price and nothing more.** No booking fee, no service charge, no surcharge.
+
+**Open Therapy takes no percentage of a one-to-one session.** There is no commission on the hour. The introduction fee is charged once, the first time a client books with a therapist, and never again for that pair.
 
 ## What a client pays
 
-The price shown on the profile. That's the whole answer.
+The price shown on the profile. That is the whole answer.
 
-Because therapy is GST-free health care in Australia, a client's session invoice carries no GST. See [Paying for sessions](/clients/paying-for-sessions).
+Therapy is GST-free health care in Australia, so a client's session invoice carries no GST. See [Paying for sessions](/clients/paying-for-sessions).
 
 ## What a therapist pays
 
-Listing on Open Therapy is free. There is no monthly fee, no seat licence and no minimum. Four things come off a session, and only when there is a session.
+Listing is free — no monthly fee, no seat licence, no minimum. Three things come off a session, and only when there is a session.
 
 | Deduction | Amount | When |
 |---|---|---|
-| Platform fee | **2.5%** of the session | Every session |
-| Introduction fee | **\$20–\$75**, by discipline | Once per new client, ever |
+| Listing | **\$0** | Forever |
+| Introduction fee | **\$70–\$120**, by discipline | Once per new client, ever |
 | Card processing | Stripe's actual cost | Every paid session |
-| GST | **10%** on Open Therapy's two fees | With those fees |
+| GST | **10%** on the introduction fee | With that fee |
 
 <Note>
-  Card processing is passed through at cost. Open Therapy doesn't mark it up. Before a payment exists,
-  it's quoted using Stripe's published Australian domestic rate of **1.7% + 30c**, but what's deducted
-  is whatever Stripe actually charged for that specific card, read from the transaction.
+  Card processing is passed through at cost, never marked up. Before a payment exists it's quoted
+  using Stripe's published Australian domestic rate of **1.7% + 30c**, but what's deducted is
+  whatever Stripe actually charged for that particular card, read from the transaction.
 </Note>
 
 ### The introduction fee
 
-A one-off that pays for the match rather than the hour. It's charged the first time a particular client books with a particular therapist, and never again for that pair — not on the second session, not on the two hundredth.
+A one-off that pays for the match rather than the hour. It's charged the first time a particular client books with a particular therapist, and never again for that pair — not on the second session, not on the two hundredth. A client who sees two therapists generates two introduction fees, one for each.
+
+Fees are quoted ex-GST, with 10% added on top.
 
 | Discipline | Introduction fee |
 |---|---|
-| Psychiatrist | \$75 |
-| Clinical Psychologist | \$50 |
-| Psychologist | \$45 |
-| Occupational Therapist | \$40 |
-| Speech Pathologist | \$40 |
-| Dietitian & Eating Disorder Specialist | \$35 |
-| Accredited Exercise Physiologist | \$30 |
-| Behaviour Support Practitioner | \$30 |
-| Chiropractor | \$30 |
-| Developmental Educator | \$30 |
-| Osteopath | \$30 |
-| Physiotherapist | \$30 |
-| Podiatrist | \$30 |
-| Counsellor | \$25 |
-| Registered Music Therapist | \$25 |
-| Disability Support Worker | \$20 |
-| Anything else | \$25 |
+| Psychiatrist | \$120.00 |
+| Psychologist | \$90.00 |
+| Clinical Psychologist | \$90.00 |
+| Counsellor | \$70.00 |
+| Speech Pathologist | \$70.00 |
+| Occupational Therapist | \$70.00 |
+| Physiotherapist | \$70.00 |
+| Any other discipline | \$90.00 |
 
 Two cases where it isn't charged at all:
 
 <Columns cols={2}>
   <Card title="Clients you brought yourself" icon="link">
     Anyone who arrives through your own `opentherapy.link` profile carries no introduction fee. We
-    didn't make that introduction, so we don't charge for it.
+    didn't make that introduction, so we don't charge for it. See [Your booking
+    link](/therapists/your-booking-link).
   </Card>
   <Card title="Sessions that can't carry it" icon="shield-check">
-    The introduction fee is capped at whatever is left after processing, the platform fee and GST. A
-    cheap first session nets you nothing rather than putting you in debt to us.
+    The fee is capped at whatever the session has left after card processing and the GST on our own
+    fee. A cheap first session nets you nothing rather than putting you in debt to us, and a free
+    session carries no fees at all.
   </Card>
 </Columns>
 
 ## A worked example
 
-A psychologist charging **\$180** for a 50-minute session, paid by card.
+A psychologist charging **\$180** for a 50-minute session, paid by an Australian card.
 
 <Tabs>
   <Tab title="First session with a new client">
     | Line | Amount |
     |---|---|
     | Client pays | \$180.00 |
-    | Platform fee (2.5%) | −\$4.50 |
-    | Introduction fee (Psychologist) | −\$45.00 |
+    | Introduction fee (Psychologist) | −\$90.00 |
+    | GST on the introduction fee | −\$9.00 |
     | Card processing | −\$3.36 |
-    | GST on Open Therapy's fees | −\$4.95 |
-    | **You receive** | **\$122.19** |
+    | **You receive** | **\$77.64** |
 
-    Total deducted: \$57.81, or 32.1% — almost all of it the one-off introduction.
+    Total deducted: \$102.36, or 56.9% — almost all of it the one-off introduction.
   </Tab>
   <Tab title="Every session after that">
     | Line | Amount |
     |---|---|
     | Client pays | \$180.00 |
-    | Platform fee (2.5%) | −\$4.50 |
     | Introduction fee | \$0.00 |
     | Card processing | −\$3.36 |
-    | GST on Open Therapy's fees | −\$0.45 |
-    | **You receive** | **\$171.69** |
+    | **You receive** | **\$176.64** |
 
-    Total deducted: \$8.31, or 4.6%.
+    Total deducted: \$3.36, or 1.9% — card processing and nothing else.
   </Tab>
 </Tabs>
 
-Over a course of care, the blended rate lands under 10%. The first session is where Open Therapy earns; the rest is close to cost.
+The first session is where Open Therapy earns and every one after it is close to cost, so the rate you actually pay depends on how long clients stay rather than on any published percentage:
+
+| | |
+|---|---|
+| Six sessions with one new client | \$1,080.00 collected, \$119.16 deducted — **11.0%** |
+| Twelve sessions with one new client | \$2,160.00 collected, \$139.32 deducted — **6.5%** |
+
+## Group programs are the one place a percentage applies
+
+A group enrolment carries a flat **15%** commission plus GST. There is no introduction fee on a group place, and card processing is **not** passed through — Open Therapy absorbs Stripe's cost on group enrolments.
+
+One place on a course priced at \$240.00:
+
+| Line | Amount |
+|---|---|
+| Client pays | \$240.00 |
+| Commission (15%) | −\$36.00 |
+| GST on the commission | −\$3.60 |
+| Card processing | \$0.00 |
+| **You receive** | **\$200.40** |
+
+See [Running a group program](/therapists/groups).
 
 ## GST
 
-GST is shown as its own line rather than folded into the percentages, so your invoice reflects what was actually remitted instead of implying the commission was 2.75%.
+GST is shown as its own line rather than folded into a percentage, so your invoice reflects what was actually remitted.
 
 - **The session** is GST-free. Health services of this kind aren't taxable.
-- **Open Therapy's platform and introduction fees** are quoted ex-GST with 10% added on top.
+- **Open Therapy's fees** are quoted ex-GST with 10% added on top.
 - **Card processing** arrives GST-inclusive, because Australian card fees are published that way. Its tax is carved back out for the invoice rather than added again.
 
 ## Fee changes never re-price the past
 
-Every settlement stores the rate charged at the time it was made. If a rate changes tomorrow, it applies to new sessions only — it cannot re-price what you earned yesterday.
+Every settlement stores the rates charged at the time it was made. If a rate changes tomorrow it applies to new sessions only — it cannot re-price what you earned yesterday.
 
-## Membership discounts don't come out of your fee
-
-Open Therapy+ members get a discount on sessions. That discount comes out of Open Therapy's margin, not the therapist's fee. No therapist opts in, and nobody is paid less for taking a member's booking. See [Membership](/clients/membership).
+That is also why a **platform fee** line still exists in the product. It was a percentage of every session and it has been retired: the rate is zero. It appears on a statement only if that statement is old enough to have paid one, and it is never charged on a new session.
 
 ## Related
 
