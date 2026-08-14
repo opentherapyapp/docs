@@ -67,6 +67,11 @@
      settled on for cards, which is larger than radius + 8px. */
   --ot-radius: 1rem;
   --ot-radius-lg: 1.75rem;
+
+  /* The air around any block set into the prose — a card grid, a screenshot, a
+     table, a callout. One value, so no two blocks sit closer to each other than
+     the space inside either of them. */
+  --ot-block-gap: 2rem;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -84,25 +89,26 @@ body {
  * Headings are ink, not brand. This is the single most visible thing the
  * redesign changed: the teal wordmark-coloured heading gave way to near-black
  * set tight, with teal kept for the things you can click.
+ *
+ * Scoped to #content-area, which is the page title and the article and nothing
+ * else. The chrome reuses every heading level for labels that are not display
+ * type: the sidebar's group headers are h3, and "On this page" above the table
+ * of contents is an h2 — a 14px label that was being set at 650 with display
+ * tracking and a 1.05 line, which closed the gap between it and the first
+ * entry underneath to nothing.
  */
-h1,
-h2,
-h3,
-h4 {
+#content-area :is(h1, h2, h3, h4) {
   color: var(--ot-ink) !important;
 }
 
 /* 650, not 700 — Switzer's bold closes up at display sizes. */
-h1,
-h2 {
+#content-area :is(h1, h2) {
   font-weight: 650 !important;
   letter-spacing: -0.03em;
   line-height: 1.05;
 }
 
-/* The sidebar and other chrome reuse h3; only style headings in the article. */
-main h3,
-main h4 {
+#content-area :is(h3, h4) {
   font-weight: 600;
   letter-spacing: -0.02em;
 }
@@ -113,8 +119,76 @@ main strong {
 }
 
 /* -------------------------------------------------------------------------- */
+/* Rhythm — a block gets the same air on every side of it, and a heading owns  */
+/* the space above it rather than splitting it with the section before         */
+/* -------------------------------------------------------------------------- */
+
+/*
+ * The theme spaces the whole article on the paragraph step, 16–20px, whatever
+ * the thing being spaced is. That reads as tight the moment two solid blocks
+ * meet: a card grid landed 16px under the prose above it and flush against the
+ * screenshot below it, with the two rounded edges touching.
+ *
+ * Every non-text block Mintlify renders into the article arrives as a div —
+ * card grid, the wrapper around a frame, the table's scroll container, callout,
+ * steps, accordion group — so one rule reaches all of them, and anything added
+ * later. Running text is untouched: a paragraph is a bare span with no <p>
+ * around it, and the theme's 1.25em step is the right step for prose. It was
+ * only ever the blocks between the paragraphs that were tight.
+ *
+ * Adjacent margins collapse, so two blocks in a row are separated by the gap
+ * once rather than twice, and the figure is the same whether a block follows a
+ * paragraph or another block.
+ */
+#content > div {
+  margin-block: var(--ot-block-gap);
+}
+
+/* The article's own top and bottom are the container's, and size containment on
+   it means a first or last child's margin adds to them rather than collapsing
+   into them. */
+#content > div:first-child {
+  margin-top: 0;
+}
+
+#content > div:last-child {
+  margin-bottom: 0;
+}
+
+/* A block a heading introduces belongs to that heading, and sits nearer to it
+   than two consecutive blocks sit to each other. */
+#content > :is(h2, h3, h4) + div {
+  margin-top: 1.5rem;
+}
+
+/*
+ * Section headings. The step between levels is what marks the level: an h2
+ * opens with twice the block gap above it, an h3 with one and a half, and each
+ * sits close to the copy it heads. The theme gave h2 and h3 the same 48px and
+ * left the reader to tell them apart on size alone.
+ */
+#content > h2 {
+  margin-top: 4rem;
+  margin-bottom: 1.25rem;
+}
+
+#content > h3 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+#content > h4 {
+  margin-top: 2.25rem;
+  margin-bottom: 0.875rem;
+}
+
+#content > :is(h2, h3, h4):first-child {
+  margin-top: 0;
+}
+
+/* -------------------------------------------------------------------------- */
 /* Sidebar — the app's workspace nav sits on the page surface with no fill and */
-/* marks the current page with a solid ink pill                               */
+/* marks the current page in ink                                              */
 /* -------------------------------------------------------------------------- */
 
 #sidebar {
@@ -126,10 +200,46 @@ main strong {
   color: var(--ot-ink);
 }
 
+/* The theme marks the current page with the primary colour, on both the label
+   and the rail beside it. Teal is for things you can click, and the page you
+   are already on isn't one, so the mark is ink like the heading it names. */
+#sidebar a[aria-current="page"] {
+  color: var(--ot-ink);
+  border-color: var(--ot-ink);
+}
+
 /* The pinned links at the foot of the sidebar carry their own solid surface. */
 #sidebar > ul {
   background-color: transparent !important;
   border-top-color: var(--ot-hairline) !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Table of contents — the same mark as the sidebar, on the heading you are at */
+/* -------------------------------------------------------------------------- */
+
+/* The theme sets the list straight under the "On this page" label with nothing
+   between them, so the label read as the first entry rather than as the thing
+   naming the list. */
+#table-of-contents h2 {
+  margin-bottom: 0.75rem;
+}
+
+/* An entry is a link with a rail beside it, and it needs room around the text
+   for that rail to read as marking one line rather than boxing several. */
+#table-of-contents a {
+  padding-block: 0.375rem;
+}
+
+/* The rail sits on the anchor at the top level and on the item once the list
+   nests, so both need saying. */
+#table-of-contents li[data-active],
+#table-of-contents li[data-active] > a {
+  border-color: var(--ot-ink);
+}
+
+#table-of-contents li[data-active] > a {
+  color: var(--ot-ink);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -151,6 +261,10 @@ main strong {
   border-radius: var(--ot-radius) !important;
   border: 0 !important;
   color: var(--ot-ink);
+  /* The theme's 16px/20px was set for a bordered box. A solid pastel block at
+     this radius needs the copy held further off the corner. */
+  padding: 1.25rem 1.5rem !important;
+  gap: 0.875rem !important;
 }
 
 /* Mintlify tints the body text to match each callout's default hue. The copy
@@ -209,6 +323,21 @@ main strong {
   transition: transform 0.2s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
+/*
+ * The grid's own gap, once. The theme sets 16px between columns and then hangs
+ * a further 8px above and below each tile, so a row of tiles was 16px apart
+ * across and 32px apart down — and at this radius 16px is too little either
+ * way, because two curves that close read as further apart than two flat edges
+ * the same distance apart.
+ */
+#content :is(.card-group, .columns) {
+  gap: 1.5rem;
+}
+
+#content :is(.card-group, .columns) > .card {
+  margin-block: 0;
+}
+
 /* The app's shared curve, described in its stylesheet as the iOS sheet ease. */
 .card:hover {
   transform: translateY(-2px);
@@ -254,7 +383,7 @@ main strong {
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.25;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.375rem;
 }
 
 .card [data-component-part="card-content"],
@@ -263,7 +392,7 @@ main strong {
 }
 
 .card [data-component-part="card-content-container"] {
-  padding: 1.5rem;
+  padding: 1.75rem;
 }
 
 /*
@@ -297,12 +426,52 @@ main strong {
 /* rounded panel, never a floating drop-shadowed rectangle                     */
 /* -------------------------------------------------------------------------- */
 
+/*
+ * The panel takes its width from the shot rather than the column. The theme's
+ * figure is `p-2` over a fill, which ringed every image in a gutter of that
+ * fill — and because a shot is drawn at its own width, not stretched to the
+ * column, a narrow one like the workspace sidebar sat in a field of it. Flush
+ * to the edge on all four sides, and the fill kept for the caption band below,
+ * which is the one part of the panel that isn't the picture.
+ *
+ * The curve is --ot-radius, not the larger card one: the panel's edge is now
+ * the shot's own edge, and a screenshot is a picture of a piece of UI drawn to
+ * the app's radius. The card curve only read as right while the image sat
+ * inset within a wider mount.
+ */
 #content-area .frame,
 #content-area [data-component-part="frame"] {
-  border-radius: var(--ot-radius-lg);
+  width: fit-content;
+  /* Width from the shot stops at the column. A shot drawn narrower than the
+     column is still wider than a phone's, and `fit-content` alone would size
+     the panel past the column and take the page into sideways scroll. */
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 0;
+  border-radius: var(--ot-radius);
   border: 1px solid var(--ot-hairline);
-  background-color: var(--ot-sunken);
+  background-color: var(--ot-surface);
   overflow: hidden;
+}
+
+/*
+ * The theme lays two absolutely positioned decorations over the whole figure: a
+ * tiled graph-paper SVG, and a second hairline ring at its own smaller radius
+ * inside ours. The grid was the texture visible in the gutter, and it is a
+ * drawing, which is the one kind of picture this site doesn't use. The ring
+ * gave every corner two curves at once.
+ */
+#content-area .frame > div.absolute,
+#content-area [data-component-part="frame"] > div.absolute {
+  display: none;
+}
+
+/* The image wrapper carries a curve of its own, which clipped the shot's
+   corners inside the panel's and left a crescent of fill showing between the
+   two. One curve, on the panel, with its overflow doing the clipping. */
+#content-area .frame > div,
+#content-area [data-component-part="frame"] > div {
+  border-radius: 0;
 }
 
 #content-area .frame img,
@@ -313,14 +482,27 @@ main strong {
 }
 
 /* The caption under a shot is secondary to it, and reads as a label rather
-   than as prose that happens to sit there. */
+   than as prose that happens to sit there. The band is --ot-sunken, which is
+   the same grey the app draws its own page on, so under a full-page shot it
+   continues the body of the screenshot instead of interrupting it.
+
+   Width comes from the shot above: `min-content` keeps a long caption out of
+   the panel's intrinsic width, which would otherwise stretch a narrow shot's
+   panel to the length of its longest caption line and hand back the gutter.
+   `min-width` then fills whatever width the shot settled on. */
 #content-area .frame figcaption,
 #content-area [data-component-part="frame"] figcaption {
+  width: min-content;
+  min-width: 100%;
+  /* The theme rounds the caption too, which set the band's top corners curving
+     away from the panel's straight sides. The panel owns every curve here. */
+  border-radius: 0;
   color: var(--ot-ink-subtle);
   font-size: 0.8125rem;
   letter-spacing: -0.005em;
-  padding: 0.75rem 1rem;
+  padding: 0.875rem 1.25rem;
   margin: 0;
+  background-color: var(--ot-sunken);
   border-top: 1px solid var(--ot-hairline);
 }
 
@@ -348,12 +530,12 @@ main table thead th {
   font-weight: 600;
   letter-spacing: -0.02em;
   border: 0 !important;
-  padding: 0.75rem 1rem;
+  padding: 0.875rem 1.25rem;
 }
 
 main table tbody td {
   border: 0 !important;
-  padding: 0.75rem 1rem;
+  padding: 0.875rem 1.25rem;
   color: var(--ot-ink-muted);
 }
 
@@ -424,17 +606,12 @@ main figure img {
   height: auto;
 }
 
-/* Narrow shots are centred rather than ragged against the left margin. */
+/* The theme's figure is a flex row, which would set the caption beside the shot
+   rather than under it. Centring a narrow shot is the panel's own margin. */
 main figure {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-/* A rail or a phone is a picture of a piece of UI, and the app's own hairline is
-   the right edge for it. A full-page shot already has its own edges. */
-main figure img {
-  border-radius: var(--ot-radius);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -448,6 +625,14 @@ main figure img {
 
 .accordion-group summary {
   background-color: var(--ot-sunken);
+  padding: 1.125rem 1.25rem;
+}
+
+/* An open panel's copy sat 8px under the row that opened it, which is closer
+   than the two lines of that copy are to each other. */
+.accordion-group summary + div {
+  margin-top: 0.75rem;
+  margin-bottom: 1.5rem;
 }
 
 .accordion-group summary:hover {
@@ -458,8 +643,10 @@ main figure img {
   color: var(--ot-ink);
 }
 
-.steps svg {
-  color: var(--ot-ink);
+/* One step to the next, matched to the block gap: a step is a block of its own,
+   not another paragraph. */
+.steps .step {
+  padding-bottom: var(--ot-block-gap);
 }
 
 /* The step number is a chip, and a chip is one of the two places the app still
@@ -467,6 +654,13 @@ main figure img {
 .steps [class*="step-indicator"] {
   background-color: var(--ot-ink) !important;
   color: var(--ot-surface) !important;
+}
+
+/* A step given an icon gets an empty svg painted through a mask rather than a
+   number, so the glyph takes its colour from background-color — color and fill
+   do nothing to it, and the default near-black leaves an unreadable disc. */
+.steps [class*="step-indicator"] svg {
+  background-color: var(--ot-surface) !important;
 }
 
 .steps .step > div > p {
@@ -490,20 +684,32 @@ main :not(pre) > code {
   border-radius: 0.375rem;
 }
 
-/* Cards restyle their own contents, so keep the underline out of them. */
-main p a,
-main li a,
-main td a {
+/*
+ * Scoped to #content, the MDX body, rather than to main. Mintlify renders a
+ * paragraph as a bare span with no <p> around it, so a rule written against
+ * `p a` matches nothing an author wrote — while `li a` reaches out of the
+ * article and paints the table of contents, which is chrome and sits in main
+ * too.
+ *
+ * Two kinds of link inside the article carry their own styling and are handed
+ * back: a card, which is a tile, and the permalink Mintlify hangs off every
+ * heading, which is a zero-width space and should stay invisible.
+ */
+#content a {
   color: var(--ot-brand);
   text-decoration-color: var(--ot-mint);
   text-underline-offset: 0.2em;
   text-decoration-thickness: 2px;
 }
 
-main p a:hover,
-main li a:hover,
-main td a:hover {
+#content a:hover {
   text-decoration-color: var(--ot-brand);
+}
+
+#content .card a,
+#content :is(h1, h2, h3, h4) a {
+  color: inherit;
+  text-decoration: none;
 }
 
 blockquote {

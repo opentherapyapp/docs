@@ -236,12 +236,6 @@ test.describe("public", () => {
     await shot(page, "browse-map");
   });
 
-  test("browse-filters", async ({ page }) => {
-    await page.goto("/browse");
-    await settle(page);
-    await shot(page, "browse-filters", { clip: "aside" });
-  });
-
   test("profile-booking-panel", async ({ page }) => {
     await page.goto("/therapists/sarah-chen");
     await settle(page);
@@ -306,15 +300,6 @@ test.describe("client workspace", () => {
   publicShot("client-preferences", "/workspace/preferences");
   publicShot("client-billing", "/workspace/billing");
   publicShot("client-settings", "/workspace/settings");
-
-  test("client-sidebar-nav", async ({ page }) => {
-    await page.goto("/workspace");
-    await settle(page);
-    // `nav` alone is the site header, so the rail is addressed through the
-    // layout's `aside`. It caps its own height at the viewport and scrolls
-    // inside that, hence the tall window: a short one crops the last group out.
-    await shot(page, "client-sidebar-nav", { clip: "aside > nav", height: 1400 });
-  });
 });
 
 /* -------------------------------------------------------------------------- */
@@ -342,12 +327,6 @@ test.describe("therapist workspace", () => {
   publicShot("therapist-waitlist", "/workspace/waitlist");
   publicShot("therapist-prompts", "/workspace/prompts");
   publicShot("therapist-settings", "/workspace/settings", { height: 1200 });
-
-  test("therapist-sidebar-nav", async ({ page }) => {
-    await page.goto("/workspace");
-    await settle(page);
-    await shot(page, "therapist-sidebar-nav", { clip: "aside > nav", height: 1400 });
-  });
 
   test("therapist-cancellation-policy", async ({ page }) => {
     await page.goto("/workspace/availability");
