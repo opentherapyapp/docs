@@ -1,37 +1,33 @@
 ---
 title: "Set up payouts"
-description: "Connect your Stripe account, understand the account states, and know when money reaches your bank."
+description: "Connect your Stripe account, and know when money reaches your bank."
 keywords: ["payouts", "stripe", "connect", "bank", "onboarding", "transfers"]
 ---
 
-Open Therapy pays you through Stripe. You need a connected account before clients can book you.
-
-Set it up under **Payouts** in your workspace.
+Open Therapy pays you through Stripe. You need a connected account before clients can book you. Set it up under **Payouts** in your workspace.
 
 ## You are the merchant of record
 
 Every payment is made on your behalf. Your name — not Open Therapy's — appears on the client's card statement, the charge settles in your country, and the interchange is priced as yours.
 
-Stripe only allows that for an account with a full payments capability, which is why onboarding asks for full verification and why an unverified account can't take a booking. The charge still lands on Open Therapy's balance and your share leaves later as an explicit transfer, because that's the only arrangement where the money can be held until the session has actually happened.
+Onboarding asks for full verification, and an unverified account can't take a booking. The charge lands on Open Therapy's balance, and your share leaves later as an explicit transfer.
 
 ## Setting up
 
 <Steps>
   <Step title="Start onboarding">
-    Select **Set up payouts with Stripe**. You'll be handed to Stripe. Have your ID and ABN with you —
-    it takes about ten minutes.
+    Select **Set up payouts with Stripe**. Have your ID and ABN with you — it takes about ten minutes.
   </Step>
   <Step title="Give Stripe your details">
-    Stripe collects and verifies your identity, your ABN and the bank account you want to be paid into.
-    Open Therapy stores a reference to your Stripe account and nothing else.
+    Stripe verifies your identity, your ABN and your bank account. Open Therapy stores a reference to
+    your Stripe account and nothing else.
   </Step>
   <Step title="Come back">
-    Stripe returns you to Open Therapy. The page waits a moment and asks Stripe directly rather than
-    showing you a stale answer — it says **Checking** while it does.
+    Stripe returns you to Open Therapy, showing **Checking** while it asks Stripe directly.
   </Step>
 </Steps>
 
-If Stripe still needs something, the page lists it in your words rather than Stripe's: *"A photo of your ID"*, *"Your ABN"*, *"Your bank account details"*, *"Accepting Stripe's terms"*. Anything unusual is shown in Stripe's own term, because that's what you'll need if you ring them.
+If Stripe still needs something, the page lists it in your words: *"A photo of your ID"*, *"Your ABN"*, *"Your bank account details"*, *"Accepting Stripe's terms"*. Anything unusual is shown in Stripe's own term.
 
 ## Account states
 
@@ -42,37 +38,33 @@ If Stripe still needs something, the page lists it in your words rather than Str
 | **Action needed** | Stripe needs something more before you can take bookings | The outstanding items are listed. Resolve them and come back |
 | **Active** | Fully verified | Take bookings and receive transfers |
 
-<Frame caption="An **Active** account, with **Change bank details** opening Stripe and a summary of what comes off">
+<Frame caption="An **Active** account, with **Change bank details** opening Stripe">
   <img src="/images/therapist-payouts.webp" width="2880" height="1800" style={{ width: 1440 }} alt="The Payouts screen badged Active, confirming you're verified by Stripe, that session payments reach you automatically and that Stripe pays your bank on the schedule you set, with Change bank details and See your earnings buttons, a four-step How you get paid panel, and a What comes off panel naming the one-off introduction fee, card processing at cost and GST on Open Therapy's fee" />
 </Frame>
 
 <Warning>
-  Clients cannot book you until your account is **Active**. Nothing announces this on your profile, so
-  an unfinished setup costs you bookings quietly. **Needs you** on your overview carries it as a task —
-  *"Finish setting up payouts. Until you do, nobody can book and pay you."*
+  Clients cannot book you until your account is **Active**, and nothing announces this on your
+  profile. **Needs you** on your overview carries it as a task — *"Finish setting up payouts. Until
+  you do, nobody can book and pay you."*
 </Warning>
 
 ## Changing your bank details
 
-Select **Change bank details**, which opens your Stripe dashboard. Bank details live with Stripe, not with Open Therapy, and so does your payout schedule.
+Select **Change bank details** to open your Stripe dashboard. Bank details and your payout schedule live with Stripe, not with Open Therapy.
 
 ## When you get paid
 
-Three stages, and it helps to keep them separate.
-
 <Steps>
   <Step title="The client pays at booking">
-    Your full session fee is taken at checkout and held. Nothing is divided yet, because the split
-    depends on what the card actually cost.
+    Your full session fee is taken at checkout and held.
   </Step>
   <Step title="Settlement — when the session is closed off">
-    Recording attendance divides the session into its fees and writes your net. Cancellations settle the
-    same way, against the cancellation fee rather than the price of the hour. See
+    Recording attendance divides the session into its fees and writes your net. Cancellations settle
+    against the cancellation fee rather than the price of the hour. See
     [Managing sessions](/therapists/managing-sessions#recording-attendance).
   </Step>
   <Step title="Transfer — on the next hourly pass">
     A scheduled pass runs every hour, on the hour, and moves each settled net to your Stripe balance.
-    Nothing pays out from a request, and nothing needs a second press from you.
   </Step>
 </Steps>
 
@@ -83,14 +75,11 @@ Stripe then pays your balance to your bank on the schedule you set in your Strip
   yours.
 </Note>
 
-The **How you get paid** panel on that screen still says a session is transferred *the day after* you
-mark it complete. That's out of date and reads slower than reality: the pass runs hourly, so a session
-closed off at 10am is usually transferred by 11. `payouts:transfer` in `vite.config.ts` is the schedule
-that actually governs it.
+The **How you get paid** panel still says a session is transferred *the day after* you mark it complete. That's out of date: the pass runs hourly, so a session closed off at 10am is usually transferred by 11. The schedule is `payouts:transfer` in `vite.config.ts`.
 
 ## Why a transfer might not have happened
 
-Five conditions have to hold before the pass will move a settlement, and it asks all five in one query so no other code path can hold a looser version of them:
+Five conditions have to hold before the pass will move a settlement:
 
 | | |
 |---|---|
@@ -100,21 +89,20 @@ Five conditions have to hold before the pass will move a settlement, and it asks
 | Transfers are enabled on your account | Stripe's verdict, not ours |
 | Your account isn't frozen | See below |
 
-The transfer is held against the specific charge that paid for the session, so it waits for those funds rather than drawing on anyone else's, and it's keyed on the settlement — a retry after a timeout can't pay you twice.
+The transfer is keyed on the settlement, so a retry can't pay you twice.
 
 <Note>
-  The one to watch is the third. Your share is worked out from the real processing fee, so a session
-  whose fee Stripe hasn't stated yet waits rather than being paid out on a guess. It shows on your
-  earnings screen under **Waiting on a Stripe fee**, and we ask Stripe again every hour.
+  The one to watch is the third. A session whose fee Stripe hasn't stated yet waits rather than being
+  paid out on a guess. It shows under **Waiting on a Stripe fee**, and we ask Stripe again every hour.
 </Note>
 
-A transfer that fails records Stripe's own words for why. That isn't picked up again by the hourly pass, so if a session sits unpaid with no obvious reason, write to [support@opentherapy.app](mailto:support@opentherapy.app) with the session date.
+A failed transfer records Stripe's own words for why, and isn't picked up again by the hourly pass. If a session sits unpaid, write to [support@opentherapy.app](mailto:support@opentherapy.app) with the session date.
 
 ## Frozen accounts
 
-A chargeback on any of your sessions freezes transfers across your whole account while it's open. That's a precaution, not a judgement about the session — Open Therapy carries the loss on a disputed payment, so freezing is the cheap and reversible move.
+A chargeback on any of your sessions freezes transfers across your whole account while it's open. It's a precaution, not a judgement about the session.
 
-You're emailed when it happens, and told plainly: *"Your payouts are paused while this is open."* A dispute that closes in your favour lifts the freeze and the next transfer includes anything held while it was open. One that goes against you doesn't lift it, and needs a person — write to [support@opentherapy.app](mailto:support@opentherapy.app).
+You're emailed: *"Your payouts are paused while this is open."* A dispute that closes in your favour lifts the freeze, and the next transfer includes anything held while it was open. One that goes against you doesn't lift it and needs a person — write to [support@opentherapy.app](mailto:support@opentherapy.app).
 
 See [Refunds and disputes](/therapists/refunds-and-disputes).
 
@@ -122,9 +110,9 @@ See [Refunds and disputes](/therapists/refunds-and-disputes).
 
 When money reaches your bank you get a **Payout** email: *"Your payout for August has been sent. Most banks show it within one to two business days."*
 
-That figure is your net earnings. Introduction fees and card processing were taken at settlement and are invoiced separately rather than netted invisibly, so your income and your costs stay legible at tax time. See [Invoices and tax](/therapists/invoices-and-tax).
+That figure is your net earnings; introduction fees and card processing were taken at settlement and are invoiced separately. See [Invoices and tax](/therapists/invoices-and-tax).
 
-If a payout is returned by your bank you're told that too, and the money goes back onto your Open Therapy balance rather than being lost. It's almost always the account details — a closed account, a mistyped BSB, or a name the bank won't match. Fix them in your Stripe dashboard and the next scheduled payout picks it up along with anything since.
+A payout returned by your bank is emailed to you too, and the money goes back onto your Open Therapy balance. It's almost always the account details — a closed account, a mistyped BSB, or a name the bank won't match. Fix them in your Stripe dashboard and the next payout picks it up along with anything since.
 
 ## Problems
 

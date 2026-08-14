@@ -1,10 +1,10 @@
 ---
 title: "Forms and measures"
-description: "Sending validated measures and your own forms, how answers come back scored, when they're due, and the client switch that governs what you see."
+description: "Sending measures and your own forms, how answers come back scored, and what you see."
 keywords: ["forms", "measures", "outcome measures", "PHQ-9", "GAD-7", "K10", "assignments", "flagged"]
 ---
 
-**Forms** in your workspace does two things: it sends questionnaires, and it collects the answers on the client's record already scored.
+**Forms** in your workspace sends questionnaires and collects the answers on the client's record already scored.
 
 ## The library
 
@@ -23,36 +23,31 @@ Ten scored instruments ship with the platform, reproduced as published.
 | **ASRS v1.1** | The six-question ADHD screen |
 | **PHQ-2** | The two-item depression screen |
 
-Filter by category or search by name. Each carries its attribution, which is reproduced with the questionnaire.
+Filter by category or search by name. Each carries its attribution.
 
 <Warning>
-  Measures are not editable. Changing an item invalidates the norms it was validated against, so the
-  library sends them as published. If you want something of your own, write a form.
+  Measures are not editable. Changing an item invalidates the norms it was validated against. If you
+  want something of your own, write a form.
 </Warning>
 
 ### Licensed instruments are deliberately absent
 
-The Beck inventories, the Y-BOCS, the ORS and the SRS are not in the library and won't be. Every instrument here is free to use in clinical practice. If you're licensed to use something else, you can reproduce it as a custom form under your own licence — that's your agreement with the publisher, not ours.
+The Beck inventories, the Y-BOCS, the ORS and the SRS are not in the library and won't be: every instrument here is free to use in clinical practice. Reproduce anything you're licensed for as a custom form under your own licence.
 
 ## Scoring comes from the registry
 
-You never type a score in, and neither does the client. Answers arrive as answers; the instrument turns them into a score, a severity band and, where the instrument defines one, a risk flag.
-
-That's why the measures are locked. One definition per instrument means two clients who answered the same questionnaire answered the same questionnaire, and a chart across four months is comparing like with like.
-
-Direction is part of the definition. A falling PHQ-9 and a rising WHO-5 are both drawn as improvement, so a trend line never reads backwards.
+You never type a score in, and neither does the client. The instrument turns answers into a score, a severity band and, where it defines one, a risk flag. One definition per instrument means a chart across four months compares like with like. Direction is part of the definition: a falling PHQ-9 and a rising WHO-5 are both drawn as improvement.
 
 <Note>
-  Open Therapy scores an instrument. It does not interpret one. A band is the instrument's label for
-  a range, not a finding about a person, and nothing on the platform tells you what to do about a
-  score.
+  Open Therapy scores an instrument. It does not interpret one, and nothing on the platform tells you
+  what to do about a score.
 </Note>
 
 ## Your own forms
 
 **New form** opens the builder. Questions can be scales, single or multiple choice, short or long text, a number, a date, a yes/no, or a section heading.
 
-Five editable starting points are in the library: **Intake questionnaire**, **Consent to treatment**, **Telehealth consent**, **Safety plan** and **Session feedback**. Copying one gives you a draft of your own. Publish a form before you send it.
+Five editable starting points sit in the library: **Intake questionnaire**, **Consent to treatment**, **Telehealth consent**, **Safety plan** and **Session feedback**. Copying one gives you a draft of your own. Publish a form before you send it.
 
 ## Sending one
 
@@ -61,8 +56,7 @@ Five editable starting points are in the library: **Intake questionnaire**, **Co
     From the measures library, your own forms, or the client's file.
   </Step>
   <Step title="Choose the client">
-    Only clients with an account can be sent a form. A record you filed for someone who has never
-    signed up has nowhere for a form to arrive — see [Client files](/therapists/client-files).
+    Only clients with an account can be sent a form — see [Client files](/therapists/client-files).
   </Step>
   <Step title="Choose how often">
     **Once**, **weekly**, **fortnightly**, **monthly** or **quarterly**. Fortnightly is the default.
@@ -72,31 +66,25 @@ Five editable starting points are in the library: **Intake questionnaire**, **Co
     ceiling of 260 occurrences.
   </Step>
   <Step title="Add a note (optional)">
-    Up to 1,000 characters, shown to the client with the form. Useful for saying why you've sent it.
+    Up to 1,000 characters, shown to the client with the form.
   </Step>
 </Steps>
 
-An occurrence stays **due** for the whole period it belongs to and only becomes **overdue** when the next one arrives. This week's form is due all week; last week's is late. A one-off form has a week's grace before it reads as late.
-
-Answers are matched to the occurrence they were due for, not the day they were submitted. A client catching up on Tuesday on the form that was due Sunday fills in Sunday's.
+An occurrence stays **due** for the whole period it belongs to and becomes **overdue** only when the next one arrives. A one-off form has a week's grace. Answers are matched to the occurrence they were due for, not the day they were submitted.
 
 ### Due dates don't move with the reader
 
-Almost every date on Open Therapy is rendered in the timezone of whoever is reading it. Form due dates are the exception: they stay on the portal's timezone for both of you.
-
-The reason is that a due date is a shared deadline rather than an event. If it moved with the reader, a form due Sunday would be Monday's problem for a client who travelled, and "due today" would mean two different days to two people talking about the same form.
+Almost every date on Open Therapy renders in the reader's timezone. Form due dates stay on the portal's timezone for both of you.
 
 ## Reading what comes back
 
-**Out with clients** lists live assignments. Anything with a flagged response is pulled to the top of the page under **Needs a look** — a self-harm item, or a risk question answered high.
+**Out with clients** lists live assignments. Anything with a flagged response — a self-harm item, or a risk question answered high — is pulled to the top of the page under **Needs a look**.
 
-<Frame caption="Flagged responses sit above everything else, with the score and band on the row">
+<Frame caption="Flagged responses sit above everything else">
   <img src="/images/therapist-forms.webp" width="2880" height="1800" style={{ width: 1440 }} alt="The Forms screen with a New form button, a Needs a look panel holding three flagged PHQ-9 assignments with their scores and severity bands, and an Out with clients list showing each assignment's cadence, how many have been answered, how many were missed and the latest score" />
 </Frame>
 
-A returned form appears on the client's **Measures** tab with the score, the change since last time, the severity band, the individual answers and a trend line.
-
-You're notified when a form comes back. A flagged response is announced differently to a plain completion, and that notification isn't something you can mute.
+A returned form appears on the client's **Measures** tab with the score, the change since last time, the severity band, the individual answers and a trend line. You're notified when one comes back, a flagged response differently to a plain completion, and that notification can't be muted.
 
 <Warning>
   A flag is a prompt to read the answers, not an alert anyone else receives. Open Therapy does not
@@ -106,9 +94,7 @@ You're notified when a form comes back. A flagged response is announced differen
 
 ## The client's sharing switch
 
-Clients control what their therapists see. One of those switches is labelled **Outcome measures**, described to them as *"Your treating therapists see the same K10 and GAD-7 scores you do."*
-
-It **defaults on**.
+Clients control what their therapists see. **Outcome measures** is described to them as *"Your treating therapists see the same K10 and GAD-7 scores you do."* It **defaults on**.
 
 If a client turns it off:
 
@@ -117,7 +103,5 @@ If a client turns it off:
 | You still see | That you sent the form, and that they answered |
 | You don't see | The score, the severity band, the answers, or the risk flag |
 | The notification becomes | A plain completion, with no indication that anything was flagged |
-
-That last row is deliberate. An escalated "needs a read" notification would disclose the flag the client just withheld.
 
 You can ask a client to turn it back on. You can't turn it on for them, and you won't be told when it changes.

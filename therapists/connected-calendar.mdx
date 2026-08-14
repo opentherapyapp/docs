@@ -1,6 +1,6 @@
 ---
 title: "Connected calendar"
-description: "Connect the calendar you already live in so nobody books over your other commitments, and subscribe to your Open Therapy sessions from it."
+description: "Connect your own calendar so nobody books over it, and subscribe to your sessions."
 keywords: ["calendar", "Google Calendar", "sync", "free/busy", "ICS feed", "double booking"]
 ---
 
@@ -15,31 +15,23 @@ Neither is required. Both can be on at once.
 
 ## Reading your calendar
 
-**Connect Google Calendar** under **Your own calendar** asks Google for one thing: the hours you are busy.
+**Connect Google Calendar** under **Your own calendar** asks Google for one thing: the hours you are busy. Google Calendar is the only provider — no Outlook, iCloud or CalDAV.
 
-Google Calendar is the only provider. There is no Outlook, iCloud or CalDAV connection.
-
-The Google account you connect doesn't have to be the account you sign in with, and connecting one doesn't change how you sign in. The calendar a therapist wants read is often not the account they signed up with.
+The Google account you connect doesn't have to be the account you sign in with, and connecting one doesn't change how you sign in.
 
 ### Free/busy only
 
-We request the free/busy scope, which returns intervals and nothing else. No title, no guests, no location, no description, no attachment, no organiser.
-
-That isn't a promise we're keeping by being careful. It's the scope we asked for, and the table the answer is stored in has no column for a title. A school pickup arrives as an hour, and it stays an hour.
-
-Disconnecting deletes what was stored.
+The free/busy scope returns intervals and nothing else: no title, no guests, no location, no description, no attachment, no organiser. Disconnecting deletes what was stored.
 
 ### What it does to your slots
 
-A busy hour closes that slot **for clients**. Nobody browsing your profile can take it.
-
-It does not stop **you**. When you book one of your own clients in, your connected calendar is deliberately not consulted. A therapist who says "Thursday at three" while something else sits at three is making a decision, not a mistake, and refusing it would be Open Therapy overruling you about your own week. Your grid still draws the busy hour, so the decision is an informed one.
+A busy hour closes that slot **for clients**. It does not stop **you**: your connected calendar isn't consulted when you book one of your own clients in, though your grid still draws the busy hour.
 
 Two things do still stop you: an existing Open Therapy session at the same time, and the buffer you keep between sessions.
 
 ### Sync runs hourly
 
-A pass reads a window of your calendar and rewrites it whole. Nothing has to be pushed to us for the picture to be right — an appointment moved, shortened, declined or deleted simply isn't in the next answer, and the hour comes back onto the market with it.
+A pass reads a window of your calendar and rewrites it whole, so an appointment moved, shortened, declined or deleted isn't in the next answer, and the hour comes back onto the market.
 
 | | |
 |---|---|
@@ -50,30 +42,26 @@ A pass reads a window of your calendar and rewrites it whole. Nothing has to be 
 The panel says when the calendar was last checked and how many things on it are holding hours.
 
 <Info>
-  There's no "sync now" button, and no live push from Google. An hour of lag is the deliberate trade
-  — the alternative needs a renewed notification channel per therapist and a public endpoint that
-  has to treat every caller as unverified, to close a gap your own grid already shows you.
+  There's no "sync now" button, and no live push from Google.
 </Info>
 
 ### When a conflict appears after a booking
 
-A session that's already booked stays booked. Busy hours close slots that haven't been taken; they never cancel something that has.
+A booked session stays booked. Busy hours close slots that haven't been taken; they never cancel one that has.
 
-So if you accept a meeting that lands on top of an existing session, Open Therapy will not move or cancel that session, and the client is told nothing. It's yours to resolve: reschedule the session, or move the other thing. See [Managing sessions](/therapists/managing-sessions).
+If you accept a meeting on top of an existing session, the client is told nothing and it's yours to resolve: reschedule the session, or move the other thing. See [Managing sessions](/therapists/managing-sessions).
 
 ### If the connection breaks
 
-A grant can be withdrawn — in your Google account, or by Google. When that happens the connection stops refreshing and the panel shows the error. Reconnect from the same place. Nothing else can fix it for you, and your published availability goes back to being governed by your hours alone until you do.
+A grant can be withdrawn, in your Google account or by Google. The connection then stops refreshing and the panel shows the error. Reconnect from the same place; until you do, your published availability is governed by your hours alone.
 
 ## Publishing your sessions out
 
-**Calendar feed** gives you a URL to subscribe to from Google Calendar, Apple Calendar, Outlook or anything else that takes an ICS feed. Your sessions appear in the calendar you actually look at.
+**Calendar feed** gives you a URL to subscribe to from Google Calendar, Apple Calendar, Outlook or anything else that takes an ICS feed. It is one-way and read-only: editing an event in your calendar app changes nothing here, and deleting one doesn't cancel a session.
 
-It is one-way and read-only. Editing an event in your calendar app changes nothing here, and deleting one doesn't cancel a session.
+The feed carries the time, the service and a first name, and travels as a URL with a random token in it, so anyone holding it can read the feed.
 
-The feed says as little as it can: the time, the service, and a first name. It travels as a URL with a random token in it, which is a password in a link — anyone holding it can read the feed.
-
-**Rotate** issues a new URL and breaks the old one immediately. Do that if the link has been shared, indexed, or added to a calendar you no longer control, then re-subscribe with the new one.
+**Rotate** issues a new URL and breaks the old one immediately. Do that if the link has been shared, indexed, or added to a calendar you no longer control, then re-subscribe.
 
 <Warning>
   A subscribed feed sits in whatever account you added it to. Adding it to a shared or work calendar

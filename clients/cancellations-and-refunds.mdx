@@ -1,12 +1,12 @@
 ---
 title: "Cancellations and refunds"
-description: "The four cancellation policies, what moving or cancelling costs, and how refunds are returned."
+description: "The four cancellation policies, what cancelling costs, and how refunds are returned."
 keywords: ["cancel", "cancellation", "refund", "no-show", "late fee", "policy", "reschedule"]
 ---
 
-Cancellation terms belong to the therapist, not to Open Therapy. Each one picks from four policies, and whichever they pick is what appears at checkout, in your confirmation email and on your session row — because it's what the system actually charges.
+Cancellation terms belong to the therapist. Each one picks from four policies, and their pick appears at checkout, in your confirmation email and on your session row.
 
-The terms are copied onto your session when you book, so a therapist changing policy later doesn't change the deal on a session you already have.
+Terms are copied onto your session when you book, so a policy change later doesn't change a session you already have.
 
 ## The four policies
 
@@ -20,45 +20,40 @@ The terms are copied onto your session when you book, so a therapist changing po
 **Standard** is the default and the most common.
 
 <Note>
-  Flexible has a twelve-hour window in the table behind it, but its late fee is zero — so the window
-  decides nothing and you'll never see it quoted. The product shows two rows for Flexible rather than
-  three, because printing "no fee" on both sides of a deadline reads as a mistake rather than as
-  generosity. In one line: *"Cancel whenever you need to, no fee. A missed session is charged at 50%."*
+  Flexible has a twelve-hour window behind it, but its late fee is zero, so you'll never see it
+  quoted. In one line: *"Cancel whenever you need to, no fee. A missed session is charged at 50%."*
 </Note>
 
 Some therapists charge nothing for anything, including a missed session. Theirs reads *"Cancel whenever you need to — no fee, and none for a missed session."*
 
-A session booked before policies existed carries no terms at all. Those rows have no **Move** or **Cancel** button, because a button that can't say what it will cost shouldn't be offered — message your therapist instead.
+A session booked before policies existed carries no terms, so those rows have no **Move** or **Cancel** button. Message your therapist instead.
 
 ## Two rules that are ours, not theirs
 
 <Columns cols={2}>
   <Card title="A therapist cancelling never charges you" icon="shield-check">
-    If the therapist calls off the session, there's no fee regardless of notice, and anything already
-    taken is refunded. That isn't a setting they can change.
+    No fee regardless of notice, and anything already taken is refunded. Not a setting they can change.
   </Card>
   <Card title="Cancelling after the start time is a no-show" icon="clock">
-    Once the session was due to begin, the missed-session rate applies rather than the late rate.
-    Otherwise the no-show fee would be avoidable by anyone who remembered to press the button on their
-    way past.
+    The missed-session rate applies rather than the late rate.
   </Card>
 </Columns>
 
 ## Moving is free
 
-Rescheduling carries no fee. A move leaves your therapist with the hour sold and you with the session you paid for, so there's nothing to charge for — and nothing to charge it from, since the fee was captured against a session that's still going ahead.
+Rescheduling carries no fee.
 
 ### The notice you need to move
 
-Free moving can't be unlimited, or it becomes the way not to pay a cancellation fee: move to next month, cancel that with a fortnight's notice, and you've done a late cancellation in two steps for nothing. So the notice needed to move is never shorter than the notice needed to cancel for free.
+The notice needed to move is never shorter than the notice needed to cancel for free.
 
 ```
 notice to move = max(your therapist's reschedule notice, the policy's free window)
 ```
 
-The default reschedule notice is 24 hours. So on **Standard** you need 24 hours to move, and on **Firm** or **Strict** you need 48 — the policy's own window is the floor. Any move that's allowed therefore leaves more notice than a free cancellation needs, which is why it can't turn a chargeable cancellation into a free one.
+The default reschedule notice is 24 hours. So on **Standard** you need 24 hours to move, and on **Firm** or **Strict** you need 48 — the policy's own window is the floor.
 
-Inside that threshold the honest answer is that the hour can't be moved any more. The dialog says *"Moving needs 48 hours notice. You can still cancel, under your therapist's policy."* If the session was already due to start, it says *"This session was due to start, so it can't be moved."*
+Inside that threshold, the dialog says *"Moving needs 48 hours notice. You can still cancel, under your therapist's policy."* If the session was already due to start, it says *"This session was due to start, so it can't be moved."*
 
 A therapist may always move their own appointment.
 
@@ -69,23 +64,21 @@ A therapist may always move their own appointment.
     Find it under **Upcoming** in your sessions list and select **Cancel**.
   </Step>
   <Step title="Read the amount">
-    The dialog shows exactly what will happen — for example, *"\$105.00 late cancellation fee. The
-    remaining \$105.00 goes back on your card."* With no fee, it says *"No fee. \$210.00 goes back on
-    your card."*
+    The dialog shows what will happen — *"\$105.00 late cancellation fee. The remaining \$105.00 goes
+    back on your card."* With no fee, *"No fee. \$210.00 goes back on your card."*
   </Step>
   <Step title="Add a reason if you want to">
     Optional, up to 500 characters, and shared with your therapist.
   </Step>
   <Step title="Confirm">
-    The confirm button carries the amount — **Cancel and pay \$105.00** — so you can't cancel without
-    seeing the number. With nothing to pay it reads **Cancel the session**.
+    The confirm button carries the amount — **Cancel and pay \$105.00**. With nothing to pay it reads
+    **Cancel the session**.
   </Step>
 </Steps>
 
 <Note>
-  The fee is recalculated on the server when you confirm. If you've had the dialog open a while and
-  crossed the window in the meantime, the amount charged is the correct one for the moment you pressed
-  the button.
+  The fee is recalculated on the server when you confirm, so a dialog left open across the window
+  charges the amount correct for the moment you pressed the button.
 </Note>
 
 Your therapist is told straight away and the slot goes back on their calendar.
@@ -121,8 +114,8 @@ The same session on **Firm** would need 48 hours to move or to cancel free, and 
 
 ## Emails
 
-Cancelling sends a **Cancelled** email to both of you, naming who cancelled, the reason if one was given, the fee that applies and what's on its way back to your card. Moving sends a **Moved** email that leads with the old time as well as the new one, notes that nothing has been charged again, and reminds you the same room link opens ten minutes before the new time.
+Cancelling sends a **Cancelled** email to both of you: who cancelled, the reason if given, the fee that applies, and what's on its way back to your card. Moving sends a **Moved** email with the old time as well as the new, noting nothing has been charged again, and reminding you the same room link opens ten minutes before the new time.
 
 ## If something's gone wrong
 
-If you were charged a fee you don't think applies, write to [billing@opentherapy.app](mailto:billing@opentherapy.app) with the session details. Fees are computed from the terms attached to that specific booking, so we can show you which policy was in force and when the clock started.
+Charged a fee you don't think applies? Write to [billing@opentherapy.app](mailto:billing@opentherapy.app) with the session details.

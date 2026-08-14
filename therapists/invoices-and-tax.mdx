@@ -1,6 +1,6 @@
 ---
 title: "Invoices and tax"
-description: "The two kinds of invoice on Open Therapy, how GST is treated on each, and what to hand your accountant."
+description: "The two kinds of invoice, how GST works on each, and what to hand your accountant."
 keywords: ["invoice", "tax", "GST", "BAS", "accountant", "ABN", "tax invoice"]
 ---
 
@@ -10,8 +10,6 @@ keywords: ["invoice", "tax", "GST", "BAS", "accountant", "ABN", "tax invoice"]
 </Warning>
 
 ## Two kinds of invoice
-
-They point in opposite directions, and keeping them straight is most of the work.
 
 | | Session invoice | Fee invoice |
 |---|---|---|
@@ -23,27 +21,21 @@ They point in opposite directions, and keeping them straight is most of the work
 | Raised | Per session, when it's closed off | Monthly, by a scheduled pass |
 | Reference | Begins `OT-` and the year | Begins `OT-FEE-` and the period |
 
-On the session invoice you are the supplier and your client is billed, because you're the merchant of record. On the fee invoice the parties swap. Stating that plainly is most of the second document's purpose — it's what your accountant needs to claim the GST back.
+You are the supplier on the session invoice, because you're the merchant of record. On the fee invoice the parties swap, which is what your accountant needs to claim the GST back.
 
 ## Session invoices
 
 Raised for the client automatically when a session is closed off, whether you pressed **Mark complete** or the hourly pass closed it for you. The client is emailed and it lands in their billing page.
 
-It carries your name as the supplier, the service, the date of service and the Medicare item number if the service has one. No GST, because therapy of this kind is GST-free health care. This is the document a client uses to claim a rebate, which is why the invoice doesn't wait on your admin.
+It carries your name as the supplier, the service, the date of service and the Medicare item number if the service has one. No GST, because therapy of this kind is GST-free health care. This is the document a client uses to claim a rebate.
 
-Separately, a receipt is raised for the payment itself, with its own reference beginning `OTR-`.
+A receipt is raised separately for the payment itself, with its own reference beginning `OTR-`.
 
 ## Your fee invoice
 
-One tax invoice a month from Open Therapy, covering the fees already deducted. A scheduled pass raises it at 06:00 on the second of the month for the month before.
+One tax invoice a month from Open Therapy, covering the fees already deducted. A scheduled pass raises it at 06:00 on the second of the month for the month before, once the hourly transfer pass has finished settling the last of it.
 
-<Note>
-  On the second rather than the first, because the hourly transfer pass is still settling the last of
-  the previous month for a few hours after midnight. A day's margin means the invoice is complete the
-  first time it's issued rather than reissued for a session that landed late.
-</Note>
-
-It's issued **Paid** and nothing is owing: *"Nothing is owing. Each session's fees came out when it settled."* Every amount on it was decided at settlement and came off a payout weeks earlier, so the invoice is the paperwork for money that has already moved rather than a bill.
+It's issued **Paid** and nothing is owing: *"Nothing is owing. Each session's fees came out when it settled."*
 
 The lines only appear when they apply:
 
@@ -54,30 +46,27 @@ The lines only appear when they apply:
 | Card processing, at cost | Arrives GST-inclusive; the tax is carved back out so the fee can sit in the subtotal |
 | A retired platform fee | Only on a period old enough to have paid one |
 
-Then a subtotal, the GST as its own line with the rate printed, and the total. The lines are recomputed from your settlements each time the document is opened, so the breakdown can never disagree with the total that was written.
+Then a subtotal, the GST as its own line with the rate printed, and the total. The lines are recomputed from your settlements each time the document is opened.
 
 <Info>
-  Open Therapy's ABN doesn't currently print on the invoice. An ABN is a legal requirement on a tax
-  invoice and inventing one would be worse than leaving it off, so the line is omitted until it's
-  configured. If your accountant needs it before then, write to
+  Open Therapy's ABN doesn't currently print on the invoice. The line is omitted until it's
+  configured. If your accountant needs it, write to
   [support@opentherapy.app](mailto:support@opentherapy.app).
 </Info>
 
-You'll find your invoices under **Our invoices to you** on your earnings screen. Open one at its reference to print or save it. Invoice statuses across the system are **Due**, **Processing**, **Paid**, **Void** and **Refunded**; a fee invoice is issued straight to Paid.
+Find your invoices under **Our invoices to you** on your earnings screen, and open one at its reference to print or save it. Invoice statuses across the system are **Due**, **Processing**, **Paid**, **Void** and **Refunded**; a fee invoice is issued straight to Paid.
 
 ## The period is a calendar month, by settlement date
 
 A fee belongs to the month its money moved, not the month the session happened. A July session settled in August appears on the August invoice.
 
-The month itself is a calendar month in Sydney time for everyone, not in your own timezone. An invoice period has to mean one thing across the whole ledger, or two therapists in different states get overlapping months and nothing reconciles.
-
-A month with no settlements gets no invoice. An invoice for nothing isn't a record of a quiet month, it's a document you have to open to discover it says zero.
+The month is a calendar month in Sydney time for everyone, not in your own timezone. A month with no settlements gets no invoice.
 
 ## Why GST is a separate line
 
-Open Therapy's fees are quoted ex-GST and had tax added on top at settlement, and the invoice states exactly what was added rather than recomputing it from a rate that may since have changed. Folding it into the fee would imply a bigger fee than the one you agreed to, and would leave your accountant deriving the GST instead of reading it.
+Open Therapy's fees are quoted ex-GST and had tax added at settlement, and the invoice states exactly what was added.
 
-Card processing is the exception in the other direction: Australian card fees are published GST-inclusive, so charging GST on that amount would bill it twice. The tax inside it is separated out instead.
+Card processing is the exception: Australian card fees are published GST-inclusive, so charging GST on that amount would bill it twice. The tax inside it is separated out instead.
 
 ## What to give your accountant
 
@@ -92,8 +81,8 @@ Card processing is the exception in the other direction: Australian card fees ar
 </Columns>
 
 <Warning>
-  Don't report your payouts as income. A payout is your revenue minus fees. Reporting the net
-  understates both your income and your deductions, and the two don't cancel out.
+  Don't report your payouts as income. A payout is your revenue minus fees, so reporting the net
+  understates both your income and your deductions.
 </Warning>
 
 ## Reconciling a period
@@ -106,9 +95,9 @@ Card processing is the exception in the other direction: Australian card fees ar
     The fee invoice for the same period is your Open Therapy expense, with GST separated.
   </Step>
   <Step title="Check the arithmetic">
-    Billed minus the invoice total should equal the payouts for that period. Differences at the edges of
-    a month are normal — a session on the 31st can settle and transfer in the following month, and the
-    invoice follows the settlement.
+    Billed minus the invoice total should equal the payouts for that period. Differences at the edges
+    of a month are normal — a session on the 31st can settle and transfer in the following month, and
+    the invoice follows the settlement.
   </Step>
 </Steps>
 

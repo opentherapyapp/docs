@@ -4,15 +4,13 @@ description: "Set your working hours, control how far ahead clients can book, an
 keywords: ["availability", "calendar", "schedule", "hours", "booking rules", "notice", "buffer"]
 ---
 
-Clients see and book the hours you publish at **Availability** in your workspace. Nothing else on your profile opens a booking — a verified therapist with no hours published can't be booked.
+Clients book the hours you publish at **Availability** in your workspace. A verified therapist with no hours published can't be booked.
 
-<Frame caption="One screen holds whether you're open, the zone your hours are written in, and the week itself">
+<Frame caption="One screen holds whether you're open, your timezone, and the week itself">
   <img src="/images/therapist-availability.webp" width="2880" height="2400" style={{ width: 1440 }} alt="The Availability screen with Open to new clients selected ahead of Waitlist only and Not taking anyone, a timezone of Sydney / Canberra, a weekly pattern with Sunday off and Monday to Thursday each carrying one block of hours at Crown Street Rooms, and a Locations panel" />
 </Frame>
 
 ## Taking new clients
-
-Three states, and this is the one that decides what your hours are for.
 
 | | |
 |---|---|
@@ -21,15 +19,15 @@ Three states, and this is the one that decides what your hours are for.
 | **Not taking anyone** | Your profile stays up. Nobody can book or join a list |
 
 <Note>
-  Anyone you tell about an opening can book, whichever of these is set. Closing the front door doesn't
-  close your booking link. See [Your booking link](/therapists/your-booking-link).
+  Anyone you tell about an opening can book, whichever of these is set. See
+  [Your booking link](/therapists/your-booking-link).
 </Note>
 
-Better to switch to **Waitlist only** than to disappear when you're full. You keep your place in the directory, and you're not starting from zero when you reopen. See [Waitlist](/therapists/waitlist).
+Switch to **Waitlist only** rather than disappearing when you're full — you keep your place in the directory. See [Waitlist](/therapists/waitlist).
 
 ## Your timezone
 
-Set directly above your hours, because "9:00 AM" means nothing without it. Every hour you publish is written in this zone, and clients see them converted to their own.
+Set directly above your hours. Every hour you publish is written in this zone, and clients see them converted to their own.
 
 ## Weekly pattern
 
@@ -44,16 +42,15 @@ One row per day. Turn a day on, add one or more blocks of hours to it, and — i
 | Friday | 9:00 – 15:00 |
 | Saturday, Sunday | Off |
 
-Each row saves on its own, and the panel says the pattern applies from next Monday.
+Each row saves on its own, and the pattern applies from next Monday.
 
 <Tip>
-  Split blocks rather than opening a single long day. A gap at lunch that exists in your calendar is
-  better than one you have to defend by declining a booking.
+  Split blocks rather than opening a single long day.
 </Tip>
 
 ## Booking rules
 
-Four numbers, and the defaults are what applies until you change them.
+Four numbers, with the defaults below applying until you change them.
 
 | Rule | What it does | Default |
 |---|---|---|
@@ -64,50 +61,42 @@ Four numbers, and the defaults are what applies until you change them.
 
 Minimum notice and reschedule notice each accept up to 168 hours. The horizon runs from 1 to 12 months, and the gap from 0 to 60 minutes.
 
-<Note>
-  A gap is the cheapest protection against a day that runs over. Ten minutes either side turns six
-  back-to-back appointments into a day you can write notes in. It defaults to zero because that's what
-  the engine always did, and some therapists publish back-to-back on purpose.
-</Note>
-
-Reschedule notice is not a cancellation window. Cancellation terms come from the policy preset below, and the notice a client actually needs to move a session is whichever of the two is longer. See [Cancellation policy](/therapists/cancellation-policy#rescheduling).
+Reschedule notice is not a cancellation window. The notice a client needs to move a session is whichever of the two is longer. See [Cancellation policy](/therapists/cancellation-policy#rescheduling).
 
 ## Cancellation policy
 
-Chosen on this screen, from four presets, and it saves the moment you pick one. The lines you see under the cards are the exact lines a client is shown before they book and in their confirmation email, generated from the policy the database will charge against.
+Chosen on this screen from four presets, and it saves the moment you pick one. The lines under the cards are the exact lines a client is shown before they book and in their confirmation email.
 
 <Warning>
   A session booked before you've chosen a policy carries **no cancellation fee at all** — not for a late
-  cancellation and not for a no-show. A fee nobody chose isn't one we'll collect on your behalf.
+  cancellation and not for a no-show.
 </Warning>
 
 Existing bookings keep the policy they were booked under. Changes apply to new bookings. See [Cancellation policy](/therapists/cancellation-policy).
 
 ## Your schedule
 
-**Schedule** draws your diary as a grid, in day, week or month view, with a stepper to page through and a **Today** button to come back. The header tells you how many sessions are booked in the span you're looking at, and the timezone it's drawn in.
-
-Four things appear on the grid:
+**Schedule** draws your diary as a grid, in day, week or month view, with a stepper and a **Today** button. The header gives the sessions booked in the span and the timezone it's drawn in.
 
 | | |
 |---|---|
-| **Sessions** | Booked appointments, with the mode. Click one to open that client's file |
+| **Sessions** | Booked sessions, with the mode. Click one to open that client's file |
 | **Unopened hours** | Hours your weekly pattern never opened, drawn through |
-| **Busy** | Hours held by a calendar you've connected. Nothing to act on — it goes when the event does |
-| **Block-outs** | Hours you closed yourself. The one kind of closed hour there's something to do about |
+| **Busy** | Hours held by a calendar you've connected. It goes when the event does |
+| **Block-outs** | Hours you closed yourself |
 
-Past sessions stay on the grid and sit back rather than disappearing. An empty Monday isn't a week anyone recognises.
+Past sessions stay on the grid.
 
 ### One-off exceptions
 
-Click an empty cell, or drag down a few, and you're offered two things:
+Click an empty cell, or drag down a few:
 
 | | |
 |---|---|
 | **Block out** | Nobody can book these hours, even if you normally work them |
 | **Open these hours** | Bookable this once, without changing your weekly pattern |
 
-A block-out takes an optional reason — supervision, leave, admin — and clicking an existing one lets you remove it. Your weekly pattern is still edited on the availability page; this is for the exceptions, which is what a calendar is for.
+A block-out takes an optional reason — supervision, leave, admin — and clicking an existing one lets you remove it. Your weekly pattern is still edited on the availability page.
 
 <Tip>
   **New appointment** on the schedule books a client in directly, including a repeat series. See

@@ -1,22 +1,20 @@
 ---
 title: "Refunds and disputes"
-description: "What happens when money goes back to a client, why transfers freeze after a dispute, and what a receivable is."
+description: "What happens when money goes back to a client, and why transfers freeze after a dispute."
 keywords: ["refund", "dispute", "chargeback", "reversal", "frozen", "receivable"]
 ---
 
 ## Refunds
 
-A refund runs in two steps, in this order: the client is refunded first, because it's their money and they're the one waiting, and then your transfer is reversed if one had already been made.
+A refund runs in two steps: the client is refunded first, then your transfer is reversed if one had already been made. Each step succeeds or fails on its own.
 
-Each step succeeds or fails on its own, which is deliberate — a problem taking money back off you must not leave a client without their refund.
+Most cancellations never reach the second step, because the settlement is written after the refund and from the reduced amount. The case that does need a reversal is a no-show billed, transferred within the hour, then refunded.
 
-Most cancellations never reach the second step. The settlement is written after the refund and from the reduced amount, so you were never paid the part being given back. The case that does need a reversal is the one the transfer pass created: a no-show billed, transferred within the hour, and then refunded afterwards.
-
-The client's receipt is amended rather than reversed by a second document — they had one transaction and should read one line. A cancelled session was never closed off, so there's no session invoice to correct.
+The client's receipt is amended rather than reversed by a second document. A cancelled session was never closed off, so there's no session invoice to correct.
 
 ### Card processing on a refund
 
-Stripe keeps its fee when money goes back, and that cost was taken against the full price. It can therefore be larger than the cancellation fee it's now being deducted from.
+Stripe keeps its fee when money goes back, and that cost was taken against the full price. It can therefore be larger than the cancellation fee it's now deducted from.
 
 <Note>
   Processing is clamped to what the remaining amount can carry. On a refunded session you net **zero**
@@ -28,7 +26,7 @@ Stripe keeps its fee when money goes back, and that cost was taken against the f
 
 Sometimes Stripe has already paid your balance out to your bank before the refund is issued. A reversal can only take back what's there, so it may recover part of the amount or none of it. The client's refund stands either way, and the shortfall is recorded as a **receivable** against your account.
 
-That isn't treated as an error to retry. You did nothing wrong by receiving money you were owed at the time, so it's a figure for a person to work out with you rather than an automatic clawback. Write to [support@opentherapy.app](mailto:support@opentherapy.app) if you're told about one and it doesn't look right.
+It isn't retried automatically — a person works it out with you. Write to [support@opentherapy.app](mailto:support@opentherapy.app) if you're told about one and it doesn't look right.
 
 ## Disputes
 
@@ -39,7 +37,7 @@ A dispute — a chargeback — is a client's card issuer pulling a payment back.
   hasn't arrived, this is the first thing to check.
 </Warning>
 
-You're emailed as soon as it happens, and told the part that changes your week: *"Your payouts are paused while this is open."* That's a precaution on the account, not a judgement about the session. Open Therapy carries the loss on a disputed payment, which is why freezing is the cheap and reversible move.
+You're emailed as soon as it happens: *"Your payouts are paused while this is open."* That's a precaution, not a judgement about the session.
 
 If your share of the disputed session had already been transferred, it's recorded as a receivable at the same time.
 
@@ -52,24 +50,24 @@ Open Therapy handles the response. Card networks give a fixed window to reply, u
 | **Resolved in your favour** | The money stays with you, the freeze lifts, and the next transfer includes anything held while the dispute was open |
 | **Decided for the client** | The money goes back to them. If the session had already been paid out, the amount is recorded against your account and comes out of a future payout rather than being charged to your bank. Transfers stay frozen and need a person — write to [support@opentherapy.app](mailto:support@opentherapy.app) |
 
-The issuer's decision is final on their side. If you think it's wrong, say so anyway — the records are worth seeing either way.
+The issuer's decision is final on their side. If you think it's wrong, say so anyway.
 
 ### Reversed transfers
 
-If a transfer is reversed you're told, with the amount, and told what it means: nothing is charged to your bank account, and the amount comes off a future payout instead. It happens when a session is refunded or disputed after its money had already gone out.
+If a transfer is reversed you're told, with the amount: nothing is charged to your bank account, and the amount comes off a future payout instead. It happens when a session is refunded or disputed after its money had already gone out.
 
 ## Reducing disputes before they happen
 
-Most disputes are a client not recognising a charge rather than a client contesting the care.
+Most disputes are a client not recognising a charge rather than contesting the care.
 
 <Columns cols={2}>
   <Card title="Your name is on the statement" icon="credit-card">
-    You're the merchant of record, so your name appears rather than Open Therapy's. Make sure the name
-    a client sees when they book is the one on your Stripe account.
+    You're the merchant of record. Make sure the name a client sees when they book is the one on your
+    Stripe account.
   </Card>
   <Card title="Choose a policy and keep it visible" icon="calendar-x">
     Cancellation fees are the most disputed charges. Your policy is quoted at checkout, in the
-    confirmation email and in the cancellation dialog, which is exactly the evidence that settles it.
+    confirmation email and in the cancellation dialog.
   </Card>
   <Card title="Record attendance promptly" icon="check">
     An attendance record made on the day is stronger than one added a fortnight later.
@@ -81,7 +79,7 @@ Most disputes are a client not recognising a charge rather than a client contest
 
 ## Where to see all of this
 
-Your earnings screen shows each session with the fees as they were charged, and your payouts with their status. A payout returned by your bank is emailed to you rather than left to be noticed.
+Your earnings screen shows each session with the fees as they were charged, and your payouts with their status. A payout returned by your bank is emailed to you.
 
 See [Fees and earnings](/therapists/fees-and-earnings#your-earnings-screen) and [Set up payouts](/therapists/set-up-payouts#frozen-accounts).
 

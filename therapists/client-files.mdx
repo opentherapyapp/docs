@@ -1,18 +1,16 @@
 ---
 title: "Client files"
-description: "Your caseload, and what sits inside one client's file — notes, goals, documents, measures, safety plans and GP letters. Including records for people who have never signed up."
+description: "Your caseload, and what sits inside one client's file."
 keywords: ["clients", "caseload", "notes", "goals", "documents", "measures", "safety plan", "GP letter", "client record"]
 ---
 
-**Clients** in your workspace is your caseload. Open anyone on it and you get their file.
+**Clients** in your workspace is your caseload. Open anyone on it for their file.
 
 ## The caseload
 
-The list shows everyone you see, with the things you'd otherwise have to open a file to find: the next session, when you last saw them, how much of a funded plan is left, and any risk flag.
+Each row carries the next session, when you last saw them, how much of a funded plan is left, and any risk flag. Four cards sit above the list — **Active clients**, **Sessions delivered**, **Average plan use** and **Risk flags**. Average plan use covers only clients who have a funded total.
 
-Four cards sit above it — **Active clients**, **Sessions delivered**, **Average plan use** and **Risk flags**. Average plan use is worked out only across clients who have a funded total, so a private client with no allowance doesn't drag it down.
-
-Filter with the pills. Each one carries its own count.
+Search is by name. Filter with the pills, each carrying its own count.
 
 | | |
 |---|---|
@@ -23,26 +21,23 @@ Filter with the pills. Each one carries its own count.
 | **No account** | A record you filed, for someone who has never signed up |
 | **All** | Everyone |
 
-Search is by name.
-
-<Frame caption="Each pill carries its own count, and the row shows the next session and when you last saw them">
+<Frame caption="Each pill carries its own count">
   <img src="/images/therapist-clients.webp" width="2880" height="1800" style={{ width: 1440 }} alt="The Clients caseload with cards reading 6 active clients with 1 on waitlist, 67 sessions delivered, no funded plans for average plan use, and 3 risk flags of which 2 are elevated; filter pills for Active, Waitlist, Discharged, Flagged, No account and All; and rows for five clients showing session counts, next session dates and Elevated badges" />
 </Frame>
 
 ## Adding someone
 
-**Add a client** opens a dialog with two modes, and the difference between them matters more than the button does.
+**Add a client** opens a dialog with two modes.
 
 <Tabs>
   <Tab title="Add them">
-    Someone you already see. You give a first name, optionally a last name and an email, and press
-    **Add to caseload**. Nothing is sent. You get a file you can write notes in and book against
-    straight away, and they get an account only if and when they make one themselves.
+    Someone you already see. A first name, optionally a last name and an email, then **Add to
+    caseload**. Nothing is sent. Write notes and book against the file straight away; they get an
+    account only by making one themselves.
   </Tab>
   <Tab title="Invite them">
-    Someone who should be using the portal from the start. You give an email, press **Send
-    invitation**, and they get your booking link. They make the account. They appear on your
-    caseload once they book.
+    Someone who should use the portal from the start. Give an email, press **Send invitation**, and
+    they get your booking link. They make the account, and appear on your caseload once they book.
   </Tab>
 </Tabs>
 
@@ -50,11 +45,7 @@ The invitation points at your own booking link, which takes no introduction fee.
 
 ## Client records for people without accounts
 
-This is the part of the product most worth reading slowly.
-
-You can file a record for someone you already see who has never signed up, and book them in. What you cannot do is make an *account* for them. Open Therapy refuses, deliberately: credentials, a confirmed email address and consent belong to the person they describe, and a therapist typing somebody else's address into a form is not that person agreeing to anything.
-
-So a filed record has no password and no way to sign in. Their file is your file.
+You can file a record for someone you already see who has never signed up, and book them in. What you cannot do is make an *account* for them. A filed record has no password and no way to sign in.
 
 ### What works, and what waits
 
@@ -63,53 +54,45 @@ So a filed record has no password and no way to sign in. Their file is your file
 | Notes, goals, documents, safety plans, appointments | Work exactly as they do for anyone else |
 | Messages, forms, prompt suggestions, sharing a safety plan | Disabled until they have an account |
 
-The banner at the top of the file says the same thing in fewer words: **Your record, not their account**. The **Message** button is there but disabled, and anything else that needs the other end refuses with the same line — *"Not until they set up their account — there's nowhere for this to arrive."* Everything held back is held back for one reason: it has two ends, and only one of them exists.
+The banner reads **Your record, not their account**, and anything needing the other end refuses: *"Not until they set up their account — there's nowhere for this to arrive."*
 
 ### How they take it over
 
 <Steps>
   <Step title="You book them in">
-    The next appointment you book emails them a link, provided there's an email on the record. If
-    there isn't one, add it and book.
+    The next appointment emails them a link, provided there's an email on the record.
   </Step>
   <Step title="They open the link">
-    It goes to `/claim/:token`. The page discloses your name and that an appointment exists. No
-    dates, no client name, nothing clinical — roughly what the envelope already said.
+    `/claim/:token` discloses your name and that an appointment exists. No dates, no client name,
+    nothing clinical.
   </Step>
   <Step title="They sign up and confirm their address">
     Claiming needs a signed-in client account whose email address is **verified and equal to the
-    address on the record**. That equality is the entire safety property. A forwarded email, a
-    shared inbox or a screenshot puts the link in somebody else's hands, and none of them can
-    receive a code at an address that isn't theirs.
+    address on the record**.
   </Step>
   <Step title="The record merges into their account">
-    Sessions, notes, goals, documents, invoices, receipts and the conversation all move across.
-    Messaging and forms start working. Nothing you wrote is lost, and nothing you wrote becomes
-    visible to them that wasn't before.
+    Sessions, notes, goals, documents, invoices, receipts and the conversation move across, and
+    messaging and forms start working. Nothing you wrote is lost, and nothing becomes newly visible to
+    them.
   </Step>
 </Steps>
 
-A claim link works once. A used token and an invented one get the same answer — **That link has expired.** Refusals say as little as possible on purpose.
+A claim link works once. A used token and an invented one both answer **That link has expired.**
 
 <Note>
-  A therapist account can't claim a client record, even if the address matches. Otherwise a
-  practitioner who typed their own address into a record could merge that file into their own
-  profile.
+  A therapist account can't claim a client record, even if the address matches.
 </Note>
 
 <Info>
-  An enquiry from someone with no account creates the same kind of record. Somebody who writes to
-  you from your public profile becomes a client record with a conversation attached, and claims it
-  the same way.
+  An enquiry from someone with no account creates the same kind of record, with a conversation
+  attached, and is claimed the same way.
 </Info>
 
 ## Inside a file
 
-The header carries their name, status and any risk flag, with **Message** and **New note** beside it. Under that, three facts: **Next session**, **Last seen**, and either sessions held or plan use.
+The header carries their name, status and any risk flag, with **Message** and **New note** beside it, then **Next session**, **Last seen**, and either sessions held or plan use. Four tabs sit under it.
 
-Then four tabs — **Overview**, **Notes**, **Measures** and **Documents**.
-
-<Frame caption="The **Overview** tab opens on the summary, the goals you're tracking and their contact details">
+<Frame caption="**Overview** opens on the summary, goals and contact details">
   <img src="/images/therapist-client-file.webp" width="2880" height="1800" style={{ width: 1440 }} alt="A client file for Maya Okonkwo marked Active and Elevated, with Message and New note buttons, the next session, last seen date and 16 sessions held, tabs for Overview, Notes, Measures and Documents, an empty clinical summary, two goals at 40 and 60 per cent, a risk and safety panel linking to the safety plan, and a contact panel with email, mobile and GP" />
 </Frame>
 
@@ -117,43 +100,35 @@ Then four tabs — **Overview**, **Notes**, **Measures** and **Documents**.
 
 The clinical summary, the goals, the contact panel and the latest note.
 
-Goals are agreed with the client and tracked as a percentage. Add one with **Add a goal**, give it a label, a progress figure and an optional note. Nothing sets progress on its own — you move it.
+Goals are agreed with the client and tracked as a percentage. **Add a goal** takes a label, a progress figure and an optional note; nothing sets progress on its own.
 
-The contact panel and the client brief show only what the client has chosen to share. Those switches are theirs, on their side, and a field they've withheld never reaches your browser rather than being hidden in it. Pronouns are always shown: they aren't a disclosure, they're how you address someone.
+The contact panel and the client brief show only what the client has chosen to share, and a withheld field never reaches your browser. Pronouns are always shown.
 
 ### Notes
 
-A note has three sections — **Presentation**, **Intervention** and **Plan** — and belongs to one client.
+A note has three sections — **Presentation**, **Intervention** and **Plan** — and belongs to one client. `/workspace/notes` redirects to your clients.
 
-<Note>
-  The old standalone notes page is gone. `/workspace/notes` now redirects to your clients. A note is
-  about one person, and a page listing every note in the practice had to open with a "choose a
-  client" dropdown because it didn't know whose note it was. Here the client is the page.
-</Note>
+Six templates sit under **Templates**: CBT session, ACT session, Intake assessment, Progress review, Risk review, and Blank. Each is prompts rather than prose, and the framework you pick is stored on the note.
 
-Six templates are available under **Templates**: CBT session, ACT session, Intake assessment, Progress review, Risk review, and Blank. Each one is prompts rather than prose — a list of questions the section wants answered, which you delete what doesn't apply from. Nothing pre-writes an observation. The framework you pick is stored on the note, so the list doesn't claim every session was CBT.
+There is no signing and no draft state. A note saves as you type and stays editable. Changing saved text files the version it replaced, and **Edit history** reads it back, newest first, alongside any addenda.
 
-There is no signing and no draft state. A note saves itself as you type and stays editable. Changing text that was already saved files the version it replaced, and **Edit history** reads it back, newest first, alongside any addenda.
-
-<Frame caption="Each section has a **Tidy wording** option if you'd rather clean up what you typed in the room">
+<Frame caption="Each section has a **Tidy wording** option">
   <img src="/images/therapist-client-notes.webp" width="2880" height="1800" style={{ width: 1440 }} alt="The Notes tab of a client file showing 15 notes, Templates and New note buttons, and an expanded note titled Individual therapy dated Tuesday 11 August with written Presentation and Intervention sections, each offering Tidy wording" />
 </Frame>
 
 <Warning>
   Clinical notes are your record. Clients never see them. What a client sees after a session is a
   **recap** — a short summary you choose to write and share, emailed to them and shown under the
-  session. It's a thing written *to* them, not a disclosure of a note written about them.
+  session.
 </Warning>
 
 ### Measures
 
-Every questionnaire this client has returned, with the latest score, the change since last time, the severity band and a trend line.
+Every questionnaire this client has returned, with the latest score, the change since last time, the severity band and a trend line. Scores and bands come from the instrument, not from anything typed in.
 
-Scores and bands come from the instrument, not from anything typed in. A flagged response carries a **Needs a look** badge. Select a measure to read the individual answers.
+A flagged response carries a **Needs a look** badge. Select a measure to read the individual answers. The trend line inverts where a falling score is an improvement.
 
-The trend line inverts where a falling score is an improvement, so a dropping PHQ-9 doesn't read as a decline.
-
-<Frame caption="Latest score, the change since last time and the severity band, with the trend underneath">
+<Frame caption="Latest score, change since last time, band and trend">
   <img src="/images/therapist-client-measures.webp" width="2880" height="1800" style={{ width: 1440 }} alt="The Measures tab showing outcome measures for a client: PHQ-9 at 7 out of 27, one better than 8, banded Mild and carrying a Needs a look badge; GAD-7 at 7 out of 21, two better than 9, banded Mild; and a PHQ-9 over time chart drawn from seven measurement points" />
 </Frame>
 
@@ -161,20 +136,20 @@ See [Forms and measures](/therapists/forms-and-measures).
 
 ### Documents
 
-Everything on file for that client, and two things you can write.
+Everything on file, and two things you can write.
 
 | | |
 |---|---|
 | **GP letter** | Drafted from your notes, the scored measures and the session dates |
 | **Safety plan** | Six sections, written with the client |
 
-<Frame caption="Anything on file sits on the left, and the two things you can draft on the right">
+<Frame caption="Anything on file on the left, what you can draft on the right">
   <img src="/images/therapist-client-documents.webp" width="2880" height="1800" style={{ width: 1440 }} alt="The Documents tab of a client file, with one document on file — a GP mental health treatment plan PDF marked as a referral — and a Write panel offering GP letter and Safety plan, noting that a letter is drafted and never sent" />
 </Frame>
 
-A GP letter is **drafted, never sent**. We hold the referring GP as a name, not an address, and a letter about someone's mental health leaves by a route you chose. The draft uses only the facts on the record — it will not invent a diagnosis, a score, a date or a medication — and where the client has withheld outcome measures, the letter is written without them. You edit it before it goes anywhere.
+A GP letter is **drafted, never sent**. We hold the referring GP as a name, not an address. The draft uses only the facts on the record — no invented diagnosis, score, date or medication — and leaves out outcome measures the client has withheld. Edit it before it goes anywhere.
 
-A safety plan has six sections, in the order they're worked through and the order they're read in a crisis:
+A safety plan has six sections, in the order they're worked through:
 
 1. Warning signs
 2. What I can do on my own
@@ -183,7 +158,7 @@ A safety plan has six sections, in the order they're worked through and the orde
 5. Professionals and services
 6. Making my environment safer
 
-There is one plan per client–therapist pair, and saving replaces it. It exists on your side until you share it, and an empty plan can't be shared.
+One plan per client–therapist pair, and saving replaces it. It sits on your side until you share it, and an empty plan can't be shared.
 
 <Warning>
   Open Therapy is a directory and booking platform. It does not provide crisis support, and nothing
@@ -193,6 +168,6 @@ There is one plan per client–therapist pair, and saving replaces it. It exists
 
 ## Booking a client in yourself
 
-You can book an appointment for anyone on your caseload, including a record with no account. That skips your published availability — a 7am appointment on a day you don't open is a decision, not a mistake — but it still refuses to put you in two places at once, and it still keeps the buffer you set between sessions.
+You can book anyone on your caseload, including a record with no account. That skips your published availability, but won't put you in two places at once, and keeps the buffer you set between sessions.
 
-Where there's a fee, you choose whether to send a payment request with the booking. A request needs an email address to arrive at, so a record with no email is booked without one.
+Where there's a fee, choose whether to send a payment request with the booking. A request needs an email address, so a record without one is booked without it.

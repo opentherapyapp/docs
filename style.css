@@ -5,7 +5,9 @@
  * Switzer redesign: one sans face set tight and heavy for headlines, near-black
  * ink for anything that is an action, and the five pastels used as solid fills
  * on generously rounded blocks — never tinted down against white, never a
- * gradient. Teal is an accent now: links, focus, and the mint band on a table.
+ * gradient. Teal is an accent now, and no longer a type colour at all: it draws
+ * the mark on a tile, the underline family under a link, and the mint band on
+ * a table.
  *
  * Token values are copied verbatim from the app's src/styles.css in oklch rather
  * than converted to hex, so the two stay in step and a diff between them is
@@ -42,7 +44,7 @@
 }
 
 :root {
-  /* Accent. Links, focus, the mint family it heads — no longer the type colour. */
+  /* Accent. Marks, focus, the mint family it heads — never type. */
   --ot-brand: oklch(0.34 0.048 178);
 
   --ot-mint: oklch(0.87 0.083 152);
@@ -277,8 +279,17 @@ main strong {
   color: var(--ot-ink);
 }
 
-.callout a {
-  color: var(--ot-brand);
+/* A link on a pastel ground. Ink like any other, but the mint underline it
+   would otherwise take disappears into the mint callout, so the underline here
+   is the ink itself held back. Written with #content to outrank the article's
+   own link rule, which is where a callout sits. */
+#content .callout a {
+  color: var(--ot-ink);
+  text-decoration-color: oklch(0.17 0 0 / 40%);
+}
+
+#content .callout a:hover {
+  text-decoration-color: var(--ot-ink);
 }
 
 .callout svg {
@@ -694,16 +705,20 @@ main :not(pre) > code {
  * Two kinds of link inside the article carry their own styling and are handed
  * back: a card, which is a tile, and the permalink Mintlify hangs off every
  * heading, which is a zero-width space and should stay invisible.
+ *
+ * The link is ink, like every other action in the app, and the underline is
+ * what marks it — mint at rest, ink under the cursor. Teal type read as a
+ * green the redesign doesn't use anywhere else.
  */
 #content a {
-  color: var(--ot-brand);
+  color: var(--ot-ink);
   text-decoration-color: var(--ot-mint);
   text-underline-offset: 0.2em;
   text-decoration-thickness: 2px;
 }
 
 #content a:hover {
-  text-decoration-color: var(--ot-brand);
+  text-decoration-color: var(--ot-ink);
 }
 
 #content .card a,

@@ -1,24 +1,22 @@
 ---
 title: "Fees"
-description: "What clients pay, what therapists pay, and exactly how a session fee is divided."
+description: "What clients pay, what therapists pay, and how a session fee is divided."
 keywords: ["fees", "pricing", "introduction fee", "commission", "GST", "group commission"]
 ---
 
-Two rules sit above everything on this page.
-
 **Clients pay the therapist's published price and nothing more.** No booking fee, no service charge, no surcharge.
 
-**Open Therapy takes no percentage of a one-to-one session.** There is no commission on the hour. The introduction fee is charged once, the first time a client books with a therapist, and never again for that pair.
+**Open Therapy takes no percentage of a one-to-one session.** The introduction fee is charged once, the first time a client books with a therapist, and never again for that pair.
 
 ## What a client pays
 
-The price shown on the profile. That is the whole answer.
+The price shown on the profile.
 
 Therapy is GST-free health care in Australia, so a client's session invoice carries no GST. See [Paying for sessions](/clients/paying-for-sessions).
 
 ## What a therapist pays
 
-Listing is free — no monthly fee, no seat licence, no minimum. Three things come off a session, and only when there is a session.
+Listing is free — no monthly fee, no seat licence, no minimum. Three things come off a session, and only when there is one.
 
 | Deduction | Amount | When |
 |---|---|---|
@@ -28,14 +26,13 @@ Listing is free — no monthly fee, no seat licence, no minimum. Three things co
 | GST | **10%** on the introduction fee | With that fee |
 
 <Note>
-  Card processing is passed through at cost, never marked up. Before a payment exists it's quoted
-  using Stripe's published Australian domestic rate of **1.7% + 30c**, but what's deducted is
-  whatever Stripe actually charged for that particular card, read from the transaction.
+  Card processing is passed through at cost, quoted at Stripe's published Australian domestic rate of
+  **1.7% + 30c**. What's deducted is whatever Stripe actually charged for that card.
 </Note>
 
 ### The introduction fee
 
-A one-off that pays for the match rather than the hour. It's charged the first time a particular client books with a particular therapist, and never again for that pair — not on the second session, not on the two hundredth. A client who sees two therapists generates two introduction fees, one for each.
+Charged the first time a particular client books with a particular therapist, and never again for that pair. A client who sees two therapists generates two introduction fees.
 
 Fees are quoted ex-GST, with 10% added on top.
 
@@ -54,13 +51,11 @@ Two cases where it isn't charged at all:
 
 <Columns cols={2}>
   <Card title="Clients you brought yourself" icon="link">
-    Anyone who arrives through your own `opentherapy.link` profile carries no introduction fee. We
-    didn't make that introduction, so we don't charge for it. See [Your booking
-    link](/therapists/your-booking-link).
+    Anyone who arrives through your own `opentherapy.link` profile carries no introduction fee. See
+    [Your booking link](/therapists/your-booking-link).
   </Card>
   <Card title="Sessions that can't carry it" icon="shield-check">
-    The fee is capped at whatever the session has left after card processing and the GST on our own
-    fee. A cheap first session nets you nothing rather than putting you in debt to us, and a free
+    Capped at whatever the session has left after card processing and the GST on our own fee. A free
     session carries no fees at all.
   </Card>
 </Columns>
@@ -79,7 +74,7 @@ A psychologist charging **\$180** for a 50-minute session, paid by an Australian
     | Card processing | −\$3.36 |
     | **You receive** | **\$77.64** |
 
-    Total deducted: \$102.36, or 56.9% — almost all of it the one-off introduction.
+    Total deducted: \$102.36, or 56.9%.
   </Tab>
   <Tab title="Every session after that">
     | Line | Amount |
@@ -93,7 +88,7 @@ A psychologist charging **\$180** for a 50-minute session, paid by an Australian
   </Tab>
 </Tabs>
 
-The first session is where Open Therapy earns and every one after it is close to cost, so the rate you actually pay depends on how long clients stay rather than on any published percentage:
+The rate you actually pay depends on how long clients stay:
 
 | | |
 |---|---|
@@ -118,25 +113,25 @@ See [Running a group program](/therapists/groups).
 
 ## GST
 
-GST is shown as its own line rather than folded into a percentage, so your invoice reflects what was actually remitted.
+GST is shown as its own line rather than folded into a percentage.
 
-- **The session** is GST-free. Health services of this kind aren't taxable.
+- **The session** is GST-free.
 - **Open Therapy's fees** are quoted ex-GST with 10% added on top.
-- **Card processing** arrives GST-inclusive, because Australian card fees are published that way. Its tax is carved back out for the invoice rather than added again.
+- **Card processing** arrives GST-inclusive. Its tax is carved back out for the invoice rather than added again.
 
 ## Fee changes never re-price the past
 
-Every settlement stores the rates charged at the time it was made. If a rate changes tomorrow it applies to new sessions only — it cannot re-price what you earned yesterday.
+Every settlement stores the rates charged at the time it was made. A rate change applies to new sessions only.
 
-That is also why a **platform fee** line still exists in the product. It was a percentage of every session and it has been retired: the rate is zero. It appears on a statement only if that statement is old enough to have paid one, and it is never charged on a new session.
+The retired **platform fee** line survives for that reason. It was a percentage of every session, and the rate is now zero. It appears only on statements old enough to have paid one, and is never charged on a new session.
 
 ## Related
 
 <Columns cols={2}>
   <Card title="Fees and earnings" icon="chart-line" href="/therapists/fees-and-earnings" horizontal>
-    How to read your earnings screen and reconcile a settlement.
+    Reading your earnings screen and reconciling a settlement.
   </Card>
   <Card title="Invoices and tax" icon="file-text" href="/therapists/invoices-and-tax" horizontal>
-    Your monthly tax invoice from Open Therapy, and what to give your accountant.
+    Your monthly tax invoice, and what to give your accountant.
   </Card>
 </Columns>
