@@ -682,6 +682,20 @@ main figure {
   border-bottom-color: var(--ot-hairline) !important;
 }
 
+/*
+ * The theme marks the current tab with primary — a teal that reads as a
+ * green. The page you are on is ink everywhere else (sidebar, table of
+ * contents), so the underline is too. The in-page tab uses `border-current`,
+ * so setting the type to ink takes the line with it.
+ */
+.nav-tabs-item [class*="bg-primary"] {
+  background-color: var(--ot-ink) !important;
+}
+
+[role="tablist"] [class*="text-primary"] {
+  color: var(--ot-ink) !important;
+}
+
 /* -------------------------------------------------------------------------- */
 /* Inline code, links, quotes                                                 */
 /* -------------------------------------------------------------------------- */
