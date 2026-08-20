@@ -15,7 +15,7 @@ keywords: ["invoice", "tax", "GST", "BAS", "accountant", "ABN", "tax invoice"]
 |---|---|---|
 | From | You | Open Therapy |
 | To | Your client | You |
-| Covers | The therapy session | Introduction fees, group commission and card processing |
+| Covers | The therapy session | Introduction fees, group commission, and card processing on older periods |
 | GST | **None** — GST-free health care | **Yes** — a taxable supply |
 | Headed | "Invoice" | "Tax invoice" |
 | Raised | Per session, when it's closed off | Monthly, by a scheduled pass |
@@ -43,7 +43,7 @@ The lines only appear when they apply:
 |---|---|
 | Introduction fees, with the number of new clients | Quoted ex-GST, 10% added on top |
 | Group commission, with the number of enrolments | Quoted ex-GST, 10% added on top |
-| Card processing, at cost | Arrives GST-inclusive; the tax is carved back out so the fee can sit in the subtotal |
+| Card processing, at cost | Historical only — new settlements write this as zero because the client paid it. When it appears it arrives GST-inclusive; the tax is carved back out so the fee can sit in the subtotal |
 | A retired platform fee | Only on a period old enough to have paid one |
 
 Then a subtotal, the GST as its own line with the rate printed, and the total. The lines are recomputed from your settlements each time the document is opened.
@@ -66,7 +66,7 @@ The month is a calendar month in Sydney time for everyone, not in your own timez
 
 Open Therapy's fees are quoted ex-GST and had tax added at settlement, and the invoice states exactly what was added.
 
-Card processing is the exception: Australian card fees are published GST-inclusive, so charging GST on that amount would bill it twice. The tax inside it is separated out instead.
+On older invoices, card processing is the exception: Australian card fees are published GST-inclusive, so charging GST on that amount would bill it twice. The tax inside it is separated out instead. New settlements do not recharge processing to you.
 
 ## What to give your accountant
 
