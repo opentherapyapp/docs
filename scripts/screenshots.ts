@@ -206,23 +206,20 @@ test.describe("public", () => {
   publicShot("home-care-types", "/", { clip: "section:has-text('What kind of care?')" });
   publicShot("browse", "/browse");
   publicShot("match", "/match");
-  publicShot("therapist-profile", "/therapists/sarah-chen");
+  publicShot("therapist-profile", "/therapists/nicholas-carlton");
   publicShot("care-category", "/care/psychology");
   publicShot("services", "/services");
   publicShot("service-detail", "/services/adhd-assessment");
-  publicShot("groups", "/groups");
-  publicShot("group-detail", "/groups/anxiety-skills-group");
-  publicShot("ask", "/ask");
-  publicShot("ask-thread", "/ask/is-it-normal-to-feel-worse-after-the-first-few-sessions");
+  // groups / ask / gift-cards are PostHog-gated at 0% rollout. Shooting them
+  // would publish the 404. Keep the existing images until the flags are on.
   publicShot("blog", "/blog");
   // Not `therapist-posts` — that name belongs to the workspace screen below, and
   // when both used it this shot was silently overwritten by whichever ran last.
-  publicShot("therapist-profile-posts", "/therapists/sarah-chen/posts");
+  publicShot("therapist-profile-posts", "/therapists/nicholas-carlton/posts");
   // No shots of /fees or /how-it-works. Those pages make the same argument these
   // docs make, and a screenshot of marketing prose beside documentation prose is
   // two copies of one thing, either of which can go stale on its own.
   publicShot("for-therapists", "/for-therapists");
-  publicShot("gift-cards", "/gift-cards");
   publicShot("crisis-support", "/crisis-support");
   publicShot("refer", "/refer");
   publicShot("login", "/login");
@@ -237,7 +234,7 @@ test.describe("public", () => {
   });
 
   test("profile-booking-panel", async ({ page }) => {
-    await page.goto("/therapists/sarah-chen");
+    await page.goto("/therapists/nicholas-carlton");
     await settle(page);
     // The booking card, not the whole `aside` — the column also carries the
     // waitlist prompt and a trust list, and runs to 3,600px.
@@ -270,7 +267,7 @@ test.describe("public", () => {
 test.describe("phone", () => {
   test.use({ viewport: { width: 390, height: 844 } });
 
-  publicShot("phone-profile", "/therapists/sarah-chen");
+  publicShot("phone-profile", "/therapists/nicholas-carlton");
 
   test.describe("signed in", () => {
     test.use({ storageState: CLIENT_STATE });
@@ -318,14 +315,11 @@ test.describe("therapist workspace", () => {
   publicShot("therapist-client-documents", "/workspace/clients/demo-client-maya/documents");
   publicShot("therapist-client-measures", "/workspace/clients/demo-client-maya/measures");
   publicShot("therapist-messages", "/workspace/messages");
-  publicShot("therapist-groups", "/workspace/groups");
   publicShot("therapist-forms", "/workspace/forms");
   publicShot("therapist-earnings", "/workspace/earnings", { height: 1200 });
   publicShot("therapist-payouts", "/workspace/payouts");
   publicShot("therapist-posts", "/workspace/posts");
-  publicShot("therapist-answers", "/workspace/answers");
   publicShot("therapist-waitlist", "/workspace/waitlist");
-  publicShot("therapist-prompts", "/workspace/prompts");
   publicShot("therapist-settings", "/workspace/settings", { height: 1200 });
 
   test("therapist-cancellation-policy", async ({ page }) => {

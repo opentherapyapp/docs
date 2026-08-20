@@ -39,7 +39,7 @@ If Stripe still needs something, the page lists it in your words: *"A photo of y
 | **Active** | Fully verified | Take bookings and receive transfers |
 
 <Frame caption="An **Active** account, with **Change bank details** opening Stripe">
-  <img src="/images/therapist-payouts.webp" width="2880" height="1800" style={{ width: 1440 }} alt="The Payouts screen badged Active, confirming you're verified by Stripe, that session payments reach you automatically and that Stripe pays your bank on the schedule you set, with Change bank details and See your earnings buttons, a four-step How you get paid panel, and a What comes off panel naming the one-off introduction fee, card processing at cost and GST on Open Therapy's fee" />
+  <img src="/images/therapist-payouts.webp" width="2880" height="1800" style={{ width: 1440 }} alt="The Payouts screen badged Active, with a Your account panel showing Bank account as Held in Stripe and Payout schedule as Set in Stripe, and a Manage in Stripe button" />
 </Frame>
 
 <Warning>
@@ -93,7 +93,7 @@ The transfer is keyed on the settlement, so a retry can't pay you twice.
 
 <Note>
   The one to watch is the third. A session whose fee Stripe hasn't stated yet waits rather than being
-  paid out on a guess. It shows under **Waiting on a Stripe fee**, and we ask Stripe again every hour.
+  paid out on a guess. Stripe is asked again every hour.
 </Note>
 
 A failed transfer records Stripe's own words for why, and isn't picked up again by the hourly pass. If a session sits unpaid, write to [support@opentherapy.app](mailto:support@opentherapy.app) with the session date.
@@ -110,7 +110,7 @@ See [Refunds and disputes](/therapists/refunds-and-disputes).
 
 When money reaches your bank you get a **Payout** email: *"Your payout for August has been sent. Most banks show it within one to two business days."*
 
-That figure is your net earnings; introduction fees and card processing were taken at settlement and are invoiced separately. See [Invoices and tax](/therapists/invoices-and-tax).
+That figure is your net earnings; introduction fees were taken at settlement and are invoiced separately. See [Invoices and tax](/therapists/invoices-and-tax).
 
 A payout returned by your bank is emailed to you too, and the money goes back onto your Open Therapy balance. It's almost always the account details — a closed account, a mistyped BSB, or a name the bank won't match. Fix them in your Stripe dashboard and the next payout picks it up along with anything since.
 

@@ -4,3 +4,6 @@ node_modules/
 # `images/`, not here; `test-results/` is only failure traces and retries.
 test-results/
 playwright-report/
+
+# Session cookies written by `npm run screenshots`.
+scripts/.auth/

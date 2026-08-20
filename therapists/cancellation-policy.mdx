@@ -31,7 +31,7 @@ Choose your cancellation policy on **Availability**. It saves the moment you pic
 </AccordionGroup>
 
 <Frame caption="The rates under each name are the ones a client is quoted">
-  <img src="/images/therapist-cancellation-policy.webp" width="1254" height="1002" style={{ width: 627 }} alt="The cancellation policy chooser with four cards: Flexible, free before 12 hours with no late fee and 50 per cent for a no-show; Standard, selected, free before 24 hours with 50 per cent late and the full fee for a no-show; Firm, free before 2 days with 50 per cent late and the full fee for a no-show; and Strict, free before 2 days with the full fee for both. Underneath, the three rows a client reads on Standard, and a line saying existing bookings keep the policy they were booked under" />
+  <img src="/images/therapist-cancellation-policy.webp" width="1792" height="612" style={{ width: 896 }} alt="The cancellation policy chooser with four cards: Flexible, free before 12 hours with no late fee and 50 per cent for a no-show; Standard, selected, free before 24 hours with 50 per cent late and the full fee for a no-show; Firm, free before 2 days with 50 per cent late and the full fee for a no-show; and Strict, free before 2 days with the full fee for both. Underneath, the three rows a client reads on Standard, and a line saying existing bookings keep the policy they were booked under" />
 </Frame>
 
 <Tip>
@@ -100,36 +100,35 @@ On **Flexible** they read two:
 | Any time before it starts | Cancel or reschedule yourself, whenever you need to. No fee, nothing to explain |
 | Did not attend | 50% of the fee. Rebates can't be claimed on a missed session |
 
-In one line: Standard is *"Free cancellation up to 24 hours before. Inside that, 50% of the fee."*, Flexible *"Cancel whenever you need to, no fee. A missed session is charged at 50%."*
+In one line: Standard is *"Free cancellation up to 24 hours before. Inside that, 50% of the fee, and the full fee for a session you don't attend."*, Flexible *"Cancel whenever you need to, no fee. A missed session is charged at 50%."*
 
 Before confirming, a client is told the exact amount — *"\$90.00 late cancellation fee. The remaining \$90.00 goes back on your card."* They can also give a reason, up to 500 characters, which reaches you.
 
 ## What you receive
 
-A cancellation fee settles like any other earning: the fee becomes the gross, and deductions come off that rather than off the original price.
+A cancellation fee settles like any other earning: the fee becomes the gross. Card processing is not taken from that — you keep the retained session fee.
 
-Stripe keeps its processing fee when money goes back to a client. On a smaller cancellation fee it's clamped to what the fee can carry, so you net zero rather than owing us the difference.
+The client paid the session plus card processing, so a refund includes a matching share of that surcharge. The dialog quotes the session amounts — *"\$90.00 late cancellation fee. The remaining \$90.00 goes back on your card."* — and the card is then credited the session remainder plus its share of processing.
 
 ### Worked example
 
-A \$180.00 session on **Standard**, returning client, cancelled with five hours' notice.
+A \$180.00 session on **Standard**, returning client, cancelled with five hours' notice. The client paid **\$183.42**.
 
-The fee is 50% of \$180.00, so \$90.00 is retained and \$90.00 goes back on the client's card. That \$90.00 settles as its own gross, and Stripe keeps the \$3.36 fee from the original charge:
+The fee is 50% of \$180.00, so \$90.00 is retained. \$91.71 goes back on the card (\$90.00 of the session plus \$1.71 of the surcharge). That \$90.00 settles as its own gross:
 
 | | |
 |---|---|
 | Cancellation fee retained | \$90.00 |
-| Card processing | −\$3.36 |
-| **You receive** | **\$86.64** |
+| **You receive** | **\$90.00** |
 
-With no notice, or a no-show, the full fee applies: \$180.00 settles, less \$3.36 of processing, and you receive \$176.64.
+With no notice, or a no-show, the full session fee applies and you receive \$180.00.
 
 | Client cancels | You're paid | Client refunded |
 |---|---|---|
-| 3 days before | \$0.00 | \$180.00 |
-| 5 hours before | \$86.64 | \$90.00 |
-| Doesn't attend | \$176.64 | \$0.00 |
-| You cancel | \$0.00 | \$180.00 |
+| 3 days before | \$0.00 | \$183.42 |
+| 5 hours before | \$90.00 | \$91.71 |
+| Doesn't attend | \$180.00 | \$0.00 |
+| You cancel | \$0.00 | \$183.42 |
 
 <Note>
   Those figures assume a returning client, so no introduction fee. On a client's first settled session

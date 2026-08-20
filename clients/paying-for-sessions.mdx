@@ -6,11 +6,14 @@ keywords: ["payment", "card", "charge", "cost", "statement", "billing", "gift ca
 
 ## What you pay
 
-The therapist's published price, and nothing on top. No booking fee, no service charge, no surcharge, no subscription.
+The therapist's published price, plus card processing at checkout. No booking fee, no service charge, no subscription.
+
+On a \$180 session the processing line is **\$3.42**, so the card is charged **\$183.42**. The checkout summary writes it as the session plus card processing.
 
 <Info>
   No platform fee is in what you pay. Open Therapy charges the therapist a one-off introduction fee on
-  a new client's first booking, out of their payout. See [Fees](/fees).
+  a new client's first booking, out of their payout. Card processing is the Stripe estimate added so
+  the therapist keeps the published price. See [Fees](/fees).
 </Info>
 
 | | |
@@ -35,6 +38,10 @@ Ask us to keep a card at checkout and it appears on your next booking. Nothing i
 **Payment methods** under **Billing** lists them, with **Remove** on each. Removing is permanent and doesn't touch a session already booked and paid for.
 
 ## Gift cards
+
+<Info>
+  Gift cards are being rolled out. The field at checkout may not appear yet.
+</Info>
 
 Enter your code in **Gift card code** at checkout. Codes look like `OT-XXXX-XXXX`, and the balance comes off the total — the summary shows the reduced amount and the price it came down from. If it covers the whole fee, there's nothing to pay.
 
