@@ -57,6 +57,16 @@ async function settle(page: Page) {
     `,
   });
   await page.waitForLoadState("networkidle").catch(() => {});
+  // The live banner is a butter strip immediately above the sticky nav and
+  // has never carried a data attribute, so the stylesheet rule above misses it.
+  await page.evaluate(() => {
+    for (const nav of document.querySelectorAll("nav")) {
+      const previous = nav.previousElementSibling;
+      if (previous instanceof HTMLElement && previous.classList.contains("bg-butter")) {
+        previous.style.display = "none";
+      }
+    }
+  });
   await page.waitForTimeout(400);
 }
 
