@@ -326,6 +326,7 @@ test.describe("therapist workspace", () => {
   publicShot("therapist-client-measures", "/workspace/clients/demo-client-maya/measures");
   publicShot("therapist-messages", "/workspace/messages");
   publicShot("therapist-forms", "/workspace/forms");
+  publicShot("therapist-feedback", "/workspace/feedback");
   publicShot("therapist-earnings", "/workspace/earnings", { height: 1200 });
   publicShot("therapist-payouts", "/workspace/payouts");
   publicShot("therapist-posts", "/workspace/posts");
