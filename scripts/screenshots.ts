@@ -48,6 +48,9 @@ async function settle(page: Page) {
       }
       /* The announcement bar is scheduled content and dates the image. */
       [data-announcement], [data-testid="announcement"] { display: none !important; }
+      /* The first-appointment offer's docked circle. The drawer is closed in
+       * localStorage and hidden in the evaluate below. */
+      button[aria-label$="off your first appointment"] { display: none !important; }
       /*
        * The dev server's error overlay. It appears on a transient HMR hiccup
        * with nothing wrong with the page underneath, and being a shadow host it
@@ -60,6 +63,17 @@ async function settle(page: Page) {
   // The live banner is a butter strip immediately above the sticky nav and
   // has never carried a data attribute, so the stylesheet rule above misses it.
   await page.evaluate(() => {
+    try {
+      // Any stored answer closes the door; `dismissed:` is one of them.
+      window.localStorage.setItem("ot.offer40", "dismissed:docs-screenshots");
+    } catch {
+      // Private mode or a page that hasn't finished attaching storage.
+    }
+    for (const dialog of document.querySelectorAll('[role="dialog"]')) {
+      if (dialog instanceof HTMLElement && dialog.textContent?.includes("off, on us")) {
+        dialog.style.display = "none";
+      }
+    }
     for (const nav of document.querySelectorAll("nav")) {
       const previous = nav.previousElementSibling;
       if (previous instanceof HTMLElement && previous.classList.contains("bg-butter")) {
@@ -197,6 +211,31 @@ async function signIn(page: Page, who: { email: string; password: string }, stat
   await page.context().storageState({ path: state });
 }
 
+test.beforeEach(async ({ page }) => {
+  // Close the offer before the first navigation, or public shots that wait
+  // long enough for the floor-then-engagement timer publish the drawer.
+  await page.addInitScript(() => {
+    try {
+      window.localStorage.setItem("ot.offer40", "dismissed:docs-screenshots");
+    } catch {
+      // Storage can be unavailable on the first about:blank.
+    }
+  });
+
+  // The browser bundle calls `api.opentherapy.app` for published hours. Local
+  // Vite and Wrangler both need those hits to land on the seeded Worker.
+  const appOrigin = process.env["DOCS_APP_ORIGIN"] ?? "http://localhost:8080";
+  await page.route("https://api.opentherapy.app/api/availability/**", async (route) => {
+    const remote = new URL(route.request().url());
+    const local = await page.request.get(`${appOrigin}${remote.pathname}${remote.search}`);
+    await route.fulfill({
+      status: local.status(),
+      contentType: "application/json",
+      body: await local.text(),
+    });
+  });
+});
+
 test.describe("sign in", () => {
   test("as the client", async ({ page }) => {
     await signIn(page, CLIENT, CLIENT_STATE);
@@ -246,6 +285,12 @@ test.describe("public", () => {
   test("profile-booking-panel", async ({ page }) => {
     await page.goto("/therapists/nicholas-carlton");
     await settle(page);
+    // The availability grid is a second request. Photographing before it
+    // returns published the error line as documentation.
+    await expect(
+      page.getByText("calendar didn't load"),
+      "booking panel still showing the failed-availability state",
+    ).toHaveCount(0, { timeout: 20_000 });
     // The booking card, not the whole `aside` — the column also carries the
     // waitlist prompt and a trust list, and runs to 3,600px.
     await shot(page, "profile-booking-panel", { clip: "aside > div > div" });
