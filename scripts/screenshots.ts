@@ -25,9 +25,36 @@ const CLIENT = { email: "maya.okonkwo@example.com", password: "opentherapy" };
 const CLIENT_STATE = join(AUTH, "client.json");
 const THERAPIST_STATE = join(AUTH, "therapist.json");
 
+const APP_ORIGIN = process.env["DOCS_APP_ORIGIN"] ?? "http://localhost:8080";
+const AVAILABILITY_ORIGIN = process.env["DOCS_AVAILABILITY_ORIGIN"] ?? APP_ORIGIN;
+
 /* -------------------------------------------------------------------------- */
 /* Taking the shot                                                            */
 /* -------------------------------------------------------------------------- */
+
+test.beforeEach(async ({ page }) => {
+  // The first-appointment offer is live with no flag. It opens on public
+  // pages after 1.5–8s and would date every signed-out shot. Claimed in
+  // localStorage is the only stored answer that ends it for the session.
+  await page.addInitScript(() => {
+    try {
+      window.localStorage.setItem("ot.offer40", "claimed:docs-screenshots");
+      window.sessionStorage.setItem("ot.offer40", "dismissed:docs-screenshots");
+    } catch {
+      /* storage may be unavailable in a locked-down context */
+    }
+  });
+
+  // The booking panel fetches https://api.opentherapy.app/api/availability/**
+  // from the browser bundle. Playwright will not `continue` an https request
+  // onto http, so fetch the local origin and fulfill.
+  await page.route("https://api.opentherapy.app/api/availability/**", async (route) => {
+    const incoming = new URL(route.request().url());
+    const rewritten = new URL(incoming.pathname + incoming.search, AVAILABILITY_ORIGIN);
+    const response = await route.fetch({ url: rewritten.toString() });
+    await route.fulfill({ response });
+  });
+});
 
 /**
  * Wait for the page to stop moving. Fonts first, because Switzer arriving after
@@ -64,6 +91,15 @@ async function settle(page: Page) {
       const previous = nav.previousElementSibling;
       if (previous instanceof HTMLElement && previous.classList.contains("bg-butter")) {
         previous.style.display = "none";
+      }
+    }
+    // Offer drawer / dock, if an init-script miss still left them up.
+    for (const node of document.querySelectorAll<HTMLElement>(
+      '[role="dialog"], [data-offer], [data-offer-dock]',
+    )) {
+      const text = node.textContent ?? "";
+      if (/first (session|appointment)|OT40|off your first/i.test(text)) {
+        node.style.display = "none";
       }
     }
   });
@@ -327,6 +363,7 @@ test.describe("therapist workspace", () => {
   publicShot("therapist-messages", "/workspace/messages");
   publicShot("therapist-forms", "/workspace/forms");
   publicShot("therapist-feedback", "/workspace/feedback");
+  publicShot("therapist-fees", "/workspace/fees", { height: 1200 });
   publicShot("therapist-earnings", "/workspace/earnings", { height: 1200 });
   publicShot("therapist-payouts", "/workspace/payouts");
   publicShot("therapist-posts", "/workspace/posts");
