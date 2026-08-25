@@ -20,7 +20,7 @@ Neither is required. Both can be on at once.
 
 ## Reading your calendar
 
-**Connect Google Calendar** under **Your own calendar** asks Google for one thing: the hours you are busy. Google Calendar is the only provider — no Outlook, iCloud or CalDAV.
+**Connect Google Calendar** on the **Calendar sync** panel asks Google when you are busy — never what you are doing — and writes booked sessions only to a calendar Open Therapy creates. Google Calendar is the only provider: no Outlook, iCloud or CalDAV.
 
 The Google account you connect doesn't have to be the account you sign in with, and connecting one doesn't change how you sign in.
 
@@ -28,27 +28,25 @@ The Google account you connect doesn't have to be the account you sign in with, 
 
 The free/busy scope returns intervals and nothing else: no title, no guests, no location, no description, no attachment, no organiser. Disconnecting deletes what was stored.
 
+### Which calendars
+
+If the grant allows it, you tick which of your calendars close hours. Names are read live and never stored. Unticking everything is a real answer: your hours are then decided here only.
+
+A grant given before that choice existed reads your primary calendar. **Reconnect** asks again, so you can pick the list.
+
 ### What it does to your slots
 
 A busy hour closes that slot **for clients**. It does not stop **you**: your connected calendar isn't consulted when you book one of your own clients in, though your grid still draws the busy hour.
 
 Two things do still stop you: an existing Open Therapy session at the same time, and the buffer you keep between sessions.
 
-### Sync runs hourly
+### When a change lands
 
-A pass reads a window of your calendar and rewrites it whole, so an appointment moved, shortened, declined or deleted isn't in the next answer, and the hour comes back onto the market.
+Google tells Open Therapy when a watched calendar changes, so an appointment you move at ten past closes that hour at ten past. An hourly pass is the backstop: a grant from before that scope existed, a calendar Google will not push for (a subscribed holiday or sports calendar), or a notification that never arrived.
 
-| | |
-|---|---|
-| How often | About once an hour |
-| How far ahead | 120 days |
-| Staleness | Something you add at ten past isn't blocking bookings until the next pass |
+**Sync** on the panel forces a read now. There is no count of busy hours and no last-checked time — the ticked list is the control.
 
-The panel says when the calendar was last checked and how many things on it are holding hours.
-
-<Info>
-  There's no "sync now" button, and no live push from Google.
-</Info>
+Booked Open Therapy sessions are written to the calendar we created, the moment they are booked. Nothing here can read or write your own calendars.
 
 ### When a conflict appears after a booking
 

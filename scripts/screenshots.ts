@@ -126,9 +126,27 @@ type ShotOptions = {
  */
 async function assertRendered(page: Page) {
   await expect(
-    page.getByRole("heading", { name: /didn't load|Page not found/ }),
-    `${page.url()} rendered an error page instead of the screen being captured`,
+    page.getByRole("heading", {
+      name: /didn't load|Page not found|This one's a dead end|One thing first/,
+    }),
+    `${page.url()} rendered an error page or the practitioner-agreement gate instead of the screen being captured`,
   ).toHaveCount(0);
+}
+
+/**
+ * The workspace replaces every therapist page with the agreement until the
+ * current version has a row. Seed accounts onboarded before that table existed,
+ * so the first signed-in therapist shot would otherwise photograph the gate
+ * sixteen times and still report green.
+ */
+async function acceptPractitionerAgreementIfShown(page: Page) {
+  const checkbox = page.getByRole("checkbox", {
+    name: /I have read the practitioner agreement/,
+  });
+  if ((await checkbox.count()) === 0) return;
+  await checkbox.check();
+  await page.getByRole("button", { name: "Accept and continue" }).click();
+  await expect(checkbox).toHaveCount(0, { timeout: 30_000 });
 }
 
 /**
@@ -228,6 +246,8 @@ async function signIn(page: Page, who: { email: string; password: string }, stat
 
   await submit.click();
   await page.waitForURL(/\/workspace/, { timeout: 30_000 });
+  await settle(page);
+  await acceptPractitionerAgreementIfShown(page);
 
   mkdirSync(AUTH, { recursive: true });
   await page.context().storageState({ path: state });
@@ -259,6 +279,14 @@ test.describe("public", () => {
   // groups / ask / gift-cards are PostHog-gated at 0% rollout. Shooting them
   // would publish the 404. Keep the existing images until the flags are on.
   publicShot("blog", "/blog");
+  // tools is live in production (PostHog `tools` at 100%). Local Vite evaluates
+  // flags closed, so `/tools` 404s here ("This one's a dead end.") — shoot the
+  // live hub rather than publishing that 404.
+  test("tools", async ({ page }) => {
+    await page.goto("https://opentherapy.app/tools");
+    await settle(page);
+    await shot(page, "tools");
+  });
   // Not `therapist-posts` — that name belongs to the workspace screen below, and
   // when both used it this shot was silently overwritten by whichever ran last.
   publicShot("therapist-profile-posts", "/therapists/nicholas-carlton/posts");
@@ -351,6 +379,12 @@ test.describe("client workspace", () => {
 
 test.describe("therapist workspace", () => {
   test.use({ storageState: THERAPIST_STATE });
+
+  test("accept practitioner agreement", async ({ page }) => {
+    await page.goto("/workspace");
+    await settle(page);
+    await acceptPractitionerAgreementIfShown(page);
+  });
 
   publicShot("therapist-overview", "/workspace");
   publicShot("therapist-schedule", "/workspace/schedule");
