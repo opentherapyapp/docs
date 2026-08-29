@@ -271,6 +271,9 @@ test.describe("public", () => {
   publicShot("home", "/", { height: 1000 });
   publicShot("home-care-types", "/", { clip: "section:has-text('What kind of care?')" });
   publicShot("browse", "/browse");
+  // Unflagged public route: footer, sitemap, and the directory heading all
+  // point here. The care-literacy flag only gated an older inline card.
+  publicShot("care-guide", "/care-guide");
   publicShot("match", "/match");
   publicShot("therapist-profile", "/therapists/nicholas-carlton");
   publicShot("care-category", "/care/psychology");
