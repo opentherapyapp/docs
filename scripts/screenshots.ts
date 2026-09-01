@@ -127,7 +127,7 @@ type ShotOptions = {
 async function assertRendered(page: Page) {
   await expect(
     page.getByRole("heading", {
-      name: /didn't load|Page not found|This one's a dead end|One thing first/,
+      name: /didn't load|Page not found|This one's a dead end|One thing first|Back soon/,
     }),
     `${page.url()} rendered an error page or the practitioner-agreement gate instead of the screen being captured`,
   ).toHaveCount(0);
@@ -288,6 +288,12 @@ test.describe("public", () => {
   test("tools", async ({ page }) => {
     await page.goto("https://opentherapy.app/tools");
     await settle(page);
+    // The live hub is the only origin that evaluates `tools` on. If the
+    // marketplace is locked, keep the last shot rather than publishing the
+    // maintenance page as documentation.
+    if ((await page.getByRole("heading", { name: "Back soon" }).count()) > 0) {
+      test.skip(true, "production is in maintenance; keep the last tools shot");
+    }
     await shot(page, "tools");
   });
   // Not `therapist-posts` — that name belongs to the workspace screen below, and

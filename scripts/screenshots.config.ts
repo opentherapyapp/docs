@@ -26,6 +26,9 @@ export default defineConfig({
     // Retina, so a 1440px-wide shot is still sharp on the page at half size.
     deviceScaleFactor: 2,
     viewport: { width: 1440, height: 900 },
+    // Seed sessions and therapist hours are Australia/Sydney. A UTC browser
+    // labels Wednesday 11:00 as 1:00 AM and photographs the wrong "today".
+    timezoneId: "Australia/Sydney",
     launchOptions: { args: ["--autoplay-policy=no-user-gesture-required"] },
   },
 });
